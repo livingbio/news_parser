@@ -6,7 +6,7 @@
 待parser
 ---
 
-1. 科技新報        http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/
+1. 科技新報        http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/  #george
 2. 新頭殼      http://newtalk.tw/news/view/2016-01-14/69148
 3. 三立新聞網      http://www.setn.com/News.aspx?NewsID=118251
 4. 數位時代        http://www.bnext.com.tw/article/view/id/37335
