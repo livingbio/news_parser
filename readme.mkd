@@ -1,0 +1,67 @@
+#### 實習生parser 列表
+
+
+待parser
+---
+
+1. 科技新報        http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/
+2. 新頭殼      http://newtalk.tw/news/view/2016-01-14/69148
+3. 三立新聞網      http://www.setn.com/News.aspx?NewsID=118251
+4. 數位時代        http://www.bnext.com.tw/article/view/id/37335
+
+需要欄位
+---
+
+名稱| 說明
+---|---
+url| 該新聞 url
+source_press| 新聞來源(轉貼某間自?)
+title| 新聞title
+post_time| 發佈時間
+journalist| 記者(作者)
+content| 新聞內文
+popularity| 人氣
+compare| 評比
+keywords| 關鍵字
+fb_like| fb 按讚數(可選)
+fb_share| fb share 數(可選)
+
+需求spec
+---
+1. 頁面 parser
+```python
+def parser_page(url):
+    """
+    parser page method 
+    主要用於抓取新聞detail頁面資訊
+
+    page_data = parser_page(news detail url)
+    """
+
+    return {
+        "url": string
+        "source_press": string
+        "title": string
+        "post_time": datetime.datetime()
+        "journalist": string
+        "content": string
+        "compare": string
+        "keyword": [string, string, ...]
+        fb_like: int
+        fb_share: int
+    }
+```
+
+2. detail url 取得
+```
+def get_category_urls(category_url):
+    """ 
+    get_category_urls
+    根據category 頁面取得 detail urls 
+
+    detail_urls = get_category_urls(category_url)
+    """
+    return [detail_url, detail_url, detail_url]
+
+```
+
