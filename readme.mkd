@@ -58,7 +58,7 @@ def parser_page(url):
 ```
 
 2. detail url 取得
-```
+```python
 def get_category_urls(category_url):
     """ 
     get_category_urls
