@@ -164,9 +164,8 @@ def parser_page(url):
 # facebook api solution
 # -----------------------------------------------------------
 	utility_string = 'https://graph.facebook.com/fql?q=SELECT%20like_count,%20total_count,%20share_count,%20click_count,%20commentsbox_count%20FROM%20link_stat%20WHERE%20url%20=%20%22{}%22'
-	utility_string.format('url')
 
-	res = requests(utility_string)
+	res = requests.get(utility_string.format(url))
 	page_info['fb_like'] = res.json()['data'][0]['like_count']
 	page_info['fb_share'] = res.json()['data'][0]['share_count']
 	page_info['fb_commentsbox_count'] = res.json()['data'][0]['commentsbox_count']
