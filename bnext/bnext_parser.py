@@ -27,6 +27,7 @@ def parser_page(url):
 				,'fb_like' 		: None \
 				,'fb_share' 	: None \
 				,'category'		: None \
+				,'popularity'   : None \
 				,'commentsbox_count': None}
 
 	res  = requests.get(url)
