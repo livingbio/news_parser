@@ -28,6 +28,20 @@ keywords| 關鍵字
 fb_like| fb 按讚數(可選)
 fb_share| fb share 數(可選)
 category| 類別
+comment| 回覆
+
+
+comment 說明
+
+name| 說明
+---|---
+acotr| 作者
+like| 喜歡數量
+dislike| 討厭數量
+post_time| 回復時間
+source_type| 來源類別（fb...etc）
+sub_comment| 子回應
+
 
 
 需求spec
@@ -54,6 +68,23 @@ def parser_page(url):
         "fb_like": int
         "fb_share": int
         "category": [category, category]
+        "comment": {
+            "actor": str
+            "like": int
+            dislike: int
+            content: str
+            port_time: datetime.datetime
+            source_type: string 
+
+            sub_comments: {
+                "actor": str
+                "like": int
+                dislike: int
+                content: str
+                port_time: datetime.datetime
+                source_type: string 
+            }
+        }
     }
 ```
 
