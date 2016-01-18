@@ -29,7 +29,7 @@ def parser_page(url):
 				,'category'		: None \
 				,'popularity'   : None \
 				,'total_comment': None \
-				,}
+				,} # comment would be added later
 
 	res  = requests.get(url)
 	soup = BeautifulSoup(res.content)
@@ -133,7 +133,7 @@ def parser_page(url):
 
 
 # ---------------- fb_like & fb_share -----------------------
-# buggy solution
+# dummy solution
 # -----------------------------------------------------------
 #	prefix_like  = 'http://www.facebook.com/v2.1/plugins/like.php?action=like&'
 #	prefix_share = 'https://www.facebook.com/v2.1/plugins/share_button.php?'
@@ -188,6 +188,8 @@ def parser_page(url):
 	while True: # loop until no more next page
 		res = requests.get(utility_string.format(url, suffix))
 		data   = res.json()['data'] # list of comments
+		if len(data) == 0: # no comment at all
+			break
 		paging = res.json()['paging'] # the paging info dict
 
 		for datum in data:
@@ -239,8 +241,10 @@ def get_category_urls(category_url):
 	midfix = '?p='
 	last_page = int(last_page.split('=')[-1])
 
+	print last_page
+
 	for page in range(1, last_page+1):
-		time.sleep(randint(1,3))
+		time.sleep(1)
 
 		res = requests.get(category_url+midfix+str(page))
 		soup = BeautifulSoup(res.content)
