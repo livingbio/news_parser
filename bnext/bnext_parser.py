@@ -26,7 +26,8 @@ def parser_page(url):
 				,'keyword' 		: None \
 				,'fb_like' 		: None \
 				,'fb_share' 	: None \
-				,'category'		: None }
+				,'category'		: None \
+				,'commentsbox_count': None}
 
 	res  = requests.get(url)
 	soup = BeautifulSoup(res.content)
@@ -167,7 +168,7 @@ def parser_page(url):
 	res = requests(utility_string)
 	page_info['fb_like'] = res.json()['data'][0]['like_count']
 	page_info['fb_share'] = res.json()['data'][0]['share_count']
-	page_info['fb_']
+	page_info['fb_commentsbox_count'] = res.json()['data'][0]['commentsbox_count']
 
 	return page_info
 
