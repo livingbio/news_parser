@@ -71,18 +71,18 @@ def parser_page(url):
         "comment": {
             "actor": str
             "like": int
-            dislike: int
-            content: str
-            post_time: datetime.datetime
-            source_type: string 
+            "dislike": int
+            "content": str
+            "post_time": datetime.datetime
+            "source_type": string 
 
             sub_comments: {
                 "actor": str
                 "like": int
-                dislike: int
-                content: str
-                port_time: datetime.datetime
-                source_type: string 
+                "dislike": int
+                "content": str
+                "post_time": datetime.datetime
+                "source_type": string 
             }
         }
     }
