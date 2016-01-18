@@ -28,7 +28,8 @@ def parser_page(url):
 				,'fb_share' 	: None \
 				,'category'		: None \
 				,'popularity'   : None \
-				,'commentsbox_count': None}
+				,'total_comment': None \
+				,}
 
 	res  = requests.get(url)
 	soup = BeautifulSoup(res.content)
@@ -168,7 +169,62 @@ def parser_page(url):
 	res = requests.get(utility_string.format(url))
 	page_info['fb_like'] = res.json()['data'][0]['like_count']
 	page_info['fb_share'] = res.json()['data'][0]['share_count']
-	page_info['fb_commentsbox_count'] = res.json()['data'][0]['commentsbox_count']
+
+	# causion: may not be accurate
+	page_info['total_comment'] = res.json()['data'][0]['commentsbox_count']
+
+
+# ---------------- fb comments handler -----------------------
+# using fql:
+# https://graph.facebook.com/comments?id=<your webpage>&filter=stream&fields=parent.fields(id),message,from,created_time,like_count
+#
+# an example:
+# https://graph.facebook.com/comments?id=http://www.bnext.com.tw/ext_rss/view/id/1228585&filter=stream&fields=parent.fields(id),message,from,created_time,like_count&limit=3
+# ------------------------------------------------------------
+	comments_dict = {} # first index by post_id for convenient
+	utility_string = 'https://graph.facebook.com/comments?id={}&filter=stream&fields=parent.fields(id),message,from,created_time,like_count{}' # + '&limit=3' # limit is just for testing
+	suffix = ''
+
+	while True: # loop until no more next page
+		res = requests.get(utility_string.format(url, suffix))
+		data   = res.json()['data'] # list of comments
+		paging = res.json()['paging'] # the paging info dict
+
+		for datum in data:
+			str_time = datum['created_time'].split('+')[0]
+			
+			actor 		 = datum['from']['name']
+			like 		 = datum['like_count']
+			dislike      = 0
+			content      = datum['message']
+			source_type  = 'fb'
+			post_time    = datetime.strptime(str_time, '%Y-%m-%dT%H:%M:%S')
+
+			building_block = {'actor'       : actor       \
+							  ,'like'        : like       \
+							  ,'dislike'     : dislike    \
+							  ,'content'     : content    \
+							  ,'post_time'   : post_time  \
+							  ,'source_type' : source_type}
+
+			if 'parent' not in datum.keys():
+				post_id  = datum['id']
+				building_block['sub_comments'] = []
+				comments_dict[post_id] = building_block
+			else:
+				parent_id = datum['parent']['id']
+				assert (parent_id in comments_dict.keys()), "parent not found !"
+
+				comments_dict[parent_id]['sub_comments'].append(building_block)
+
+
+		if 'next' not in paging.keys():
+			break
+		else:
+			suffix = paging['next']
+			suffix = suffix[suffix.find('&after='):]
+
+	page_info['comment'] = comments_dict.values()
 
 	return page_info
 
