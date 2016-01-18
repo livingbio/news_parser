@@ -68,7 +68,7 @@ def parser_page(url):
         "fb_like": int
         "fb_share": int
         "category": [category, category]
-        "comment": {
+        "comment": [{
             "actor": str
             "like": int
             "dislike": int
@@ -76,15 +76,15 @@ def parser_page(url):
             "post_time": datetime.datetime
             "source_type": string 
 
-            sub_comments: {
+            sub_comments: [{
                 "actor": str
                 "like": int
                 "dislike": int
                 "content": str
                 "post_time": datetime.datetime
                 "source_type": string 
-            }
-        }
+            }]
+        }]
     }
 ```
 
