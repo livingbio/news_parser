@@ -73,7 +73,7 @@ def parser_page(url):
             "like": int
             dislike: int
             content: str
-            port_time: datetime.datetime
+            post_time: datetime.datetime
             source_type: string 
 
             sub_comments: {
