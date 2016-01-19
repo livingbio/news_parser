@@ -169,7 +169,7 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 			print('test failed: {}\n'.format(url))
 			return
 		
-		time.sleep(randint(1, 3))
+		#time.sleep(randint(1, 3))
 
 	print('\nSuccess')
 
@@ -196,13 +196,22 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 	ground_truth = obj['ground_truth']
 
 	for i, url in enumerate(ground_input):
-		ret = bnext_parser.get_category_urls(url, back_counting_offset=3)
-		ret = ret[-40:]
-		if ret != ground_truth[i]:
-			print('test failed: {}\n'.format(url))
-			return
+		retry = 0
+		while retry < _RETRY_LIMIT:
+			try:
+				ret = bnext_parser.get_category_urls(url, back_counting_offset=3)
+				ret = ret[-40:]
+				if ret != ground_truth[i]:
+					print('test failed: {}\n'.format(url))
+					return
+				break
+			except ConnectionError:
+				retry += 1
+				print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
+				time.sleep(randint(10, 15))
+
 		sys.stdout.write('.')
-		time.sleep(1)
+		#time.sleep(1)
 
 	print('\nSuccess')
 
@@ -212,15 +221,25 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 
 
 
-if __name__ == '__main__':
+def main():
 
 	parser = argparse.ArgumentParser(description='Test if bnext_parser is working well')
 	parser.add_argument(
 		'--small',
 		action='store_true',
 		help='Test on small testcase (40 urls) instead of whole (240 urls)')
+	parser.add_argument(
+		'--gen',
+		action='store_true',
+		help='generate testcases instead of testing, the generated testcase will populate ./resources/testcase/* folder'
+		)
 
 	args = parser.parse_args()
+
+	if args.gen:
+		generate_testcase_ensemble()
+		print("Done testcase generation.\n")
+		return
 
 	if args.small:
 		test_parser_page('./resources/testcase/parser_page_testcase_small.pkl')
@@ -230,5 +249,9 @@ if __name__ == '__main__':
 		test_parser_page('./resources/testcase/parser_page_testcase.pkl')
 		test_get_category_urls('./resources/testcase/get_category_urls_testcase.pkl')
 
-#	generate_testcase_ensemble()
 	print("Done testing.\n")
+	return
+
+
+if __name__ == '__main__':
+	main()

@@ -10,6 +10,7 @@ from random import randint
 from datetime import datetime
 from bs4 import BeautifulSoup
 
+_RETRY_LIMIT = 3
 
 strange_url_set = set()
 
@@ -247,9 +248,18 @@ def get_category_urls(category_url, back_counting_offset=-1):
 		starting_page = last_page-back_counting_offset
 
 	for page in range(starting_page, last_page):
-		time.sleep(1)
+		retry = 0
+		while retry < _RETRY_LIMIT:
+			try:
+				res = requests.get(category_url+midfix+str(page))
+				break
+			except requests.ConnectionError:
+				retry += 1
+				print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
+				time.sleep(randint(10, 15))
 
-		res = requests.get(category_url+midfix+str(page))
+			assert (retry < _RETRY_LIMIT), "maximum retry limit reached"
+
 		soup = BeautifulSoup(res.content)
 
 		container = soup.find('div', {'id': 'categories_list', 'class': 'main_list_sty01'})
