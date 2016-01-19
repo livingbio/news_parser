@@ -122,13 +122,13 @@ def parser_page(url):
 	if len(keyword_box) == 1:
 		keywords = keyword_box[0].findAll('a', {'class': 'tag_link'})
 		if len(keywords) == 0:
-			print('[keywords] no keyword in tag_box: {}\n'.format(url))
+			#print('[keywords] no keyword in tag_box: {}\n'.format(url))
 			strange_url_set.add(url)
 		else:
 			for keyword in keywords:
 				page_info['keyword'].append(keyword.text)
 	else:
-		print('[keywords] no tag_box field: {}\n'.format(url))
+		#print('[keywords] no tag_box field: {}\n'.format(url))
 		strange_url_set.add(url)
 
 
@@ -231,7 +231,7 @@ def parser_page(url):
 	return page_info
 
 
-def get_category_urls(category_url):
+def get_category_urls(category_url, back_counting_offset=-1):
 	detail_urls = []
 	prefix = 'http://www.bnext.com.tw'
 	res  = requests.get(category_url)
@@ -239,11 +239,14 @@ def get_category_urls(category_url):
 	page_list = soup.find('ul', 'pagination')
 	last_page = page_list.findAll('a')[-1]['href']
 	midfix = '?p='
-	last_page = int(last_page.split('=')[-1])
+	last_page = int(last_page.split('=')[-1])+1
 
-	print last_page
+	if back_counting_offset == -1:
+		starting_page = 1
+	else:
+		starting_page = last_page-back_counting_offset
 
-	for page in range(1, last_page+1):
+	for page in range(starting_page, last_page):
 		time.sleep(1)
 
 		res = requests.get(category_url+midfix+str(page))
