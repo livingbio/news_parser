@@ -1,0 +1,22 @@
+sudo: false
+language: python
+cache: pip
+
+script:
+  # need to modify
+  - true
+
+after_success:
+  - pip install autopep8
+  - git checkout $TRAVIS_BRANCH
+  - autopep8 -r --in-place ./op
+  - git add -u
+  - git config --global user.email "lucemia@gmail.com"
+  - git config --global user.name "lucemia"
+  - git commit -m "autopep8"
+  - git status
+  - git remote -v
+  - git push origin $TRAVIS_BRANCH
+
+notifications:
+  slack: livingbio:Z1rXIqr5EE4XVuYoabJ7s8bI
