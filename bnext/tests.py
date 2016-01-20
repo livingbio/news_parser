@@ -13,18 +13,21 @@ link to bnext: http://www.bnext.com.tw/
 # -*- coding: utf-8 -*-
 
 import bnext_parser
+import requests
 import pickle as pkl
-import argparse
 import os.path
 import time
 import sys
 
-
+from bs4 import BeautifulSoup
 from requests import ConnectionError
 from datetime import datetime
 from random import randint
 
+
 _RETRY_LIMIT = 3
+_response_pool = None
+
 
 category_url_list = ['http://www.bnext.com.tw/categories/internet/'\
 					,'http://www.bnext.com.tw/categories/tech/'    \
@@ -32,97 +35,6 @@ category_url_list = ['http://www.bnext.com.tw/categories/internet/'\
 					,'http://www.bnext.com.tw/categories/startup/' \
 					,'http://www.bnext.com.tw/categories/people/'  \
 					,'http://www.bnext.com.tw/categories/skill/']
-
-
-
-# Uncomment to generate small testcase
-# category_url_list = ['http://www.bnext.com.tw/categories/internet/']
-
-
-
-
-
-# these are for generating testcases, you should never call this unless you are tsaiJN :)
-# ========================================================================================
-"""
- implementation:
-  go through urls provided by generate_get_category_urls_testcase()
-"""
-def generate_parser_page_testcase(ground_input):
-	generating_time = datetime.now()
-	ground_truth = []
-
-	for i, url in enumerate(ground_input):
-		print('({}/{}) {}'.format(i+1, len(ground_input), url))
-		retry = 0
-		while retry < _RETRY_LIMIT:
-			try:
-				ret = bnext_parser.parser_page(url)
-				ground_truth.append(ret)
-				break
-			except ConnectionError:
-				retry += 1
-				print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
-				time.sleep(randint(10, 15))
-
-		time.sleep(randint(1, 3))
-
-	with open('./resources/testcase/parser_page_testcase.pkl', 'w') as f:
-		obj = {'ground_input': ground_input\
-			  ,'ground_truth': ground_truth\
-			  ,'generating_time': generating_time}
-
-		pkl.dump(obj, f)
-
-
-
-
-
-
-"""
- implementation:
-  dense test last 3 page of each category, 40 url each
-  most of the old news don't have keyword
-"""
-
-def generate_get_category_testcase(ground_input):
-	generating_time = datetime.now()
-	ground_truth = []
-
-	for url in ground_input:
-		ret = bnext_parser.get_category_urls(url, back_counting_offset=3)
-		ground_truth.append(ret[-40:])
-
-	obj = {'ground_input': ground_input\
-		  ,'ground_truth': ground_truth\
-		  ,'generating_time': generating_time}
-
-	with open('./resources/testcase/get_category_urls_testcase.pkl', 'w') as f:
-		pkl.dump(obj, f)
-
-	return ground_truth
-
-
-
-
-def generate_testcase_ensemble():
-	global category_url_list
-
-	# load category_urls ground truth if already have it
-	if os.path.isfile('./resources/testcase/get_category_urls_testcase.pkl'):
-		url_list = pkl.load(open('./resources/testcase/get_category_urls_testcase.pkl'))['ground_truth']
-	else:
-		url_list = generate_get_category_testcase(category_url_list)
-	 
-	# flatten url_list
-	url_list = [url_list_3 for url_list_2 in url_list for url_list_3 in url_list_2]
-
-	generate_parser_page_testcase(url_list)
-
-# ========================================================================================
-
-
-
 
 
 def print_time(obj):
@@ -133,11 +45,23 @@ def print_time(obj):
 
 
 
+def pseudo_get(url):
+	global _response_pool
 
+	# load responses if haven't load
+	if _response_pool == None:
+		_response_pool = pkl.load(open('./resources/_pseudo_request_response_dict.pkl'))
+
+	return _response_pool[url]
 
 
 def test_parser_page(test_file):
-
+# ============================================================================================================
+# start mock session
+	_old_get = requests.get
+	requests.get = pseudo_get
+# ============================================================================================================
+	
 	print("\n================================== parser page ==============================================\n")
 	print("Testing parser_page(), don't warry if you see some log on the fly,\n\
 they are for the porpose of analyzing webpage, the fail of testing would be shown by [assert]\n")
@@ -155,6 +79,7 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 
 	for i, url in enumerate(ground_input):
 		print('({}/{}) {}'.format(i+1, len(ground_input), url))
+
 		retry = 0
 		while retry < _RETRY_LIMIT:
 			try:
@@ -171,6 +96,11 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 		
 		#time.sleep(randint(1, 3))
 
+# ============================================================================================================
+# free mock session
+	requests.get = _old_get
+# ============================================================================================================
+
 	print('\nSuccess')
 
 
@@ -180,6 +110,13 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 
 
 def test_get_category_urls(test_file):
+
+# ============================================================================================================
+# start mock session
+	_old_get = requests.get
+	requests.get = pseudo_get
+# ============================================================================================================
+	
 	print("\n================================== category urls ========================================\n")
 	print("Testing get_category_urls(), don't warry if you see some log on the fly,\n\
 they are for the porpose of analyzing webpage, the fail of testing would be shown by [assert]\n")
@@ -213,6 +150,11 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 		sys.stdout.write('.')
 		#time.sleep(1)
 
+# ============================================================================================================
+# free mock session
+	requests.get = _old_get
+# ============================================================================================================
+
 	print('\nSuccess')
 
 
@@ -223,31 +165,8 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 
 def main():
 
-	parser = argparse.ArgumentParser(description='Test if bnext_parser is working well')
-	parser.add_argument(
-		'--small',
-		action='store_true',
-		help='Test on small testcase (40 urls) instead of whole (240 urls)')
-	parser.add_argument(
-		'--gen',
-		action='store_true',
-		help='generate testcases instead of testing, the generated testcase will populate ./resources/testcase/* folder'
-		)
-
-	args = parser.parse_args()
-
-	if args.gen:
-		generate_testcase_ensemble()
-		print("Done testcase generation.\n")
-		return
-
-	if args.small:
-		test_parser_page('./resources/testcase/parser_page_testcase_small.pkl')
-		test_get_category_urls('./resources/testcase/get_category_urls_testcase_small.pkl')
-
-	else:
-		test_parser_page('./resources/testcase/parser_page_testcase.pkl')
-		test_get_category_urls('./resources/testcase/get_category_urls_testcase.pkl')
+	test_parser_page('./resources/testcase/parser_page_testcase.pkl')
+	test_get_category_urls('./resources/testcase/get_category_urls_testcase.pkl')
 
 	print("Done testing.\n")
 	return
