@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/livingbio/news_parser.svg?branch=master)](https://travis-ci.org/livingbio/news_parser)
+
 #### 實習生parser 列表
 
 說明
