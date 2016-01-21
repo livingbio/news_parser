@@ -2,21 +2,28 @@ sudo: false
 language: python
 cache: pip
 
+before_install:
+  - pip install -U pip
+  - pip install wheel
+
+install:
+  - pip install -r requirements.txt
+
 script:
   # need to modify
-  - true
+  - py.test --cov=./
 
-after_success:
-  - pip install autopep8
-  - git checkout $TRAVIS_BRANCH
-  - autopep8 -r --in-place ./op
-  - git add -u
-  - git config --global user.email "lucemia@gmail.com"
-  - git config --global user.name "lucemia"
-  - git commit -m "autopep8"
-  - git status
-  - git remote -v
-  - git push origin $TRAVIS_BRANCH
+# after_success:
+#   - pip install autopep8
+#   - git checkout $TRAVIS_BRANCH
+#   - autopep8 -r --in-place ./op
+#   - git add -u
+#   - git config --global user.email "lucemia@gmail.com"
+#   - git config --global user.name "lucemia"
+#   - git commit -m "autopep8"
+#   - git status
+#   - git remote -v
+#   - git push origin $TRAVIS_BRANCH
 
 notifications:
   slack: livingbio:Z1rXIqr5EE4XVuYoabJ7s8bI
