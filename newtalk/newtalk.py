@@ -45,7 +45,6 @@ def parser_page(url):
         }]
     }
 
-
     url = str(soup.select('meta[property="og:url"]'))[16:60]
     title = soup.find('div', {'class': 'content_title'}).text
     journalist = str(soup.find('a', {'itemprop': 'author'}))[86:95]
@@ -55,8 +54,10 @@ def parser_page(url):
 
 # get post_time
 post_time_raw = str(soup.find('div', {'class': 'content_date'}))
-post_time = datetime.datetime(*map(int, re.findall(r'\d+', post_time_raw))[0:5])
-update_time = datetime.datetime(*map(int, re.findall(r'\d+', post_time_raw))[5:12])
+post_time = datetime.datetime(
+    *map(int, re.findall(r'\d+', post_time_raw))[0:5])
+update_time = datetime.datetime(
+    *map(int, re.findall(r'\d+', post_time_raw))[5:12])
 
 
 # get keywords
@@ -64,9 +65,9 @@ keyword_pool = soup.select('div[class=tag_for_item]')
 keyword = [tag.text for tag in keyword_pool]
 
 
-
 # get fb_like
-fblike_url = 'https://www.facebook.com/v2.5/plugins/like.php?' + 'href=' + urllib.quote_plus(url.encode())
+fblike_url = 'https://www.facebook.com/v2.5/plugins/like.php?' + \
+    'href=' + urllib.quote_plus(url.encode())
 fblike_data = urllib2.urlopen(fblike_url)
 soap = BeautifulSoup(fblike_data, 'html5lib')
 fb_like_article = str(soap.select('div > span > span')[0])
@@ -77,10 +78,9 @@ fb_like = map(int, re.findall(r'\d+', fb_like_article))
 category = soup.find('div', {'class': 'tag_for_category clearfix'}).text
 
 
-
-
 # get comment
-comment_url = 'https://graph.facebook.com/comments?id=' + url + '&filter=stream&fields=parent.fields(id),message,from,created_time,like_count&after=WTI5dGJXVnVkRjlqZAFhKemIzSTZAOall6TXpZAME5UQXdORE16TURNd09qRTBOVEkxTVRVMU9UTT0ZD%22'
+comment_url = 'https://graph.facebook.com/comments?id=' + url + \
+    '&filter=stream&fields=parent.fields(id),message,from,created_time,like_count&after=WTI5dGJXVnVkRjlqZAFhKemIzSTZAOall6TXpZAME5UQXdORE16TURNd09qRTBOVEkxTVRVMU9UTT0ZD%22'
 comment_data = requests.get(comment_url).json()
 
 top_comments = []
@@ -93,8 +93,8 @@ for info in comment_data['data']:
     c_dislike = 0
     c_content = info['message']
     c_source_type = 'fb'
-    c_post_time = datetime.datetime(*map(int, re.findall(r'\d+', info['created_time'])))
-
+    c_post_time = datetime.datetime(
+        *map(int, re.findall(r'\d+', info['created_time'])))
 
     if not info.get('parent', False):
         top_comments.append(info)
@@ -108,7 +108,6 @@ for sub_comment in sub_comments:
             c_sub_comment = sub_comment
 
 
-
 # get category url
 
 def get_category_urls(category_url):
@@ -120,8 +119,6 @@ def get_category_urls(category_url):
 
     cat_data = urllib2.urlopen(main_url)
     catsoup = BeautifulSoup(cat_data, 'html5lib')
-
-
 
     detail_urls = get_category_urls(category_url)
 
