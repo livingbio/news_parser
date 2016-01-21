@@ -9,3 +9,5 @@ pytest-cov==2.2.0
 
 
 requests
+BeautifulSoup4
+mock
