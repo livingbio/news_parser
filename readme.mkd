@@ -6,7 +6,7 @@
 待parser
 ---
 
-1. 科技新報        http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/
+1. 科技新報        http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/  #george
 2. 新頭殼      http://newtalk.tw/news/view/2016-01-14/69148
 3. 三立新聞網      http://www.setn.com/News.aspx?NewsID=118251
 4. 數位時代        http://www.bnext.com.tw/article/view/id/37335  #tsaiJN
@@ -28,6 +28,20 @@ keywords| 關鍵字
 fb_like| fb 按讚數(可選)
 fb_share| fb share 數(可選)
 category| 類別
+comment| 回覆
+
+
+comment 說明
+
+name| 說明
+---|---
+acotr| 作者
+like| 喜歡數量
+dislike| 討厭數量
+post_time| 回復時間
+source_type| 來源類別（fb...etc）
+sub_comment| 子回應
+
 
 
 需求spec
@@ -54,11 +68,28 @@ def parser_page(url):
         "fb_like": int
         "fb_share": int
         "category": [category, category]
+        "comment": [{
+            "actor": str
+            "like": int
+            "dislike": int
+            "content": str
+            "post_time": datetime.datetime
+            "source_type": string 
+
+            sub_comments: [{
+                "actor": str
+                "like": int
+                "dislike": int
+                "content": str
+                "post_time": datetime.datetime
+                "source_type": string 
+            }]
+        }]
     }
 ```
 
 2. detail url 取得
-```
+```python
 def get_category_urls(category_url):
     """ 
     get_category_urls
