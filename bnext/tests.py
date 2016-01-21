@@ -48,7 +48,7 @@ def pseudo_get(url):
     # load responses if haven't load
     if _response_pool == None:
         _response_pool = pkl.load(
-            open('./resources/_pseudo_request_response_dict.pkl'))
+            open('./bnext/resources/_pseudo_request_response_dict.pkl'))
 
     return _response_pool[url]
 
@@ -144,12 +144,12 @@ class TestEnsemble(unittest.TestCase):
 
     def test_get_category_urls(self):
         with patch.object(requests, 'get', side_effect=pseudo_get) as requests.get:
-            ret = _test_parser_page('./resources/testcase/parser_page_testcase.pkl')
+            ret = _test_parser_page('./bnext/resources/testcase/parser_page_testcase.pkl')
             self.assertTrue(ret)
 
     def test_parser_page(self):
         with patch.object(requests, 'get', side_effect=pseudo_get) as requests.get:
-            ret = _test_get_category_urls('./resources/testcase/get_category_urls_testcase.pkl')
+            ret = _test_get_category_urls('./bnext/resources/testcase/get_category_urls_testcase.pkl')
             self.assertTrue(ret)
 
 

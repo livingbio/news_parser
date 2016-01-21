@@ -107,7 +107,7 @@ def generate_parser_page_testcase(ground_input):
 # Dumping testcases to file
 # ========================================================================================
 
-    with open('./resources/testcase/parser_page_testcase.pkl', 'w') as f:
+    with open('./bnext/resources/testcase/parser_page_testcase.pkl', 'w') as f:
         obj = {'ground_input': ground_input, 'ground_truth': ground_truth,
                'generating_time': generating_time}
 
@@ -155,7 +155,7 @@ def generate_get_category_testcase(ground_input):
     obj = {'ground_input': ground_input, 'ground_truth': ground_truth,
            'generating_time': generating_time}
 
-    with open('./resources/testcase/get_category_urls_testcase.pkl', 'w') as f:
+    with open('./bnext/resources/testcase/get_category_urls_testcase.pkl', 'w') as f:
         pkl.dump(obj, f)
 
     return ground_truth
@@ -166,9 +166,9 @@ def generate_testcase_ensemble():
     global _pseudo_request_response_dict
 
     # load category_urls ground truth if already have it
-    if os.path.isfile('./resources/testcase/get_category_urls_testcase.pkl') and False:
+    if os.path.isfile('./bnext/resources/testcase/get_category_urls_testcase.pkl') and False:
         url_list = pkl.load(
-            open('./resources/testcase/get_category_urls_testcase.pkl'))['ground_truth']
+            open('./bnext/resources/testcase/get_category_urls_testcase.pkl'))['ground_truth']
     else:
         url_list = generate_get_category_testcase(category_url_list)
 
@@ -182,7 +182,7 @@ def generate_testcase_ensemble():
 # Dumping mocking meta
 # ========================================================================================
     pkl.dump(_pseudo_request_response_dict, open(
-        './resources/_pseudo_request_response_dict.pkl', 'w'))
+        './bnext/resources/_pseudo_request_response_dict.pkl', 'w'))
 
 # ================================== end of generating testcase ==========
 
