@@ -57,17 +57,17 @@ def parser_page(url):
     """
 
     return {
-        "url": string
+        # "url": string
         "source_press": string
-        "title": string
+        # "title": string
         "post_time": datetime.datetime()
-        "journalist": string
+        # "journalist": string
         "content": string
         "compare": string
         "keyword": [string, string, ...]
         "fb_like": int
         "fb_share": int
-        "category": [category, category]
+        # "category": [category, category]
         "comment": [{
             "actor": str
             "like": int
