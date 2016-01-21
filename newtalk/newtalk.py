@@ -113,11 +113,10 @@ for sub_comment in sub_comments:
 
 def get_category_urls(category_url):
 
-    count = 1
-    main_url = 'http://newtalk.tw/news/category/' + str(count)
-    while count < 6:
-        return main_url
-        count + 1
+    category_url = []
+    main_url = 'http://newtalk.tw/news/category/'
+    for count in range(6):
+        main_url + str(count)
 
     cat_data = urllib2.urlopen(main_url)
     catsoup = BeautifulSoup(cat_data, 'html5lib')
