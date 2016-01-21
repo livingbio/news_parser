@@ -22,10 +22,13 @@ def get_category_urls(category_url, start_page='', limit=None):
     count = 0
     page_url = category_url + '&p=' + str(start_page)
     while True:
-        # print(page_url)
         soup = BeautifulSoup(requests.get(page_url).text, 'html.parser')
-        urls = ['http://www.setn.com' +
-                soup.select("ol a")[i].attrs['href'] for i in range(len(soup.select("ol a")))]
+        urls = []
+        header = 'http://www.setn.com'
+
+        for i in range(len(soup.select("ol a"))):
+            urls.append(header + soup.select("ol a")[i].attrs['href'])
+
         result.extend(urls)
         next_link = soup.find_all("div", attrs={'class': 'pager'})[
             0].find_all('a')[-1]['href']
@@ -33,7 +36,7 @@ def get_category_urls(category_url, start_page='', limit=None):
             break
 
         count += 1
-        if limit != None and count >= limit:
+        if limit is not None and count >= limit:
             break
 
         page_url = 'http://www.setn.com' + next_link
@@ -44,9 +47,7 @@ def get_category_urls(category_url, start_page='', limit=None):
 
 def parser_page(url):
     """
-    parser page method 
-    主要用於抓取新聞detail頁面資訊
-
+    parser page method
     page_data = parser_page(news detail url)
     """
     def catch_requests(url):
@@ -59,12 +60,13 @@ def parser_page(url):
                 count += 1
         raise
 
+    def search(typ, seed):
+        return soup.find_all("meta", attrs={typ: seed})[0].attrs['content']
+
     old_requests = requests.get
     requests.get = catch_requests
 
     soup = BeautifulSoup(requests.get(url).text, 'html.parser')
-    search = lambda typ, seed: soup.find_all("meta", attrs={typ: seed})[
-        0].attrs['content']
     inputs = [("property", "og:url"), ("property", "og:title"),
               ("name", "pubdate"), ("name", "Keywords"), ("name", "section")]
 
@@ -81,19 +83,20 @@ def parser_page(url):
             content.append(article[i].text)
     content = "".join(content)
 
-    fb_url = 'https://graph.facebook.com/fql?q=SELECT%20like_count,%20total_count,%20share_count,' + \
-        '%20click_count,%20comment_count%20FROM%20link_stat%20WHERE%20url%20=%20%22' + \
-        parse[0] + '%22'
+    fb_url = 'https://graph.facebook.com/fql?q=SELECT%20like_count,' + \
+        '%20total_count,%20share_count,%20click_count,%20comment_' + \
+        'count%20FROM%20link_stat%20WHERE%20url%20=%20%22' + parse[0] + '%22'
 
     res_data = requests.get(fb_url).json()['data'][0]
     fb_like = res_data['like_count']
     fb_share = res_data['share_count']
     fb_com = res_data['comment_count']
 
-    ######facebook comments#######
+    # facebook comments
     tree = {}
     fb_com_url = 'http://graph.facebook.com/comments?id=' + parse[0] + \
-                 '&limit=100&filter=stream&fields=parent.fields%28id%29,message,from,like_count,created_time,parent'
+                 '&limit=100&filter=stream&fields=parent.fields%28id%29,' + \
+                 'message,from,like_count,created_time,parent'
     fb_data = requests.get(fb_com_url).json()
     while True:
         if len(fb_data["data"]) == 0:
@@ -116,7 +119,7 @@ def parser_page(url):
         fb_next_url = fb_com_url + '&after=' + \
             fb_data['paging']['cursors']['after']
         fb_data = requests.get(fb_next_url).json()
-    ######facebook comments#######
+
     requests.get = old_requests
 
     return {
