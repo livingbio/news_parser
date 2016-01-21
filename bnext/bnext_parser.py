@@ -18,8 +18,8 @@ strange_url_set = set()
 def parser_page(url):
     global strange_url_set
 
-    page_info = {'url'			: url, 'source_press'	: None, 'title'		: None, 'post_time'	: None, 'journalist'	: None, 'content' 		: None, 'compare' 		: None,
-                 'keyword' 		: None, 'fb_like' 		: None, 'fb_share' 	: None, 'category'		: None, 'popularity': None, 'total_comment': None, }  # comment would be added later
+    page_info = {'url'          : url, 'source_press'   : None, 'title'     : None, 'post_time' : None, 'journalist'    : None, 'content'       : None, 'compare'       : None,
+                 'keyword'      : None, 'fb_like'       : None, 'fb_share'  : None, 'category'      : None, 'popularity': None, 'total_comment': None, }  # comment would be added later
 
     res = requests.get(url)
     soup = BeautifulSoup(res.content)
@@ -49,8 +49,8 @@ def parser_page(url):
 
 # --------------- author & post time ------------------------
 # <div class="info_box">
-# 		<span  class="info"> 撰文者: XXX    </span>
-# 		<span  class="info"> 發表日期: XXX  </span>
+#       <span  class="info"> 撰文者: XXX    </span>
+#       <span  class="info"> 發表日期: XXX  </span>
 # </div>
 # -----------------------------------------------------------
     hyper_info_box = soup.find('div', {'class': 'info_box'})
@@ -100,8 +100,8 @@ def parser_page(url):
 
 # --------------------- keywords ----------------------------
 # <div class="tag_box">
-# 		<a class="tag_link" href="/search/tag/Apple">Apple</a>
-# 		<a class="tag_link" href="/search/tag/iAd">iAd</a>
+#       <a class="tag_link" href="/search/tag/Apple">Apple</a>
+#       <a class="tag_link" href="/search/tag/iAd">iAd</a>
 # </div>
 # -----------------------------------------------------------
     page_info['keyword'] = []
@@ -123,30 +123,30 @@ def parser_page(url):
 # ---------------- fb_like & fb_share -----------------------
 # dummy solution
 # -----------------------------------------------------------
-#	prefix_like  = 'http://www.facebook.com/v2.1/plugins/like.php?action=like&'
-#	prefix_share = 'https://www.facebook.com/v2.1/plugins/share_button.php?'
-#	app_id = soup.find('meta', {'property': 'fb:app_id'})['content']
-#	peudo_dict = {'href': url, 'app_id': app_id, 'layout': 'button_count'}
+#   prefix_like  = 'http://www.facebook.com/v2.1/plugins/like.php?action=like&'
+#   prefix_share = 'https://www.facebook.com/v2.1/plugins/share_button.php?'
+#   app_id = soup.find('meta', {'property': 'fb:app_id'})['content']
+#   peudo_dict = {'href': url, 'app_id': app_id, 'layout': 'button_count'}
 #
-#	ret = requests.get(prefix_like+urllib.urlencode(peudo_dict))
-#	like_soup = BeautifulSoup(ret.content)
-#	try:
-#		like = like_soup.find('span', {'class': 'pluginCountTextDisconnected'}).text
-#		like = int(like.replace(',', ''))
-#		page_info['fb_like'] = like
-#	except:
-#		print('[fb_like] can\'t find fb like: {}\n'.format(url))
+#   ret = requests.get(prefix_like+urllib.urlencode(peudo_dict))
+#   like_soup = BeautifulSoup(ret.content)
+#   try:
+#       like = like_soup.find('span', {'class': 'pluginCountTextDisconnected'}).text
+#       like = int(like.replace(',', ''))
+#       page_info['fb_like'] = like
+#   except:
+#       print('[fb_like] can\'t find fb like: {}\n'.format(url))
 #
-#	return prefix_share+urllib.urlencode(peudo_dict)
+#   return prefix_share+urllib.urlencode(peudo_dict)
 #
-#	ret = requests.get(prefix_share+urllib.urlencode(peudo_dict))
-#	share_soup = BeautifulSoup(ret.content)
-#	try:
-#		share = share_soup.find('span', {'class': 'pluginCountTextDisconnected'}).text
-#		share = int(share.replace(',', ''))
-#		page_info['fb_share'] = share
-#	except:
-#		print('[fb_share] can\'t find fb share: {}\n'.format(url))
+#   ret = requests.get(prefix_share+urllib.urlencode(peudo_dict))
+#   share_soup = BeautifulSoup(ret.content)
+#   try:
+#       share = share_soup.find('span', {'class': 'pluginCountTextDisconnected'}).text
+#       share = int(share.replace(',', ''))
+#       page_info['fb_share'] = share
+#   except:
+#       print('[fb_share] can\'t find fb share: {}\n'.format(url))
 
 
 # ---------------- fb_like & fb_share -----------------------

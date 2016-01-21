@@ -2,8 +2,8 @@
 test.py
 ============================================
 testing the correctness of:
-	* bnext_parser.parser_page(url)
-	* bnext_parser.get_category_urls(url)
+    * bnext_parser.parser_page(url)
+    * bnext_parser.get_category_urls(url)
 
 link to bnext: http://www.bnext.com.tw/
 ============================================
@@ -32,109 +32,109 @@ _response_pool = None
 
 
 category_url_list = ['http://www.bnext.com.tw/categories/internet/', 'http://www.bnext.com.tw/categories/tech/', 'http://www.bnext.com.tw/categories/marketing/',
-					 'http://www.bnext.com.tw/categories/startup/', 'http://www.bnext.com.tw/categories/people/', 'http://www.bnext.com.tw/categories/skill/']
+                     'http://www.bnext.com.tw/categories/startup/', 'http://www.bnext.com.tw/categories/people/', 'http://www.bnext.com.tw/categories/skill/']
 
 
 def print_time(obj):
-	print('test_case generating time: ')
-	print(obj['generating_time'])
-	print('\n')
-	return
+    print('test_case generating time: ')
+    print(obj['generating_time'])
+    print('\n')
+    return
 
 
 def pseudo_get(url):
-	global _response_pool
+    global _response_pool
 
-	# load responses if haven't load
-	if _response_pool == None:
-		_response_pool = pkl.load(
-			open('./resources/_pseudo_request_response_dict.pkl'))
+    # load responses if haven't load
+    if _response_pool == None:
+        _response_pool = pkl.load(
+            open('./resources/_pseudo_request_response_dict.pkl'))
 
-	return _response_pool[url]
+    return _response_pool[url]
 
 
 def _test_parser_page(test_file):
-	
-	print("\n================================== parser page ==============================================\n")
-	print("Testing parser_page(), don't warry if you see some log on the fly,\n\
+    
+    print("\n================================== parser page ==============================================\n")
+    print("Testing parser_page(), don't warry if you see some log on the fly,\n\
 they are for the porpose of analyzing webpage, the fail of testing would be shown by [assert]\n")
 
-	if os.path.isfile(test_file) == False:
-		print("Error: can't find test_file: {}, please check filename or generate new test_file\n".format(test_file))
-		return	False
+    if os.path.isfile(test_file) == False:
+        print("Error: can't find test_file: {}, please check filename or generate new test_file\n".format(test_file))
+        return  False
 
-	f = open(test_file)
-	obj = pkl.load(f)
-	print_time(obj)
+    f = open(test_file)
+    obj = pkl.load(f)
+    print_time(obj)
 
-	ground_input = obj['ground_input']
-	ground_truth = obj['ground_truth']
+    ground_input = obj['ground_input']
+    ground_truth = obj['ground_truth']
 
-	for i, url in enumerate(ground_input):
-		print('({}/{}) {}'.format(i + 1, len(ground_input), url))
+    for i, url in enumerate(ground_input):
+        print('({}/{}) {}'.format(i + 1, len(ground_input), url))
 
-		retry = 0
-		while retry < _RETRY_LIMIT:
-			try:
-				ret = bnext_parser.parser_page(url)
-				break
-			except ConnectionError:
-				retry += 1
-				print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
-				time.sleep(randint(10, 15))
+        retry = 0
+        while retry < _RETRY_LIMIT:
+            try:
+                ret = bnext_parser.parser_page(url)
+                break
+            except ConnectionError:
+                retry += 1
+                print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
+                time.sleep(randint(10, 15))
 
-		if ret != ground_truth[i]:
-			print('test failed: {}\n'.format(url))
-			return
+        if ret != ground_truth[i]:
+            print('test failed: {}\n'.format(url))
+            return
 
-		if ret != ground_truth[i]:
-			print('test failed: {}\n'.format(url))
-			return False
-		
-		#time.sleep(randint(1, 3))
+        if ret != ground_truth[i]:
+            print('test failed: {}\n'.format(url))
+            return False
+        
+        #time.sleep(randint(1, 3))
 
-	print('\nSuccess')
-	return True
+    print('\nSuccess')
+    return True
 
 
 
 def _test_get_category_urls(test_file):
-	
-	print("\n================================== category urls ========================================\n")
-	print("Testing get_category_urls(), don't warry if you see some log on the fly,\n\
+    
+    print("\n================================== category urls ========================================\n")
+    print("Testing get_category_urls(), don't warry if you see some log on the fly,\n\
 they are for the porpose of analyzing webpage, the fail of testing would be shown by [assert]\n")
 
-	if os.path.isfile(test_file) == False:
-		print("Error: can't find test_file: {}, please check filename or generate new test_file\n".format(test_file))
-		return False
+    if os.path.isfile(test_file) == False:
+        print("Error: can't find test_file: {}, please check filename or generate new test_file\n".format(test_file))
+        return False
 
-	f = open(test_file)
-	obj = pkl.load(f)
-	print_time(obj)
+    f = open(test_file)
+    obj = pkl.load(f)
+    print_time(obj)
 
-	ground_input = obj['ground_input']
-	ground_truth = obj['ground_truth']
+    ground_input = obj['ground_input']
+    ground_truth = obj['ground_truth']
 
-	for i, url in enumerate(ground_input):
-		retry = 0
-		while retry < _RETRY_LIMIT:
-			try:
-				ret = bnext_parser.get_category_urls(url, back_counting_offset=3)
-				ret = ret[-40:]
-				if ret != ground_truth[i]:
-					print('test failed: {}\n'.format(url))
-					return False
-				break
-			except ConnectionError:
-				retry += 1
-				print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
-				time.sleep(randint(10, 15))
+    for i, url in enumerate(ground_input):
+        retry = 0
+        while retry < _RETRY_LIMIT:
+            try:
+                ret = bnext_parser.get_category_urls(url, back_counting_offset=3)
+                ret = ret[-40:]
+                if ret != ground_truth[i]:
+                    print('test failed: {}\n'.format(url))
+                    return False
+                break
+            except ConnectionError:
+                retry += 1
+                print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
+                time.sleep(randint(10, 15))
 
-		sys.stdout.write('.')
-		#time.sleep(1)
+        sys.stdout.write('.')
+        #time.sleep(1)
 
-	return True
-	print('\nSuccess')
+    return True
+    print('\nSuccess')
 
 
 # ===============================================================================================
@@ -142,18 +142,18 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 # ===============================================================================================
 class TestEnsemble(unittest.TestCase):
 
-	def test_get_category_urls(self):
-		with patch.object(requests, 'get', side_effect=pseudo_get) as requests.get:
-			ret = _test_parser_page('./resources/testcase/parser_page_testcase.pkl')
-			self.assertTrue(ret)
+    def test_get_category_urls(self):
+        with patch.object(requests, 'get', side_effect=pseudo_get) as requests.get:
+            ret = _test_parser_page('./resources/testcase/parser_page_testcase.pkl')
+            self.assertTrue(ret)
 
-	def test_parser_page(self):
-		with patch.object(requests, 'get', side_effect=pseudo_get) as requests.get:
-			ret = _test_get_category_urls('./resources/testcase/get_category_urls_testcase.pkl')
-			self.assertTrue(ret)
+    def test_parser_page(self):
+        with patch.object(requests, 'get', side_effect=pseudo_get) as requests.get:
+            ret = _test_get_category_urls('./resources/testcase/get_category_urls_testcase.pkl')
+            self.assertTrue(ret)
 
 
 
 if __name__ == '__main__':
-	unittest.main()
-	print("Done testing.\n")
+    unittest.main()
+    print("Done testing.\n")
