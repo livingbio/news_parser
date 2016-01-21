@@ -9,6 +9,8 @@ def test_get_category_urls():
     assert result == target, "..."
 
 
+
+
 if __name__ == '__main__':
     test_parser_page()
     test_get_category_urls()
