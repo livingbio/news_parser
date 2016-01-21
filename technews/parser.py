@@ -38,7 +38,7 @@ def get_category_urls(category_url):
     detail_url = []
     for i in soup.findAll('h1', {'class': 'entry-title'}):
         detail_url.append(i.a.attrs['href'])
-    print(detail_url)
+    return(detail_url)
 
 get_category_urls('http://technews.tw/category/tablet/')
 
