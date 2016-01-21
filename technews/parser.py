@@ -40,7 +40,7 @@ def get_category_urls(category_url):
         detail_url.append(i.a.attrs['href'])
     return(detail_url)
 
-get_category_urls('http://technews.tw/category/tablet/')
+# get_category_urls('http://technews.tw/category/tablet/')
 
 
 # def crawling(max_pages):
