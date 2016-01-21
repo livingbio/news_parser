@@ -16,9 +16,11 @@ import bnext_parser
 import requests
 import pickle as pkl
 import os.path
+import unittest
 import time
 import sys
 
+from mock import patch
 from bs4 import BeautifulSoup
 from requests import ConnectionError
 from datetime import datetime
@@ -55,12 +57,7 @@ def pseudo_get(url):
 	return _response_pool[url]
 
 
-def test_parser_page(test_file):
-# ============================================================================================================
-# start mock session
-	_old_get = requests.get
-	requests.get = pseudo_get
-# ============================================================================================================
+def _test_parser_page(test_file):
 	
 	print("\n================================== parser page ==============================================\n")
 	print("Testing parser_page(), don't warry if you see some log on the fly,\n\
@@ -68,7 +65,7 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 
 	if os.path.isfile(test_file) == False:
 		print("Error: can't find test_file: {}, please check filename or generate new test_file\n".format(test_file))
-		return	
+		return	False
 
 	f = open(test_file)
 	obj = pkl.load(f)
@@ -92,30 +89,16 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 
 		if ret != ground_truth[i]:
 			print('test failed: {}\n'.format(url))
-			return
+			return False
 		
 		#time.sleep(randint(1, 3))
 
-# ============================================================================================================
-# free mock session
-	requests.get = _old_get
-# ============================================================================================================
-
 	print('\nSuccess')
+	return True
 
 
 
-
-
-
-
-def test_get_category_urls(test_file):
-
-# ============================================================================================================
-# start mock session
-	_old_get = requests.get
-	requests.get = pseudo_get
-# ============================================================================================================
+def _test_get_category_urls(test_file):
 	
 	print("\n================================== category urls ========================================\n")
 	print("Testing get_category_urls(), don't warry if you see some log on the fly,\n\
@@ -123,7 +106,7 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 
 	if os.path.isfile(test_file) == False:
 		print("Error: can't find test_file: {}, please check filename or generate new test_file\n".format(test_file))
-		return
+		return False
 
 	f = open(test_file)
 	obj = pkl.load(f)
@@ -140,7 +123,7 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 				ret = ret[-40:]
 				if ret != ground_truth[i]:
 					print('test failed: {}\n'.format(url))
-					return
+					return False
 				break
 			except ConnectionError:
 				retry += 1
@@ -150,27 +133,27 @@ they are for the porpose of analyzing webpage, the fail of testing would be show
 		sys.stdout.write('.')
 		#time.sleep(1)
 
-# ============================================================================================================
-# free mock session
-	requests.get = _old_get
-# ============================================================================================================
-
+	return True
 	print('\nSuccess')
 
 
+# ===============================================================================================
+# Unit test framework
+# ===============================================================================================
+class TestEnsemble(unittest.TestCase):
 
+	def test_get_category_urls(self):
+		with patch.object(requests, 'get', side_effect=pseudo_get) as requests.get:
+			ret = _test_parser_page('./resources/testcase/parser_page_testcase.pkl')
+			self.assertTrue(ret)
 
+	def test_parser_page(self):
+		with patch.object(requests, 'get', side_effect=pseudo_get) as requests.get:
+			ret = _test_get_category_urls('./resources/testcase/get_category_urls_testcase.pkl')
+			self.assertTrue(ret)
 
-
-
-def main():
-
-	test_parser_page('./resources/testcase/parser_page_testcase.pkl')
-	test_get_category_urls('./resources/testcase/get_category_urls_testcase.pkl')
-
-	print("Done testing.\n")
-	return
 
 
 if __name__ == '__main__':
-	main()
+	unittest.main()
+	print("Done testing.\n")
