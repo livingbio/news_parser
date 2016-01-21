@@ -18,6 +18,9 @@ def parser_page(url):
 
     # print(category)
 
+    for i in soup.findAll('div', {'class': 'indent'}):
+        for m in i.findAll('p'):
+            print(m.string)
 
     # comment = soup.find('div', {'class': 'clearfix'})
 
