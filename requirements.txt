@@ -6,3 +6,8 @@ pytest==2.8.3
 # https://pypi.python.org/pypi/pytest-cov
 # Pytest plugin for measuring coverage.
 pytest-cov==2.2.0
+
+
+requests
+BeautifulSoup4
+mock
