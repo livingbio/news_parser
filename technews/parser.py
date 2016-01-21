@@ -11,23 +11,33 @@ def parser_page(url):
     title = soup.find('h1', {'class': 'entry-title'}).string
     journalist = soup.find('a', {'rel': 'author'}).string
     category = []
+    content = ""
     for i in soup.findAll('li', {'class': 'menu-item-has-children'}):
+        # print(i.contents)
         attr = i.contents[0]
         item = attr.string
         category.append(item)
-
     # print(category)
+
 
     for i in soup.findAll('div', {'class': 'indent'}):
         for m in i.findAll('p'):
-            print(m.string)
+            content += m.text
+
+# print(content)
+
+    # ans = soup.select("div.indent p")[0]
+    # print(ans)
 
     # comment = soup.find('div', {'class': 'clearfix'})
 
-    # for i in soup.findAll('span', {'class': 'head'}):
-    #     if i.string == '發布日期':
-    #         target = i.next_sibling
-    #         print(target)
+    for i in soup.findAll('span', {'class': 'head'}):
+        # import pdb; pdb.set_trace()
+        if i.string == '發布日期':
+
+            print(i)
+            target = i.next_sibling.string
+            print(target)
 
     # fb_like = soup.find('span', {'class': 'pluginCountTextDisconnected'}).string
 
