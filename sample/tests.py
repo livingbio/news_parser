@@ -1,20 +1,28 @@
-import unittest
+from sample import process
+import requests
 
-class TestStringMethods(unittest.TestCase):
+class FakeResponse():
+    content = ''
 
-  def test_upper(self):
-      self.assertEqual('foo'.upper(), 'FOO')
+    def __init__(self, content):
+        self.content = content
 
-  def test_isupper(self):
-      self.assertTrue('FOO'.isupper())
-      self.assertFalse('Foo'.isupper())
+def test_process():
+    fake_response = FakeResponse('<html><title>george</title></html>')
+    
+    def fake_request_get(url):
+        return fake_response
 
-  def test_split(self):
-      s = 'hello world'
-      self.assertEqual(s.split(), ['hello', 'world'])
-      # check that s.split fails when the separator is not a string
-      with self.assertRaises(TypeError):
-          s.split(2)
+    origin_get = requests.get
+    requests.get = fake_request_get
+
+    result = process('http://www.google.com')
+    assert result == 'george', 'process error {} is not george'.format(result)
+    
+    requests.get = origin_get
+
+
+
 
 if __name__ == '__main__':
-    unittest.main()
+    test_process()
