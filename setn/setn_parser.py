@@ -4,44 +4,42 @@ import requests
 from bs4 import BeautifulSoup
 
 
+def requests_try(url):
+    count = 1
+    while count < 4:
+        try:
+            return requests.get(url)
+        except:
+            print('Retrying({}/3)...'.format(count))
+            count += 1
+    raise
+
+
 def get_category_urls(category_url, start_page='', limit=None):
-    def catch_requests(url):
-        count = 1
-        while count < 4:
-            try:
-                return old_requests(url)
-            except:
-                print('Retrying({}/3)...'.format(count))
-                count += 1
-        raise
-
-    old_requests = requests.get
-    requests.get = catch_requests
-
     result = []
     count = 0
     page_url = category_url + '&p=' + str(start_page)
+
     while True:
-        soup = BeautifulSoup(requests.get(page_url).text, 'html.parser')
         urls = []
         header = 'http://www.setn.com'
+        soup = BeautifulSoup(requests_try(page_url).text, 'html.parser')
 
         for i in range(len(soup.select("ol a"))):
             urls.append(header + soup.select("ol a")[i].attrs['href'])
 
         result.extend(urls)
-        next_link = soup.find_all("div", attrs={'class': 'pager'})[
-            0].find_all('a')[-1]['href']
+        count += 1
+        pager = soup.find_all("div", attrs={'class': 'pager'})
+        next_link = pager[0].find_all('a')[-1]['href']
+
         if page_url == 'http://www.setn.com' + next_link or len(urls) == 0:
             break
-
-        count += 1
-        if limit is not None and count >= limit:
+        elif limit is not None and count >= limit:
             break
+        else:
+            page_url = 'http://www.setn.com' + next_link
 
-        page_url = 'http://www.setn.com' + next_link
-
-    requests.get = old_requests
     return result
 
 
@@ -50,32 +48,19 @@ def parser_page(url):
     parser page method
     page_data = parser_page(news detail url)
     """
-    def catch_requests(url):
-        count = 1
-        while count < 4:
-            try:
-                return old_requests(url)
-            except:
-                print('Retrying({}/3)...'.format(count))
-                count += 1
-        raise
-
     def search(typ, seed):
         return soup.find_all("meta", attrs={typ: seed})[0].attrs['content']
 
-    old_requests = requests.get
-    requests.get = catch_requests
-
-    soup = BeautifulSoup(requests.get(url).text, 'html.parser')
+    soup = BeautifulSoup(requests_try(url).text, 'html.parser')
     inputs = [("property", "og:url"), ("property", "og:title"),
               ("name", "pubdate"), ("name", "Keywords"), ("name", "section")]
 
     parse = [search(typ, seed) for typ, seed in inputs]
     post_time = datetime.datetime.strptime(parse[2], '%Y-%m-%dT%H:%M:%S')
 
-    article = soup.select("article div > p")
     content = []
     journalist = None
+    article = soup.select("article div > p")
     for i in range(len(article)):
         if len(article[i].attrs) == 0 and not journalist:
             journalist = article[i].text
@@ -87,7 +72,7 @@ def parser_page(url):
         '%20total_count,%20share_count,%20click_count,%20comment_' + \
         'count%20FROM%20link_stat%20WHERE%20url%20=%20%22' + parse[0] + '%22'
 
-    res_data = requests.get(fb_url).json()['data'][0]
+    res_data = requests_try(fb_url).json()['data'][0]
     fb_like = res_data['like_count']
     fb_share = res_data['share_count']
     fb_com = res_data['comment_count']
@@ -97,7 +82,8 @@ def parser_page(url):
     fb_com_url = 'http://graph.facebook.com/comments?id=' + parse[0] + \
                  '&limit=100&filter=stream&fields=parent.fields%28id%29,' + \
                  'message,from,like_count,created_time,parent'
-    fb_data = requests.get(fb_com_url).json()
+    fb_data = requests_try(fb_com_url).json()
+
     while True:
         if len(fb_data["data"]) == 0:
             break
@@ -118,9 +104,7 @@ def parser_page(url):
 
         fb_next_url = fb_com_url + '&after=' + \
             fb_data['paging']['cursors']['after']
-        fb_data = requests.get(fb_next_url).json()
-
-    requests.get = old_requests
+        fb_data = requests_try(fb_next_url).json()
 
     return {
         "url": parse[0],
@@ -142,10 +126,8 @@ def parser_page(url):
 def main():
     url = 'http://www.setn.com/ViewAll.aspx?pagegroupid=5'
     urls = get_category_urls(url, 69)
-
-    import numpy as np
-    parse_content = [parser_page(urls[i]) for i in np.random.choice(
-        len(urls), 10, replace=False)]
+    pages = [293, 103, 453, 129, 91, 2, 510]
+    parse_content = [parser_page(urls[i]) for i in pages]
     print(parse_content)
 
 if __name__ == '__main__':
