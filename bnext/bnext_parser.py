@@ -18,8 +18,19 @@ strange_url_set = set()
 def parser_page(url):
     global strange_url_set
 
-    page_info = {'url'          : url, 'source_press'   : None, 'title'     : None, 'post_time' : None, 'journalist'    : None, 'content'       : None, 'compare'       : None,
-                 'keyword'      : None, 'fb_like'       : None, 'fb_share'  : None, 'category'      : None, 'popularity': None, 'total_comment': None, }  # comment would be added later
+    page_info = {'url': url,
+                 'source_press': None,
+                 'title': None,
+                 'post_time': None,
+                 'journalist': None,
+                 'content': None,
+                 'compare': None,
+                 'keyword': None,
+                 'fb_like': None,
+                 'fb_share': None,
+                 'category': None,
+                 'popularity': None,
+                 'total_comment': None}  # comment would be added later
 
     res = requests.get(url)
     soup = BeautifulSoup(res.content)
@@ -110,13 +121,13 @@ def parser_page(url):
     if len(keyword_box) == 1:
         keywords = keyword_box[0].findAll('a', {'class': 'tag_link'})
         if len(keywords) == 0:
-            #print('[keywords] no keyword in tag_box: {}\n'.format(url))
+            # print('[keywords] no keyword in tag_box: {}\n'.format(url))
             strange_url_set.add(url)
         else:
             for keyword in keywords:
                 page_info['keyword'].append(keyword.text)
     else:
-        #print('[keywords] no tag_box field: {}\n'.format(url))
+        # print('[keywords] no tag_box field: {}\n'.format(url))
         strange_url_set.add(url)
 
 
@@ -191,8 +202,12 @@ def parser_page(url):
             source_type = 'fb'
             post_time = datetime.strptime(str_time, '%Y-%m-%dT%H:%M:%S')
 
-            building_block = {'actor': actor, 'like': like, 'dislike': dislike,
-                              'content': content, 'post_time': post_time, 'source_type': source_type}
+            building_block = {'actor': actor,
+                              'like': like,
+                              'dislike': dislike,
+                              'content': content,
+                              'post_time': post_time,
+                              'source_type': source_type}
 
             if 'parent' not in datum.keys():
                 post_id = datum['id']
@@ -253,6 +268,6 @@ def get_category_urls(category_url, back_counting_offset=-1):
             sufix = article.find(
                 'a', {'class': 'item_title block_link'})['href']
             detail_urls.append(prefix + sufix)
-            #print ('found url: {}\n'.format(prefix+sufix))
+            # print ('found url: {}\n'.format(prefix+sufix))
 
     return detail_urls
