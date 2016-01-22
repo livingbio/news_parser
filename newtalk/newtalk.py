@@ -7,12 +7,15 @@ import json
 import re
 from bs4 import BeautifulSoup
 
-url = 'http://newtalk.tw/news/view/2016-01-14/69148'
-data = urllib2.urlopen(url)
-soup = BeautifulSoup(data, 'html5lib')
+
 
 
 def parser_page(url):
+
+    url = 'http://newtalk.tw/news/view/2016-01-14/69148'
+    data = urllib2.urlopen(url)
+    soup = BeautifulSoup(data, 'html5lib')
+
 
     url = str(soup.select('meta[property="og:url"]'))[16:60]
     title = soup.find('div', {'class': 'content_title'}).text
@@ -84,7 +87,7 @@ def parser_page(url):
         "keyword": keyword,
         "fb_like": fb_like,
         "category": category,
-        "comment": [{
+        "top_comments": [{
             "actor": actor,
             "like": like,
             "dislike": None,
@@ -105,9 +108,11 @@ def parser_page(url):
 
     return page_data
 
+
 # get category url
 def get_category_urls(category_url):
-    cat_type = ['1/政治經濟', '2/國際中國', '3/生活科技', '4/司法人權', '5/藝文媒體']
+    detail_urls = []
+    cat_type = ['1/政治經濟/', '2/國際中國/', '3/生活科技/', '4/司法人權/', '5/藝文媒體/']
     main_url = 'http://newtalk.tw/news/category/'
     for t in cat_type:
         prefix_url = main_url + '%s' %t
@@ -115,10 +120,8 @@ def get_category_urls(category_url):
             category_url = prefix_url + str(i)
 
             cat_data = requests.get(category_url)
-            catsoup = BeautifulSoup(cat_data)
+            catsoup = BeautifulSoup(cat_data.text)
             detail_urls_pool = catsoup.select('div[class=news_title] > a')
             detail_urls = [a.attrs for a in detail_urls_pool]
-
-    detail_urls = get_category_urls(category_url)
 
     return detail_urls
