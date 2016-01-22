@@ -81,7 +81,6 @@ class TestParser(unittest.TestCase):
 
 
 if __name__ == '__main__':
-
     alltests = unittest.TestSuite()
     alltests.addTest(unittest.makeSuite(TestParser))
     result = unittest.TextTestRunner(verbosity=2).run(alltests)
