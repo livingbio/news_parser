@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import datetime
+import json
 
 def parser_page(url):
     source_code = requests.get(url)
@@ -8,7 +9,12 @@ def parser_page(url):
     soup = BeautifulSoup(plain_text, 'html.parser')
 
     url = url
-    source_press = soup.select("div.indent ul li a")[0]['href']
+    # source_press = soup.select("div.indent ul li a")[0]['href']
+    # source_press = soup.select("div.indent")[0].text
+    # ans = source_press.encode('utf8')
+    # print(ans)
+
+
     title = soup.find('h1', {'class': 'entry-title'}).string
 
     #____get time method 1
@@ -44,8 +50,29 @@ def parser_page(url):
         item = category_title.string
         category.append(item)
 
+    def fb_plugin_count_page(url):
+        code = requests.get('http://api.facebook.com/restserver.php?method=links.getStats&urls=' + url)
+        html_text = code.text
+        fb_plugin_page_soup = BeautifulSoup(html_text, 'html.parser')
+
+        fb_like_count = fb_plugin_page_soup.find('total_count').string
+        fb_share_count = fb_plugin_page_soup.find('share_count').string
+
+        return(fb_like_count, fb_share_count)
+
+    fb_like, fb_share = fb_plugin_count_page(url)
+
+    def fb_plugin_comment_page(url):
+        code = requests.get('http://graph.facebook.com/comments?id=' + url)
+        html_text = code.text
+        fb_plugin_page_soup = BeautifulSoup(html_text, 'html.parser')
+        return (str(fb_plugin_page_soup))
+    fb_comments = fb_plugin_comment_page(url)
+    ans = json.loads(fb_comments)
+    print(ans)
+
 parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
-# parser_page('http://technews.tw/2016/01/20/elon-musk-isnt-worried-about-an-apple-electric-car-it-will-expand-the-industry/')
+# parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
 
 
 def get_category_urls(category_url):
