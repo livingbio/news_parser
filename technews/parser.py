@@ -10,11 +10,8 @@ def parser_page(url):
     soup = BeautifulSoup(plain_text, 'html.parser')
 
     url = url
-    # source_press = soup.select("div.indent ul li a")[0]['href']
-    # source_press = soup.select("div.indent")[0].string
-    # print(source_press)
-
-
+    source_press = soup.select("div.indent a")[1]['href']
+    
     title = soup.find('h1', {'class': 'entry-title'}).string
 
 
@@ -110,9 +107,9 @@ def parser_page(url):
                 break
 
 
-# parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
+parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
 # parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
-parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+# parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
 
 
 def get_category_urls(category_url):
