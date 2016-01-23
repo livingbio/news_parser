@@ -5,6 +5,9 @@ import json
 from pytz import timezone, all_timezones
 
 
+#------------------function parse_page--------------------
+#get data from a news page
+#---------------------------------------------------------
 def parser_page(url):
     #-------------get text from the url page------------------
     #
@@ -71,10 +74,14 @@ def parser_page(url):
     #the category of news on the website
     #------------------------------------------------------
     category = []
-    for i in soup.select('li.menu-item-has-children'):
-        category_title = i.contents[0]
-        item = category_title.text
-        category.append(item)
+    for i in soup.select('ul.nav-menu > li > a'):
+        category.append(i.text)
+
+
+    # global category_urls
+    category_urls = []
+    for i in soup.select('ul.nav-menu > li > a'):
+        category_urls.append(i['href'])
 
 
     #-----------------------comment------------------------
@@ -127,9 +134,11 @@ def parser_page(url):
     make_fb_comments_dictionary(fb_comments_json)
 
 
-    #--------------------return------------------------------------
-    #collect all the data we get above in a dictionary, return it
-    #--------------------------------------------------------------
+    #--------------------result------------------------------
+    #get all the data above in a dictionary called result
+    #
+    #return with {'key1': 'value1', 'key2': 'value2',...}
+    #--------------------------------------------------------
     result = {
         "url": url,
         "source_press": source_press,
@@ -148,16 +157,19 @@ def parser_page(url):
     return(result)
 
 
-#-----------------------page_data---------------------------------
+#-----------------------Testing page_data----------------------------------
 #call parser_page function with certain URL, store the data in to page_data
-#-----------------------------------------------------------------
-
+#--------------------------------------------------------------------------
 # page_data = parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
 # page_data = parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
-page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
-print(page_data)
+# page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
 
 
+#-------------Function get_category_urls----------------------
+#get url of each news from a certain page
+#
+#return with [news1_url, news2_url, news3_url,....]
+#-------------------------------------------------------------
 def get_category_urls(category_url):
     #-------------get text from the url page------------------
     #
@@ -166,21 +178,76 @@ def get_category_urls(category_url):
     plain_text = source_code.text
     soup = BeautifulSoup(plain_text, 'html.parser')
 
-
-    #------------------detail_url-----------------------------
-    #get each news url and append into a list called detail_url
+    #------------------detail_urls-----------------------------
+    #get each news url and append into a list called detail_urls
     #---------------------------------------------------------
-    detail_url = []
+    detail_urls = []
     for i in soup.findAll('h1', {'class': 'entry-title'}):
-        detail_url.append(i.a.attrs['href'])
-    return (detail_url)
+        detail_urls.append(i.a.attrs['href'])
+    return(detail_urls)
 
 
-#-----------------------crawling_urls_list------------------------------------------------
-#call get_category_urls function with certain URL, store the data in to crawling_urls_list
-#-----------------------------------------------------------------------------------------
-crawling_urls_list = get_category_urls('http://technews.tw/category/tablet/')
+#---------------Testing detail_urls-----------------------------------------------------
+#call get_category_urls function with certain URL, store the urls list in to detail_urls
+#---------------------------------------------------------------------------------------
+# detail_urls = get_category_urls('http://technews.tw/category/tablet/')
 
-# for i in crawling_urls_list:
-#     ans = parser_page(i)
-#     print(ans)
+
+#-------------Function switch_page_and_get_detail_urls-----------------
+#get url of each news with looping pages in a certain category
+
+#return with [[url1,url2,url3...in page 1], [url1,url2...in page 2],...]
+#----------------------------------------------------------------------
+def switch_page_and_get_detail_urls(the_url_of_category_to_switch_page, start_page, end_page):
+    # urls_of_pages_in_a_certain_category = []
+    urls_of_a_category_list_index_by_page = []
+    if start_page >= 1:
+        number_of_page = start_page
+    else:
+        number_of_page = 1
+
+    if isinstance(end_page, int) == False:
+        end_page = None
+
+    while True:
+        try:
+            num = str(number_of_page)
+            current_page_url = the_url_of_category_to_switch_page + 'page/' + num
+            certain_page_urls_list = get_category_urls(current_page_url)
+
+            # urls_of_pages_in_a_certain_category.append(current_page_url)
+            urls_of_a_category_list_index_by_page.append(certain_page_urls_list)
+            if number_of_page >= end_page:
+                print('the end page is ' + str(number_of_page))
+                break
+            number_of_page += 1
+
+        except AttributeError:
+            print('the end page is ' + str(number_of_page-1))
+            break
+    return (urls_of_a_category_list_index_by_page)
+
+
+#-------------Function each_newsData_of_a_category_from_startPage_to_endPage-----------------------------
+#get data of each news with looping pages in a certain category
+#
+#return with [{data1}, {data2}, {data3},...]
+#--------------------------------------------------------------------------------------------------------
+def each_newsData_of_a_category_from_startPage_to_endPage(the_url_of_category_to_switch_page, start_page, end_page):
+    each_newsData_of_a_category_list = []
+    urls_of_a_category_list_index_by_page_list = switch_page_and_get_detail_urls(the_url_of_category_to_switch_page, start_page, end_page)
+    for page in urls_of_a_category_list_index_by_page_list:
+        for news_url in page:
+            data = parser_page(news_url)
+            print('crawling ' + news_url)
+            each_newsData_of_a_category_list.append(data)
+    return(each_newsData_of_a_category_list)
+
+
+#-----------------------Testing pages_data----------------------------------------------------
+#call each_newsData_of_a_category_from_startPage_to_endPage function with certain category URL
+#
+#store the data in to pages_data
+#---------------------------------------------------------------------------------------------
+pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 1, 1)
+print(pages_data)
