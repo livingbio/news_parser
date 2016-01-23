@@ -11,12 +11,12 @@ def parser_page(url):
 
     url = url
     # source_press = soup.select("div.indent ul li a")[0]['href']
-    # source_press = soup.select("div.indent")[0].text
-    # ans = source_press.encode('utf8')
-    # print(ans)
+    # source_press = soup.select("div.indent")[0].string
+    # print(source_press)
 
 
     title = soup.find('h1', {'class': 'entry-title'}).string
+
 
     #____get time method 1
     post_time_string = soup.select("header.entry-header table td span.body")[1].string
@@ -34,6 +34,8 @@ def parser_page(url):
     content_source_code = soup.select("div.indent p")
     for i in content_source_code:
         content += i.text
+
+    # print(content)
 
     #____get content method 2
     # for i in soup.findAll('div', {'class': 'indent'}):
@@ -61,7 +63,8 @@ def parser_page(url):
 
 
     def fb_plugin_comment_page(url):
-        code = requests.get('http://graph.facebook.com/comments?id=' + url)
+        # code = requests.get('http://graph.facebook.com/comments?id=' + url)
+        code = requests.get('http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=' + url)
         html_text = code.text
         fb_plugin_page_soup = BeautifulSoup(html_text, 'html.parser')
         fb_comments_string = str(fb_plugin_page_soup)
@@ -73,24 +76,43 @@ def parser_page(url):
 
 
     total_comments = []
+
     for comment in fb_comments_json['data']:
         comment_time_in_US = datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S%z')
         comment_time_in_TW = comment_time_in_US.astimezone(timezone('ROC'))
 
-        each_comment = {
-            'actor': comment['from']['name'],
-            'like': comment['like_count'],
-            'content': comment['message'],
-            'post_time': comment_time_in_TW,
-            'source_type': 'facebook',
-            'sub_comments':[],
-        }
-        total_comments.append(each_comment)
+        while True:
+            try:
+                if comment['parent']['id']:
+                    for each_comment in total_comments:
+                        if each_comment['id'] == comment['parent']['id']:
+                            each_sub_comment = {
+                                'id': comment['id'],
+                                'actor': comment['from']['name'],
+                                'like': comment['like_count'],
+                                'content': comment['message'],
+                                'post_time': comment_time_in_TW,
+                                'source_type': 'facebook',
+                            }
+                            each_comment['sub_comments'].append(each_sub_comment)
+            except KeyError:
+                each_comment = {
+                    'id': comment['id'],
+                    'actor': comment['from']['name'],
+                    'like': comment['like_count'],
+                    'content': comment['message'],
+                    'post_time': comment_time_in_TW,
+                    'source_type': 'facebook',
+                    'sub_comments': [],
+                }
+                total_comments.append(each_comment)
+            finally:
+                break
 
-    print(total_comments)
 
 # parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
-parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
+# parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
+parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
 
 
 def get_category_urls(category_url):
