@@ -9,6 +9,24 @@ from pytz import timezone, all_timezones
 #get data from a news page
 #---------------------------------------------------------
 def parser_page(url):
+    #-------------result dictionary------------------
+    #the result that this function return
+    #------------------------------------------------
+    result = {
+        "url": None,
+        "source_press": None,
+        "title": None,
+        "post_time": None,
+        "journalist": None,
+        "content": None,
+        "compare": None,
+        "keyword": None,
+        "fb_like": None,
+        "fb_share": None,
+        "category": None,
+        "comment": None,
+    }
+
     #-------------get text from the url page------------------
     #
     #---------------------------------------------------------
@@ -139,20 +157,30 @@ def parser_page(url):
     #
     #return with {'key1': 'value1', 'key2': 'value2',...}
     #--------------------------------------------------------
-    result = {
-        "url": url,
-        "source_press": source_press,
-        "title": title,
-        "post_time": post_time,
-        "journalist": journalist,
-        "content": content,
-        "compare": None,
-        "keyword": [],
-        "fb_like": fb_like,
-        "fb_share": fb_share,
-        "category": category,
-        "comment": total_comments,
-    }
+    # result = {
+    #     "url": url,
+    #     "source_press": source_press,
+    #     "title": title,
+    #     "post_time": post_time,
+    #     "journalist": journalist,
+    #     "content": content,
+    #     "compare": None,
+    #     "keyword": [],
+    #     "fb_like": fb_like,
+    #     "fb_share": fb_share,
+    #     "category": category,
+    #     "comment": total_comments,
+    # }
+    result['url'] = url
+    result['source_press'] = source_press
+    result['title'] = title
+    result['post_time'] = post_time
+    result['journalist'] = journalist
+    result['content'] = content
+    result['fb_like'] = fb_like
+    result['fb_share'] = fb_share
+    result['category'] = category
+    result['comment'] = total_comments
 
     return(result)
 
@@ -163,6 +191,7 @@ def parser_page(url):
 # page_data = parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
 # page_data = parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
 # page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+# print(page_data)
 
 
 #-------------Function get_category_urls----------------------
@@ -218,12 +247,12 @@ def switch_page_and_get_detail_urls(the_url_of_category_to_switch_page, start_pa
             # urls_of_pages_in_a_certain_category.append(current_page_url)
             urls_of_a_category_list_index_by_page.append(certain_page_urls_list)
             if number_of_page >= end_page:
-                print('the end page is ' + str(number_of_page))
+                print('The end page URL is ' + the_url_of_category_to_switch_page + 'page/' + str(number_of_page))
                 break
             number_of_page += 1
 
         except AttributeError:
-            print('the end page is ' + str(number_of_page-1))
+            print('The end page URL is ' + the_url_of_category_to_switch_page + 'page/' + str(number_of_page-1))
             break
     return (urls_of_a_category_list_index_by_page)
 
@@ -249,5 +278,13 @@ def each_newsData_of_a_category_from_startPage_to_endPage(the_url_of_category_to
 #
 #store the data in to pages_data
 #---------------------------------------------------------------------------------------------
-pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 1, 1)
-print(pages_data)
+# pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 1, 1)
+# print(pages_data)
+
+
+#-----------------------categories_url_of_technews--------------------
+#category urls of technews,
+#
+#retrieved by the variable "category_urls" in parser_page function
+#---------------------------------------------------------------------
+categories_url_of_technews = ['http://technews.tw/category/smartphone/', 'http://technews.tw/category/tablet/', 'http://technews.tw/category/internet/', 'http://technews.tw/category/%E5%90%8D%E4%BA%BA%E5%A0%82/', 'http://technews.tw/category/component/', 'http://technews.tw/category/%e5%b0%96%e7%ab%af%e7%a7%91%e6%8a%80/', 'http://technews.tw/category/biotech/', 'http://technews.tw/category/%e8%83%bd%e6%ba%90%e7%a7%91%e6%8a%80/', 'http://technews.tw/selects/', 'http://technews.tw/category/human-resource/', 'http://technews.tw/category/realtime-news/', 'http://technews.tw/category/business/', 'http://technews.tw/category/picks/', 'http://technews.tw/aboutus/', 'http://technews.tw/contact/']
