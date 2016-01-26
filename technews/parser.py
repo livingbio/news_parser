@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 import requests
 from bs4 import BeautifulSoup
 import datetime
 import json
+import pytz
 from pytz import timezone, all_timezones
-
+# from dateutil.parser import parse
 
 #------------------function parse_page--------------------
 #get data from a news page
@@ -51,6 +53,7 @@ def parser_page(url):
 
     #-------------------------post_time method 1 below-----------------------------
     post_time_text = soup.select("header.entry-header table td span.body")[1].text
+    post_time_text = post_time_text.encode('utf-8')
 
     #-------------------------post_time method 2 below-----------------------------
     # for i in soup.findAll('span', {'class': 'head'}):
@@ -92,8 +95,11 @@ def parser_page(url):
     #the category of news on the website
     #------------------------------------------------------
     category = []
-    for i in soup.select('ul.nav-menu > li > a'):
-        category.append(i.text)
+    times_for_category = 0
+    for i in soup.select("header.entry-header table td span.body")[2]:
+        if times_for_category %2 == 1:
+            category.append(i.text)
+        times_for_category +=1
 
 
     # global category_urls
@@ -119,8 +125,13 @@ def parser_page(url):
 
     def make_fb_comments_dictionary(fb_comments_json):
         for comment in fb_comments_json['data']:
-            comment_time_in_US = datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S%z')
-            comment_time_in_TW = comment_time_in_US.astimezone(timezone('ROC'))
+
+            comment_time_in_UTC = datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000')
+            # comment_time_in_TW = comment_time_in_UTC.astimezone(timezone('ROC'))
+
+            # comment_time_in_UTC = parse(comment['created_time'])
+            # comment_time_in_TW = comment_time_in_UTC.astimezone(timezone('ROC'))
+            # print(comment_time_in_UTC)
 
             while True:
                 try:
@@ -132,7 +143,7 @@ def parser_page(url):
                                     'actor': comment['from']['name'],
                                     'like': comment['like_count'],
                                     'content': comment['message'],
-                                    'post_time': comment_time_in_TW,
+                                    'post_time': comment_time_in_UTC,
                                     'source_type': 'facebook',
                                 }
                                 each_comment['sub_comments'].append(each_sub_comment)
@@ -142,7 +153,7 @@ def parser_page(url):
                         'actor': comment['from']['name'],
                         'like': comment['like_count'],
                         'content': comment['message'],
-                        'post_time': comment_time_in_TW,
+                        'post_time': comment_time_in_UTC,
                         'source_type': 'facebook',
                         'sub_comments': [],
                     }
@@ -220,7 +231,7 @@ def get_category_urls(category_url):
 #call get_category_urls function with certain URL, store the urls list in to detail_urls
 #---------------------------------------------------------------------------------------
 # detail_urls = get_category_urls('http://technews.tw/category/tablet/')
-
+# print(detail_urls)
 
 #-------------Function switch_page_and_get_detail_urls-----------------
 #get url of each news with looping pages in a certain category
