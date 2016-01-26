@@ -1,8 +1,6 @@
 # bnext api
 
-## Setting
-
-- create a virtual environment
+### create a virtual environment
 ```
 virtualenv venv
 ```
@@ -15,7 +13,7 @@ for windows:
 venv\Scripts\activate.bat
 ```
 
-- Install required packages
+### Install required packages
 ```
 pip install -r requirements.txt
 ```
