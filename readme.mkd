@@ -103,3 +103,12 @@ def get_category_urls(category_url):
 
 ```
 
+
+
+django 需求
+---
+
+1. 設計一套models 儲存 留言, 文章 # django models
+2. 我需要能夠幫我filter 文章和留言的api (支援csv, json)
+3. 使用django admin 介面管理 留言 & 文章 # django admin
+4. 我需要有一個能夠更新單一新聞網站的 command # django command
