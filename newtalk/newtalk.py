@@ -8,8 +8,6 @@ import re
 from bs4 import BeautifulSoup
 
 
-
-
 def parser_page(url):
 
     url = 'http://newtalk.tw/news/view/2016-01-14/69148'
@@ -66,14 +64,13 @@ def parser_page(url):
 
         if not info.get('parent', False):
             top_comments.append(info)
-
         else:
             sub_comments.append(info)
 
     for sub_comment in sub_comments:
         for top_comment in top_comments:
             if top_comment['from']['id'] == sub_comment['parent']['id'][0:15]:
-                c_sub_comment = sub_comment
+                sub_comments = sub_comment
 
 
     page_data = {
