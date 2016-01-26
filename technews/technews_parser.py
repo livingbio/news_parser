@@ -5,7 +5,6 @@ import datetime
 import json
 import pytz
 from pytz import timezone, all_timezones
-# from dateutil.parser import parse
 
 #------------------function parse_page--------------------
 #get data from a news page
@@ -76,6 +75,10 @@ def parser_page(url):
     for i in range(len(content_source_code)-1):
         content += content_source_code[i].text
 
+    keyword = []
+    for i in soup.findAll('a', {'rel': 'tag'}):
+        keyword.append(i.text)
+
 
     #-------------fb_like & fb_share-----------------------
     #fb likes count & share counts of each news
@@ -87,7 +90,7 @@ def parser_page(url):
 
         fb_like_count = fb_plugin_page_soup.find('total_count').string
         fb_share_count = fb_plugin_page_soup.find('share_count').string
-        return(fb_like_count, fb_share_count)
+        return(int(fb_like_count), int(fb_share_count))
     fb_like, fb_share = fb_plugin_count_page(url)
 
 
@@ -128,6 +131,7 @@ def parser_page(url):
 
             comment_time_in_UTC = datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000')
             # comment_time_in_TW = comment_time_in_UTC.astimezone(timezone('ROC'))
+            # comment_time_in_UTC_timezone =
 
             # comment_time_in_UTC = parse(comment['created_time'])
             # comment_time_in_TW = comment_time_in_UTC.astimezone(timezone('ROC'))
@@ -141,7 +145,7 @@ def parser_page(url):
                                 each_sub_comment = {
                                     'id': comment['id'],
                                     'actor': comment['from']['name'],
-                                    'like': comment['like_count'],
+                                    'like': int(comment['like_count']),
                                     'content': comment['message'],
                                     'post_time': comment_time_in_UTC,
                                     'source_type': 'facebook',
@@ -151,7 +155,7 @@ def parser_page(url):
                     each_comment = {
                         'id': comment['id'],
                         'actor': comment['from']['name'],
-                        'like': comment['like_count'],
+                        'like': int(comment['like_count']),
                         'content': comment['message'],
                         'post_time': comment_time_in_UTC,
                         'source_type': 'facebook',
@@ -188,6 +192,7 @@ def parser_page(url):
     result['post_time'] = post_time
     result['journalist'] = journalist
     result['content'] = content
+    result['keyword'] = keyword
     result['fb_like'] = fb_like
     result['fb_share'] = fb_share
     result['category'] = category
@@ -201,8 +206,39 @@ def parser_page(url):
 #--------------------------------------------------------------------------
 # page_data = parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
 # page_data = parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
-# page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
-# print(page_data)
+page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+
+# print(type(page_data['journalist']))
+
+# sure = '真的'
+# sureu = sure.decode('utf-8')
+# print(sure)
+# print(sureu)
+# print type(sure)
+# print type(sureu)
+
+
+# with open('parser_page.json', 'w') as outfile:
+#     page_data['post_time'] = str(page_data['post_time'])
+#     for comment in page_data['comment']:
+#         comment['post_time'] = str(comment['post_time'])
+#         while True:
+#             try:
+#                 if comment['sub_comments'][0]:
+#                     for i in comment['sub_comments']:
+#                         i['post_time'] = str(i['post_time'])
+#             except IndexError:
+#                 continue
+#             finally:
+#                 break
+#
+#     json.dump(page_data, outfile)
+
+
+# fr = open('parser_page.json', 'r')
+# parser_page_json = json.load(fr)
+#
+# print(type(parser_page_json['journalist']))
 
 
 #-------------Function get_category_urls----------------------
@@ -232,6 +268,15 @@ def get_category_urls(category_url):
 #---------------------------------------------------------------------------------------
 # detail_urls = get_category_urls('http://technews.tw/category/tablet/')
 # print(detail_urls)
+
+
+# with open('get_category_urls.json', 'w') as outfile:
+#     json.dump(detail_urls, outfile)
+
+# gFile = open('get_category_urls.json', 'r')
+# get_category_urls_json = json.load(gFile)
+# print(type(get_category_urls_json))
+
 
 #-------------Function switch_page_and_get_detail_urls-----------------
 #get url of each news with looping pages in a certain category
@@ -291,6 +336,28 @@ def each_newsData_of_a_category_from_startPage_to_endPage(the_url_of_category_to
 #---------------------------------------------------------------------------------------------
 # pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 1, 1)
 # print(pages_data)
+
+
+# with open('newsData_from_startPage_to_endPage.json', 'w') as outfile:
+#     for each_newsData in pages_data:
+#         each_newsData['post_time'] = str(each_newsData['post_time'])
+#         for comment in each_newsData['comment']:
+#             comment['post_time'] = str(comment['post_time'])
+#             while True:
+#                 try:
+#                     if comment['sub_comments'][0]:
+#                         for i in comment['sub_comments']:
+#                             i['post_time'] = str(i['post_time'])
+#                 except IndexError:
+#                     continue
+#                 finally:
+#                     break
+#         print('fixing post_time')
+#     json.dump(pages_data, outfile)
+
+# bFile = open('newsData_from_startPage_to_endPage.json', 'r')
+# newsData_from_startPage_to_endPage_json = json.load(bFile)
+# print(type(newsData_from_startPage_to_endPage_json))
 
 
 #-----------------------categories_urls_of_technews--------------------
