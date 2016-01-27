@@ -5,6 +5,7 @@ import datetime
 import json
 import pytz
 from pytz import timezone, all_timezones
+import pickle
 
 #------------------function parse_page--------------------
 #get data from a news page
@@ -32,8 +33,11 @@ def parser_page(url):
     #
     #---------------------------------------------------------
     source_code = requests.get(url)
+
     plain_text = source_code.text
+
     soup = BeautifulSoup(plain_text, 'html.parser')
+    # print(soup)
 
 
     #-------------url & source_press & title------------------
@@ -74,6 +78,7 @@ def parser_page(url):
     content_source_code = soup.select("div.indent p")
     for i in range(len(content_source_code)-1):
         content += content_source_code[i].text
+
 
     keyword = []
     for i in soup.findAll('a', {'rel': 'tag'}):
@@ -130,12 +135,10 @@ def parser_page(url):
         for comment in fb_comments_json['data']:
 
             comment_time_in_UTC = datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000')
-            # comment_time_in_TW = comment_time_in_UTC.astimezone(timezone('ROC'))
-            # comment_time_in_UTC_timezone =
-
             # comment_time_in_UTC = parse(comment['created_time'])
+            #
             # comment_time_in_TW = comment_time_in_UTC.astimezone(timezone('ROC'))
-            # print(comment_time_in_UTC)
+            # print(comment_time_in_TW)
 
             while True:
                 try:
@@ -208,14 +211,23 @@ def parser_page(url):
 # page_data = parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
 page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
 
-# print(type(page_data['journalist']))
+#------------------------parser_page_pickle---------------------
+#pickle result for parser_page function
+#----------------------------------------------------------------
+# targetfile = open('pickle/parser_page/parser_page_pickle', 'wb')
+# pickle.dump(page_data, targetfile)
+# targetfile.close()
 
-# sure = '真的'
-# sureu = sure.decode('utf-8')
-# print(sure)
-# print(sureu)
-# print type(sure)
-# print type(sureu)
+# targetfile_read = open('pickle/parser_page/parser_page_pickle', 'r')
+# b = pickle.load(targetfile_read)
+# print(b)
+
+
+
+# with open('parser_page.html', 'w') as outfile:
+#     response = requests.get('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+#     for block in response.iter_content(1024):
+#         outfile.write(block)
 
 
 # with open('parser_page.json', 'w') as outfile:
@@ -237,8 +249,8 @@ page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-�
 
 # fr = open('parser_page.json', 'r')
 # parser_page_json = json.load(fr)
-#
-# print(type(parser_page_json['journalist']))
+
+# print(parser_page_json['keyword'][3])
 
 
 #-------------Function get_category_urls----------------------
@@ -266,8 +278,25 @@ def get_category_urls(category_url):
 #---------------Testing detail_urls-----------------------------------------------------
 #call get_category_urls function with certain URL, store the urls list in to detail_urls
 #---------------------------------------------------------------------------------------
-# detail_urls = get_category_urls('http://technews.tw/category/tablet/')
+detail_urls = get_category_urls('http://technews.tw/category/tablet/')
 # print(detail_urls)
+
+#------------------------get_category_urls_pickle---------------------
+#pickle result for get_category_urls function
+#----------------------------------------------------------------
+# targetfile = open('pickle/get_category_urls/get_category_urls_pickle', 'wb')
+# pickle.dump(detail_urls, targetfile)
+# targetfile.close()
+#
+# targetfile_read = open('pickle/get_category_urls/get_category_urls_pickle', 'r')
+# b = pickle.load(targetfile_read)
+# print(b)
+
+
+# with open('get_category_urls.html', 'w') as outfile:
+#     response = requests.get('http://technews.tw/category/tablet//')
+#     for block in response.iter_content(1024):
+#         outfile.write(block)
 
 
 # with open('get_category_urls.json', 'w') as outfile:

@@ -1,35 +1,52 @@
 # -*- coding: utf-8 -*-
 import technews_parser
-# import requests
+import json
+import requests
+import pickle
 # from bs4 import BeautifulSoup
+
 
 def test_parser_page(url):
     result = technews_parser.parser_page(url)
     # assert result == target, 'target error {} != {}'.format(result, target)
 
+    # temp = open('parser_page.html', 'r')
+    # soup = temp.read()
+    # print(soup)
+
+    targetfile_read = open('pickle/parser_page/parser_page_pickle', 'r')
+    parser_page_target= pickle.load(targetfile_read)
+
+    # print(parser_page_target['keyword'][3])
+    # print(result['keyword'][3])
+
+    # fr = open('parser_page.json', 'r')
+    # parser_page_json = json.load(fr)
+    # result['journalist'] = 'Spiderman'
+
+    for i in parser_page_target:
+        assert result[i] == parser_page_target[i], i + ' field has error: {} != {}'.format(result[i], parser_page_target[i])
+
+    print(result['journalist'])
+    print(parser_page_target['journalist'])
+    print('done test_parser_page')
+
+# test_parser_page_result = test_parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
 
 
-    assert result['url'] == input_url, 'url error {} != {}'.format(result['url'], input_url)
-    assert result['source_press'] == input_source_press, 'source_press error {} != {}'.format(result['source_press'], input_source_press)
-    assert result['title'] == input_title, 'title error {} != {}'.format(result['title'], input_title)
-    assert result['post_time'] == input_post_time, 'post_time error {} != {}'.format(result['post_time'], input_post_time)
-    assert result['journalist'] == input_journalist, 'journalist error {} != {}'.format(result['journalist'], input_journalist)
-    assert result['content'] == input_content, 'content error {} != {}'.format(result['content'], input_content)
-    assert result['keyword'] == input_keyword, 'keyword error {} != {}'.format(result['keyword'], input_keyword)
-    assert result['fb_like'] == input_fb_like, 'fb_like error {} != {}'.format(result['fb_like'], input_fb_like)
-    assert result['fb_share'] == input_fb_share, 'fb_share error {} != {}'.format(result['fb_share'], input_fb_share)
-    assert result['category'] == input_category, 'category error {} != {}'.format(result['category'], input_category)
-    assert result['comment'] == input_comment, 'comment error {} != {}'.format(result['comment'], input_comment)
 
+def test_get_category_urls(url):
+    result = technews_parser.get_category_urls(url)
 
-    page_data['title'] = soup.find('div', {'class': 'content_title'}).text
-    result = parser_page(title)
-    assert result == page_data['title'], "The {} of newtalk is not correct.".format('title')
-    return(result)
+    targetfile_read = open('pickle/get_category_urls/get_category_urls_pickle', 'r')
+    target= pickle.load(targetfile_read)
 
-test_result = test_parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
-print(test_result)
+    # result[3] = 'MISTAKE'
+    for i in range(len(result)):
+        assert result[i] == target[i], 'get_category_urls function has error at the result and target\'s list[' + str(i) + '] : {} != {}'.format(result[i], target[i])
 
-# page_data = parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
-# page_data = parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
-# page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+    print(target[3])
+    print(result[3])
+    print('done get_category_urls test')
+
+# test_get_category_urls_result = test_get_category_urls('http://technews.tw/category/tablet/')
