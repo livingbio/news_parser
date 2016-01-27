@@ -2,7 +2,7 @@
 testcase_factory.py
 ============================================
 generating testcase for tests.py
-    
+
 link to bnext: http://www.bnext.com.tw/
 ============================================
 """
@@ -24,8 +24,13 @@ from random import randint
 _RETRY_LIMIT = 3
 _pseudo_request_response_dict = {}
 
-category_url_list = ['http://www.bnext.com.tw/categories/internet/', 'http://www.bnext.com.tw/categories/tech/', 'http://www.bnext.com.tw/categories/marketing/',
-                     'http://www.bnext.com.tw/categories/startup/', 'http://www.bnext.com.tw/categories/people/', 'http://www.bnext.com.tw/categories/skill/']
+category_url_list = [
+    'http://www.bnext.com.tw/categories/internet/',
+    'http://www.bnext.com.tw/categories/tech/',
+    'http://www.bnext.com.tw/categories/marketing/',
+    'http://www.bnext.com.tw/categories/startup/',
+    'http://www.bnext.com.tw/categories/people/',
+    'http://www.bnext.com.tw/categories/skill/']
 
 
 # Uncomment to generate small testcase
@@ -46,8 +51,9 @@ def try_response(url, _RETRY_LIMIT=3):
     return res
 
 
-# these are for generating testcases, you should never call this unless you are tsaiJN :)
-# ========================================================================================
+# these are for generating testcases,
+# you should never call this unless you are tsaiJN :)
+# ==================================================================
 """
  implementation:
   go through urls provided by generate_get_category_urls_testcase()
@@ -82,6 +88,7 @@ def generate_parser_page_testcase(ground_input):
 # ========================================================================================
 
         utility_string1 = 'https://graph.facebook.com/fql?q=SELECT%20like_count,%20total_count,%20share_count,%20click_count,%20commentsbox_count%20FROM%20link_stat%20WHERE%20url%20=%20%22{}%22'
+
         # + '&limit=3' # limit is just for testing
         utility_string2 = 'https://graph.facebook.com/comments?id={}&filter=stream&fields=parent.fields(id),message,from,created_time,like_count{}'
         res = try_response(url)
@@ -155,7 +162,10 @@ def generate_get_category_testcase(ground_input):
     obj = {'ground_input': ground_input, 'ground_truth': ground_truth,
            'generating_time': generating_time}
 
-    with open('./bnext/resources/testcase/get_category_urls_testcase.pkl', 'w') as f:
+    with open(
+      './bnext/resources/testcase/get_category_urls_testcase.pkl',
+      'w') as f:
+
         pkl.dump(obj, f)
 
     return ground_truth
@@ -166,9 +176,13 @@ def generate_testcase_ensemble():
     global _pseudo_request_response_dict
 
     # load category_urls ground truth if already have it
-    if os.path.isfile('./bnext/resources/testcase/get_category_urls_testcase.pkl') and False:
+    if os.path.isfile(
+      './bnext/resources/testcase/get_category_urls_testcase.pkl') and False:
         url_list = pkl.load(
-            open('./bnext/resources/testcase/get_category_urls_testcase.pkl'))['ground_truth']
+            open(
+                './bnext/resources/testcase/get_category_urls_testcase.pkl'
+            )
+        )['ground_truth']
     else:
         url_list = generate_get_category_testcase(category_url_list)
 
