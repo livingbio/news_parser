@@ -231,7 +231,7 @@ def parser_page(url):
     return page_info
 
 
-def get_category_urls(category_url, back_counting_offset=-1):
+def get_category_urls(category_url, back_counting_offset=-1, straight_counting_offset=-1):
     detail_urls = []
     prefix = 'http://www.bnext.com.tw'
     res = requests.get(category_url)
@@ -240,6 +240,9 @@ def get_category_urls(category_url, back_counting_offset=-1):
     last_page = page_list.findAll('a')[-1]['href']
     midfix = '?p='
     last_page = int(last_page.split('=')[-1]) + 1
+
+    if straight_counting_offset != -1:
+        last_page = straight_counting_offset + 1
 
     if back_counting_offset == -1:
         starting_page = 1
