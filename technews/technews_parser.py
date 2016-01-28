@@ -8,6 +8,9 @@ import json
 import pickle
 import os.path
 
+the_path_of_this_file = os.path.dirname(os.path.abspath(__file__))
+print('**************' + the_path_of_this_file)
+
 #------------------function parse_page--------------------
 #get data from a news page
 #---------------------------------------------------------
@@ -35,7 +38,7 @@ def parser_page(url):
     #
     #---------------------------------------------------------
     if url == 'test':
-        temp = open(os.path.dirname(os.path.abspath('tests.py')) + '/parser_page.html', 'r')
+        temp = open(the_path_of_this_file + '/parser_page.html', 'r')
         soup_text = temp.read()
         soup = BeautifulSoup(soup_text, 'html.parser')
     else:
@@ -112,7 +115,7 @@ def parser_page(url):
     #------------------------------------------------------
     def fb_plugin_count_page(url):
         if url == 'test':
-            temp = open(os.path.dirname(os.path.abspath('tests.py')) + '/parser_page_fb_like_and_share_count.html', 'r')
+            temp = open(the_path_of_this_file + '/parser_page_fb_like_and_share_count.html', 'r')
             soup_text = temp.read()
             fb_plugin_page_soup = BeautifulSoup(soup_text, 'html.parser')
         else:
@@ -155,7 +158,7 @@ def parser_page(url):
     #------------------------------------------------------
     def fb_plugin_comment_page(url):
         if url == 'test':
-            temp = open(os.path.dirname(os.path.abspath('tests.py')) + '/parser_page_fb_comment_and_subcomment.json', 'r')
+            temp = open(the_path_of_this_file + '/parser_page_fb_comment_and_subcomment.json', 'r')
             soup_text = temp.read()
             fb_plugin_page_soup = BeautifulSoup(soup_text, 'html.parser')
         else:
@@ -246,7 +249,7 @@ def parser_page(url):
 #----------------------------------------------------------------
 def parser_page_pickle():
     page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
-    targetfile = open(os.path.dirname(os.path.abspath('tests.py')) + '/pickle/parser_page/parser_page_pickle', 'wb')
+    targetfile = open(the_path_of_this_file + '/pickle/parser_page/parser_page_pickle', 'wb')
     pickle.dump(page_data, targetfile)
     targetfile.close()
 
@@ -255,7 +258,7 @@ def parser_page_pickle():
 #create the html for testing parser_page function
 #----------------------------------------------------------------
 def parser_page_html():
-    with open(os.path.dirname(os.path.abspath('tests.py')) + '/parser_page.html', 'w') as outfile:
+    with open(the_path_of_this_file + '/parser_page.html', 'w') as outfile:
         response = requests.get('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
         for block in response.iter_content(1024):
             outfile.write(block)
@@ -265,7 +268,7 @@ def parser_page_html():
 #create the html for testing parser_page function of fb like and share
 #---------------------------------------------------------------------
 def parser_page_fb_like_and_share_count_html():
-    with open(os.path.dirname(os.path.abspath('tests.py')) + '/parser_page_fb_like_and_share_count.html', 'w') as outfile:
+    with open(the_path_of_this_file + '/parser_page_fb_like_and_share_count.html', 'w') as outfile:
         response = requests.get('http://api.facebook.com/restserver.php?method=links.getStats&urls=http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
         for block in response.iter_content(1024):
             outfile.write(block)
@@ -275,7 +278,7 @@ def parser_page_fb_like_and_share_count_html():
 #create the json for testing parser_page function of fb comment and sub comment
 #------------------------------------------------------------------------------
 def parser_page_fb_comment_and_subcomment_json():
-    with open(os.path.dirname(os.path.abspath('tests.py')) + '/parser_page_fb_comment_and_subcomment.json', 'w') as outfile:
+    with open(the_path_of_this_file + '/parser_page_fb_comment_and_subcomment.json', 'w') as outfile:
         response = requests.get('http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
         for block in response.iter_content(1024):
             outfile.write(block)
@@ -291,7 +294,7 @@ def get_category_urls(category_url):
     #
     #---------------------------------------------------------
     if category_url == 'test':
-        temp = open(os.path.dirname(os.path.abspath('tests.py')) + '/get_category_urls.html', 'r')
+        temp = open(the_path_of_this_file+ '/get_category_urls.html', 'r')
         soup_text = temp.read()
         soup = BeautifulSoup(soup_text, 'html.parser')
     else:
@@ -321,7 +324,7 @@ def get_category_urls(category_url):
 #-------------------------------------------------------------
 def get_category_urls_pickle():
     detail_urls = get_category_urls('http://technews.tw/category/tablet/page/38/')
-    targetfile = open(os.path.dirname(os.path.abspath('tests.py')) + '/pickle/get_category_urls/get_category_urls_pickle', 'wb')
+    targetfile = open(the_path_of_this_file + '/pickle/get_category_urls/get_category_urls_pickle', 'wb')
     pickle.dump(detail_urls, targetfile)
     targetfile.close()
 
@@ -330,7 +333,7 @@ def get_category_urls_pickle():
 #create the html for testing get_category_urls function
 #----------------------------------------------------------------
 def get_category_urls_html():
-    with open(os.path.dirname(os.path.abspath('tests.py')) + '/get_category_urls.html', 'w') as outfile:
+    with open(the_path_of_this_file + '/get_category_urls.html', 'w') as outfile:
         response = requests.get('http://technews.tw/category/tablet/page/38/')
         for block in response.iter_content(1024):
             outfile.write(block)
@@ -401,7 +404,7 @@ def each_newsData_of_a_category_from_startPage_to_endPage(the_url_of_category_to
 #-----------------------------------------------------------------------------------
 def each_newsData_pickle():
     pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 35, 36)
-    targetfile = open(os.path.dirname(os.path.abspath('tests.py')) + '/pickle/each_newsData_of_a_category_from_startPage_to_endPage/each_newsData_of_a_category_from_startPage_to_endPage_pickle', 'wb')
+    targetfile = open(the_path_of_this_file + '/pickle/each_newsData_of_a_category_from_startPage_to_endPage/each_newsData_of_a_category_from_startPage_to_endPage_pickle', 'wb')
     pickle.dump(pages_data, targetfile)
     targetfile.close()
 

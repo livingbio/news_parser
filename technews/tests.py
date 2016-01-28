@@ -5,13 +5,17 @@ import requests
 import pickle
 import os.path
 
+the_path_of_this_file = os.path.dirname(os.path.abspath(__file__))
+print(__file__)
+print('**************' + the_path_of_this_file)
+
 
 def test_parser_page():
     url = 'test'
     result = technews_parser.parser_page(url)
     # assert result == target, 'target error {} != {}'.format(result, target)
 
-    targetfile_read = open(os.path.dirname(os.path.abspath('tests.py')) + '/pickle/parser_page/parser_page_pickle', 'r')
+    targetfile_read = open(the_path_of_this_file + '/pickle/parser_page/parser_page_pickle', 'r')
     parser_page_target= pickle.load(targetfile_read)
 
     for i in parser_page_target:
@@ -29,7 +33,7 @@ def test_get_category_urls():
     url = 'test'
     result = technews_parser.get_category_urls(url)
 
-    targetfile_read = open(os.path.dirname(os.path.abspath('tests.py')) + '/pickle/get_category_urls/get_category_urls_pickle', 'r')
+    targetfile_read = open(the_path_of_this_file + '/pickle/get_category_urls/get_category_urls_pickle', 'r')
     target= pickle.load(targetfile_read)
 
     for i in range(len(result)):
@@ -45,5 +49,3 @@ def test_get_category_urls():
 if __name__ == '__main__':
     test_parser_page()
     test_get_category_urls()
-
-# print(os.path.dirname(os.path.abspath('tests.py')))
