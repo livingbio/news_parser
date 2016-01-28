@@ -3,8 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import datetime
 import json
-import pytz
-from pytz import timezone, all_timezones
+# import pytz
+# from pytz import timezone, all_timezones
 import pickle
 
 #------------------function parse_page--------------------
