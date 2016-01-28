@@ -29,22 +29,34 @@ def parser_page(url):
         "comment": None,
     }
 
+
     #-------------get text from the url page------------------
     #
     #---------------------------------------------------------
-    source_code = requests.get(url)
+    if url == 'test':
+        temp = open('parser_page.html', 'r')
+        soup_text = temp.read()
+        soup = BeautifulSoup(soup_text, 'html.parser')
+    else:
+        source_code = requests.get(url)
 
-    plain_text = source_code.text
+        plain_text = source_code.text
 
-    soup = BeautifulSoup(plain_text, 'html.parser')
-    # print(soup)
+        soup = BeautifulSoup(plain_text, 'html.parser')
 
 
     #-------------url & source_press & title------------------
     #
     #---------------------------------------------------------
     url = url
-    source_press = soup.select("div.indent a")[1]['href']
+    while True:
+        try:
+            source_press = soup.select("div.indent a")[1]['href']
+        except IndexError:
+            source_press = None
+        finally:
+            break
+
     title = soup.find('h1', {'class': 'entry-title'}).text
 
 
@@ -54,15 +66,21 @@ def parser_page(url):
     #there are 2 methods to get it done, using method 1 by default
     #-------------------------------------------------------------
 
-    #-------------------------post_time method 1 below-----------------------------
-    post_time_text = soup.select("header.entry-header table td span.body")[1].text
-    post_time_text = post_time_text.encode('utf-8')
+    #-------------------------post_time method 1 below----------------------------
+    while True:
+        try:
+            post_time_text = soup.select("header.entry-header table td span.body")[1].text
+            post_time_text = post_time_text.encode('utf-8')
+            post_time = datetime.datetime.strptime(post_time_text, '%Y 年 %m 月 %d 日 %H:%M ')
+        except IndexError:
+            post_time = None
+        finally:
+            break
 
     #-------------------------post_time method 2 below-----------------------------
     # for i in soup.findAll('span', {'class': 'head'}):
     #     if i.text == '發布日期':
     #         post_time_text = i.next_sibling.next_sibling.text
-    post_time = datetime.datetime.strptime(post_time_text, '%Y 年 %m 月 %d 日 %H:%M ')
 
 
     #------------------journalist------------------------
@@ -80,6 +98,9 @@ def parser_page(url):
         content += content_source_code[i].text
 
 
+    #-------------------keyword--------------------------
+    #keyword of each news
+    #----------------------------------------------------
     keyword = []
     for i in soup.findAll('a', {'rel': 'tag'}):
         keyword.append(i.text)
@@ -89,9 +110,14 @@ def parser_page(url):
     #fb likes count & share counts of each news
     #------------------------------------------------------
     def fb_plugin_count_page(url):
-        code = requests.get('http://api.facebook.com/restserver.php?method=links.getStats&urls=' + url)
-        html_text = code.text
-        fb_plugin_page_soup = BeautifulSoup(html_text, 'html.parser')
+        if url == 'test':
+            temp = open('parser_page_fb_like_and_share_count.html', 'r')
+            soup_text = temp.read()
+            fb_plugin_page_soup = BeautifulSoup(soup_text, 'html.parser')
+        else:
+            code = requests.get('http://api.facebook.com/restserver.php?method=links.getStats&urls=' + url)
+            html_text = code.text
+            fb_plugin_page_soup = BeautifulSoup(html_text, 'html.parser')
 
         fb_like_count = fb_plugin_page_soup.find('total_count').string
         fb_share_count = fb_plugin_page_soup.find('share_count').string
@@ -102,12 +128,19 @@ def parser_page(url):
     #-----------------------category-----------------------
     #the category of news on the website
     #------------------------------------------------------
-    category = []
-    times_for_category = 0
-    for i in soup.select("header.entry-header table td span.body")[2]:
-        if times_for_category %2 == 1:
-            category.append(i.text)
-        times_for_category +=1
+    while True:
+        try:
+            category = []
+            times_for_category = 0
+            for i in soup.select("header.entry-header table td span.body")[2]:
+                if times_for_category %2 == 1:
+                    category.append(i.text)
+                times_for_category +=1
+        except IndexError:
+            pass
+        finally:
+            break
+
 
 
     # global category_urls
@@ -120,10 +153,15 @@ def parser_page(url):
     #the comments and their sub_comments of each news
     #------------------------------------------------------
     def fb_plugin_comment_page(url):
-        # code = requests.get('http://graph.facebook.com/comments?id=' + url)
-        code = requests.get('http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=' + url)
-        html_text = code.text
-        fb_plugin_page_soup = BeautifulSoup(html_text, 'html.parser')
+        if url == 'test':
+            temp = open('parser_page_fb_comment_and_subcomment.json', 'r')
+            soup_text = temp.read()
+            fb_plugin_page_soup = BeautifulSoup(soup_text, 'html.parser')
+        else:
+            code = requests.get('http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=' + url)
+            html_text = code.text
+            fb_plugin_page_soup = BeautifulSoup(html_text, 'html.parser')
+
         fb_comments_string = str(fb_plugin_page_soup)
         fb_comments_json_page = json.loads(fb_comments_string)
         return (fb_comments_json_page)
@@ -175,21 +213,11 @@ def parser_page(url):
     #
     #return with {'key1': 'value1', 'key2': 'value2',...}
     #--------------------------------------------------------
-    # result = {
-    #     "url": url,
-    #     "source_press": source_press,
-    #     "title": title,
-    #     "post_time": post_time,
-    #     "journalist": journalist,
-    #     "content": content,
-    #     "compare": None,
-    #     "keyword": [],
-    #     "fb_like": fb_like,
-    #     "fb_share": fb_share,
-    #     "category": category,
-    #     "comment": total_comments,
-    # }
-    result['url'] = url
+    if url == 'test':
+        result['url'] = 'http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/'
+    else:
+        result['url'] = url
+
     result['source_press'] = source_press
     result['title'] = title
     result['post_time'] = post_time
@@ -209,48 +237,47 @@ def parser_page(url):
 #--------------------------------------------------------------------------
 # page_data = parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
 # page_data = parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
-page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+# page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+# print(page_data)
 
 #------------------------parser_page_pickle---------------------
 #pickle result for parser_page function
 #----------------------------------------------------------------
-# targetfile = open('pickle/parser_page/parser_page_pickle', 'wb')
-# pickle.dump(page_data, targetfile)
-# targetfile.close()
-
-# targetfile_read = open('pickle/parser_page/parser_page_pickle', 'r')
-# b = pickle.load(targetfile_read)
-# print(b)
+def parser_page_pickle():
+    page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+    targetfile = open('pickle/parser_page/parser_page_pickle', 'wb')
+    pickle.dump(page_data, targetfile)
+    targetfile.close()
 
 
-
-# with open('parser_page.html', 'w') as outfile:
-#     response = requests.get('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
-#     for block in response.iter_content(1024):
-#         outfile.write(block)
-
-
-# with open('parser_page.json', 'w') as outfile:
-#     page_data['post_time'] = str(page_data['post_time'])
-#     for comment in page_data['comment']:
-#         comment['post_time'] = str(comment['post_time'])
-#         while True:
-#             try:
-#                 if comment['sub_comments'][0]:
-#                     for i in comment['sub_comments']:
-#                         i['post_time'] = str(i['post_time'])
-#             except IndexError:
-#                 continue
-#             finally:
-#                 break
-#
-#     json.dump(page_data, outfile)
+#------------------------parser_page_html-----------------------
+#create the html for testing parser_page function
+#----------------------------------------------------------------
+def parser_page_html():
+    with open('parser_page.html', 'w') as outfile:
+        response = requests.get('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+        for block in response.iter_content(1024):
+            outfile.write(block)
 
 
-# fr = open('parser_page.json', 'r')
-# parser_page_json = json.load(fr)
+#----------------parser_page_fb_like_and_share_count_html--------------
+#create the html for testing parser_page function of fb like and share
+#---------------------------------------------------------------------
+def parser_page_fb_like_and_share_count_html():
+    with open('parser_page_fb_like_and_share_count.html', 'w') as outfile:
+        response = requests.get('http://api.facebook.com/restserver.php?method=links.getStats&urls=http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+        for block in response.iter_content(1024):
+            outfile.write(block)
 
-# print(parser_page_json['keyword'][3])
+
+#----------------parser_page_fb_comment_and_subcomment_json--------------------
+#create the json for testing parser_page function of fb comment and sub comment
+#------------------------------------------------------------------------------
+def parser_page_fb_comment_and_subcomment_json():
+    with open('parser_page_fb_comment_and_subcomment.json', 'w') as outfile:
+        response = requests.get('http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+        for block in response.iter_content(1024):
+            outfile.write(block)
 
 
 #-------------Function get_category_urls----------------------
@@ -262,9 +289,15 @@ def get_category_urls(category_url):
     #-------------get text from the url page------------------
     #
     #---------------------------------------------------------
-    source_code = requests.get(category_url)
-    plain_text = source_code.text
-    soup = BeautifulSoup(plain_text, 'html.parser')
+    if category_url == 'test':
+        temp = open('get_category_urls.html', 'r')
+        soup_text = temp.read()
+        soup = BeautifulSoup(soup_text, 'html.parser')
+    else:
+        source_code = requests.get(category_url)
+        plain_text = source_code.text
+        soup = BeautifulSoup(plain_text, 'html.parser')
+
 
     #------------------detail_urls-----------------------------
     #get each news url and append into a list called detail_urls
@@ -275,36 +308,31 @@ def get_category_urls(category_url):
     return(detail_urls)
 
 
-#---------------Testing detail_urls-----------------------------------------------------
+#------------------------Testing detail_urls-------------------------------------------
 #call get_category_urls function with certain URL, store the urls list in to detail_urls
 #---------------------------------------------------------------------------------------
-detail_urls = get_category_urls('http://technews.tw/category/tablet/')
+# detail_urls = get_category_urls('http://technews.tw/category/tablet/page/38/')
 # print(detail_urls)
 
-#------------------------get_category_urls_pickle---------------------
+
+#------------------------get_category_urls_pickle-------------
 #pickle result for get_category_urls function
+#-------------------------------------------------------------
+def get_category_urls_pickle():
+    detail_urls = get_category_urls('http://technews.tw/category/tablet/page/38/')
+    targetfile = open('pickle/get_category_urls/get_category_urls_pickle', 'wb')
+    pickle.dump(detail_urls, targetfile)
+    targetfile.close()
+
+
+#------------------------get_category_urls_html------------------
+#create the html for testing get_category_urls function
 #----------------------------------------------------------------
-# targetfile = open('pickle/get_category_urls/get_category_urls_pickle', 'wb')
-# pickle.dump(detail_urls, targetfile)
-# targetfile.close()
-#
-# targetfile_read = open('pickle/get_category_urls/get_category_urls_pickle', 'r')
-# b = pickle.load(targetfile_read)
-# print(b)
-
-
-# with open('get_category_urls.html', 'w') as outfile:
-#     response = requests.get('http://technews.tw/category/tablet//')
-#     for block in response.iter_content(1024):
-#         outfile.write(block)
-
-
-# with open('get_category_urls.json', 'w') as outfile:
-#     json.dump(detail_urls, outfile)
-
-# gFile = open('get_category_urls.json', 'r')
-# get_category_urls_json = json.load(gFile)
-# print(type(get_category_urls_json))
+def get_category_urls_html():
+    with open('get_category_urls.html', 'w') as outfile:
+        response = requests.get('http://technews.tw/category/tablet/page/38/')
+        for block in response.iter_content(1024):
+            outfile.write(block)
 
 
 #-------------Function switch_page_and_get_detail_urls-----------------
@@ -363,30 +391,18 @@ def each_newsData_of_a_category_from_startPage_to_endPage(the_url_of_category_to
 #
 #store the data in to pages_data
 #---------------------------------------------------------------------------------------------
-# pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 1, 1)
+# pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 35, 36)
 # print(pages_data)
 
 
-# with open('newsData_from_startPage_to_endPage.json', 'w') as outfile:
-#     for each_newsData in pages_data:
-#         each_newsData['post_time'] = str(each_newsData['post_time'])
-#         for comment in each_newsData['comment']:
-#             comment['post_time'] = str(comment['post_time'])
-#             while True:
-#                 try:
-#                     if comment['sub_comments'][0]:
-#                         for i in comment['sub_comments']:
-#                             i['post_time'] = str(i['post_time'])
-#                 except IndexError:
-#                     continue
-#                 finally:
-#                     break
-#         print('fixing post_time')
-#     json.dump(pages_data, outfile)
-
-# bFile = open('newsData_from_startPage_to_endPage.json', 'r')
-# newsData_from_startPage_to_endPage_json = json.load(bFile)
-# print(type(newsData_from_startPage_to_endPage_json))
+#------------------------each_newsData_pickle---------------------------------------
+#pickle result for each_newsData_of_a_category_from_startPage_to_endPage function
+#-----------------------------------------------------------------------------------
+def each_newsData_pickle():
+    pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 35, 36)
+    targetfile = open('pickle/each_newsData_of_a_category_from_startPage_to_endPage/each_newsData_of_a_category_from_startPage_to_endPage_pickle', 'wb')
+    pickle.dump(pages_data, targetfile)
+    targetfile.close()
 
 
 #-----------------------categories_urls_of_technews--------------------
