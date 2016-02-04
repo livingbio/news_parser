@@ -32,6 +32,8 @@ def test_parser_page():
 
     for i in target:
         assert result[i] == target[i], i + ' field has error: {} != {}'.format(result[i], target[i])
+    print(result['journalist'])
+    print(target['journalist'])
     print('done test_parser_page')
 
 
@@ -55,6 +57,8 @@ def test_get_category_urls():
 
     for i in range(len(result)):
         assert result[i] == target[i], 'get_category_urls function has error at the result and target\'s list[' + str(i) + '] : {} != {}'.format(result[i], target[i])
+    print(result[2])
+    print(target[2])
     print('done test_get_category_urls')
 
 
