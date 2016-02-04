@@ -5,12 +5,7 @@ import datetime
 import json
 import pytz
 from pytz import timezone, all_timezones
-# import os.path
 import time
-
-
-# the_path_of_this_file = os.path.dirname(os.path.abspath(__file__))
-# print('**************' + the_path_of_this_file)
 
 #------------------function parse_page--------------------
 #get data from a news page
