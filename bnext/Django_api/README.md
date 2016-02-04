@@ -34,7 +34,7 @@ python manage.py runserver
 ```
 
 ### API interface
-base url: http://127.0.0.1:8000/api_provider/query/<query_type>?arg1=...&arg2=...&...
+base url: http://127.0.0.1:8000/api_provider/query/[query_type]?arg1=...&arg2=...&...
 display setting is for setting how the queried result should be rendered
 ```
 ============================== display setting =================================
@@ -51,7 +51,7 @@ display setting is for setting how the queried result should be rendered
 	Include "show_child" in query arguement if you wish to see the (Comments/Subcomments)
 	of the queried (Article/Comment).
 ```
-common settings are settings that are shared by <query_type> of Article, Comment, SubComment
+common settings are settings that are shared by [query_type] of Article, Comment, SubComment
 ```
 ============================== common setting ==================================
 - content:
@@ -96,7 +96,7 @@ common settings are settings that are shared by <query_type> of Article, Comment
 		Return all objects posted before that given date (included).
 		ex: post_time_date__gte=2016/1/28
 ```
-the following are some <query_type> depending settings
+the following are some [query_type] depending settings
 ```
 ============================== Article setting =================================
 - url:
