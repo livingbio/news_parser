@@ -23,13 +23,18 @@ def parser_page_with_retry(url):
     retry = 0
     while retry < _RETRY_LIMIT:
         try:
+            
             page_info = parser_page(url)
             break
         except ConnectionError:
+            print 'connection error'
             retry += 1
             print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
-            time.sleep(randint(10, 15))
-
+            time.sleep(randint(3, 5))
+            assert retry < _RETRY_LIMIT, 'maximum retry reached'
+        except Exception as e:
+            print e
+            time.sleep(randint(3, 5))
             assert retry < _RETRY_LIMIT, 'maximum retry reached'
     return page_info
 
@@ -44,8 +49,12 @@ def get_category_urls_with_retry(url, page):
         except ConnectionError:
             retry += 1
             print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
-            time.sleep(randint(10, 15))
+            time.sleep(randint(3, 5))
+            assert retry < _RETRY_LIMIT, 'maximum retry reached'
 
+        except Exception as e:
+            print e
+            time.sleep(randint(3, 5))
             assert retry < _RETRY_LIMIT, 'maximum retry reached'
     return url_list
 

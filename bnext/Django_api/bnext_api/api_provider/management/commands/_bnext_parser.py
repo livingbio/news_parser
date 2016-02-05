@@ -8,12 +8,12 @@ import HTMLParser
 
 from random import randint
 from datetime import datetime
+from pytz import utc, timezone
 from bs4 import BeautifulSoup
 
 _RETRY_LIMIT = 3
 
 strange_url_set = set()
-
 
 def parser_page(url):
     global strange_url_set
@@ -32,7 +32,7 @@ def parser_page(url):
                  'popularity': None,
                  'total_comment': None}  # comment would be added later
 
-    res = requests.get(url)
+    res = requests.get(url, timeout=5)
     soup = BeautifulSoup(res.content)
 
 # --------------------- missing info ------------------------
@@ -51,10 +51,13 @@ def parser_page(url):
         print('[title] multiple title:  {}\n'.format(url))
         strange_url_set.add(url)
     elif len(title) == 0:
-        print('[title] title not found: {}\n'.format(url))
-        strange_url_set.add(url)
-
-    title = title[0].text
+        title = soup.findAll('meta', {'name': 'og:title'})
+        title = title[0]['content']
+        if len(title) == 0:
+            print('[title] title not found: {}\n'.format(url))
+            strange_url_set.add(url)
+    else:
+        title = title[0].text
     page_info['title'] = title
 
 
@@ -65,37 +68,50 @@ def parser_page(url):
 # </div>
 # -----------------------------------------------------------
     hyper_info_box = soup.find('div', {'class': 'info_box'})
-    info_box = hyper_info_box.findAll('span', {'class': 'info'})
-    if len(info_box) == 2:
-        author = info_box[0].text
-        post_time = info_box[1].text
-
-        # return author
-
-        if ':' in author:
-            author = author.split(':')[1]
-        if u'：' in author:
-            author = author.split(u'：')[1]
-        page_info['journalist'] = author
-
-        if ':' in post_time:
-            post_time = post_time.split(':')[1]
-        if u'：' in post_time:
-            post_time = post_time.split(u'：')[1]
-
-        try:
-            date = datetime.strptime(post_time, '%Y/%m/%d')
-            page_info['post_time'] = date
-        except ValueError:
-            print('[time] wrong format of time {}: {}\n'.format(post_time, url))
-            strange_url_set.add(url)
-        except Exception:
-            print('[time] wierd things happened {}: {}\n'.format(post_time, url))
-            strange_url_set.add(url)
-
+    if hyper_info_box == None:
+        metalines = soup.findAll('div', 'article-metaline')
+        for line in metalines:
+            s = line.findAll('span')
+            if s[0].text == u'作者':
+                page_info['journalist'] = s[1].text
+            elif s[0].text == u'時間':
+                time_info = ' '.join(s[1].text.split()[1:])
+                date = datetime.strptime(time_info, '%b %d %H:%M:%S CST %Y')
+                date = date.replace(tzinfo=timezone('Asia/Taipei'))
+                page_info['post_time'] = date
     else:
-        print('[author & time] {} info_box: {}\n'.format(len(info_box), url))
-        strange_url_set.add(url)
+        info_box = hyper_info_box.findAll('span', {'class': 'info'})
+        if len(info_box) == 2:
+            author = info_box[0].text
+            post_time = info_box[1].text
+
+            # return author
+
+            if ':' in author:
+                author = author.split(':')[1]
+            if u'：' in author:
+                author = author.split(u'：')[1]
+            page_info['journalist'] = author
+
+            if ':' in post_time:
+                post_time = post_time.split(':')[1]
+            if u'：' in post_time:
+                post_time = post_time.split(u'：')[1]
+
+            try:
+                date = datetime.strptime(post_time, '%Y/%m/%d')
+                date = date.replace(tzinfo=timezone('Asia/Taipei'))
+                page_info['post_time'] = date
+            except ValueError:
+                print('[time] wrong format of time {}: {}\n'.format(post_time, url))
+                strange_url_set.add(url)
+            except Exception as e:
+                print('[time] wierd things happened {}: {}\n'.format(post_time, url))
+                strange_url_set.add(url)
+
+        else:
+            print('[author & time] {} info_box: {}\n'.format(len(info_box), url))
+            strange_url_set.add(url)
 
 
 # --------------------- content -----------------------------
@@ -165,7 +181,7 @@ def parser_page(url):
 # -----------------------------------------------------------
     utility_string = 'https://graph.facebook.com/fql?q=SELECT%20like_count,%20total_count,%20share_count,%20click_count,%20commentsbox_count%20FROM%20link_stat%20WHERE%20url%20=%20%22{}%22'
 
-    res = requests.get(utility_string.format(url))
+    res = requests.get(utility_string.format(url), timeout=5)
     page_info['fb_like'] = res.json()['data'][0]['like_count']
     page_info['fb_share'] = res.json()['data'][0]['share_count']
 
@@ -186,8 +202,13 @@ def parser_page(url):
     suffix = ''
 
     while True:  # loop until no more next page
-        res = requests.get(utility_string.format(url, suffix))
-        data = res.json()['data']  # list of comments
+        res = requests.get(utility_string.format(url, suffix), timeout=5)
+        data = res.json()  # list of comments
+        if 'data' not in data:
+            page_info['comment'] = []
+            return page_info
+        else:
+            data = data['data']
         if len(data) == 0:  # no comment at all
             break
         paging = res.json()['paging']  # the paging info dict
@@ -201,6 +222,7 @@ def parser_page(url):
             content = datum['message']
             source_type = 'fb'
             post_time = datetime.strptime(str_time, '%Y-%m-%dT%H:%M:%S')
+            post_time = post_time.replace(tzinfo=utc)
 
             building_block = {'actor': actor,
                               'like': like,
@@ -234,7 +256,7 @@ def parser_page(url):
 def get_category_urls(category_url, back_counting_offset=-1, straight_counting_offset=-1):
     detail_urls = []
     prefix = 'http://www.bnext.com.tw'
-    res = requests.get(category_url)
+    res = requests.get(category_url, timeout=5)
     soup = BeautifulSoup(res.content)
     page_list = soup.find('ul', 'pagination')
     last_page = page_list.findAll('a')[-1]['href']
@@ -253,12 +275,14 @@ def get_category_urls(category_url, back_counting_offset=-1, straight_counting_o
         retry = 0
         while retry < _RETRY_LIMIT:
             try:
-                res = requests.get(category_url + midfix + str(page))
+                res = requests.get(category_url + midfix + str(page), timeout=5)
                 break
             except requests.ConnectionError:
                 retry += 1
                 print('({}/{}) retrying...'.format(retry, _RETRY_LIMIT))
                 time.sleep(randint(10, 15))
+            else:
+                print 'other exception'
 
             assert (retry < _RETRY_LIMIT), "maximum retry limit reached"
 
