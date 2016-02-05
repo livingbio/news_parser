@@ -6,18 +6,19 @@ import os.path
 
 the_path_of_this_file = os.path.dirname(os.path.abspath(__file__))
 
-# url_for_parser_page = 'http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/'
-# url_for_parser_page = 'http://technews.tw/2016/01/06/iphone-6s-no-good-apple/'
-# url_for_get_category_urls = 'http://technews.tw/category/tablet/page/38/'
-# url_for_get_category_urls = 'http://technews.tw/category/tablet/page/37/'
+#-----------------------------instructions----------------------------
+#     use main functions at the bottom to create info for test case
+#----------------------------------------------------------------------
 
-#------------------------parser_page_pickle---------------------
-#pickle result for parser_page function
+
+
+#------------------------parser_page_fake_data-------------------
+#store result for testing parser_page function
 #----------------------------------------------------------------
-def parser_page_pickle():
-    page_data = technews_parser.parser_page(url_for_parser_page)
+def parser_page_fake_data(url):
+    page_data = technews_parser.parser_page(url)
     appending_dict = {
-        url_for_parser_page: page_data
+        url: page_data
     }
     targetfile_read = open(the_path_of_this_file + '/pickle/parser_page/fake_data_pickle', 'r')
     parser_page_target= pickle.load(targetfile_read)
@@ -28,22 +29,22 @@ def parser_page_pickle():
     targetfile = open(the_path_of_this_file + '/pickle/parser_page/fake_data_pickle', 'wb')
     pickle.dump(appending_dict, targetfile)
     targetfile.close()
-    print('parser_page_pickle is done')
+    print('parser_page_fake_data is done')
 
 
-#------------------------parser_page_fake_request-----------------------
+#------------------------parser_page_fake_request----------------
 #create the fake response for testing parser_page function
 #----------------------------------------------------------------
-def parser_page_fake_request():
-    facebook_api_url = 'https://api.facebook.com/method/links.getStats?urls=' + url_for_parser_page
-    facebook_comment_api_url = 'http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=' + url_for_parser_page
+def parser_page_fake_request(url):
+    facebook_api_url = 'https://api.facebook.com/method/links.getStats?urls=' + url
+    facebook_comment_api_url = 'http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=' + url
 
-    response1 = requests.get(url_for_parser_page)
+    response1 = requests.get(url)
     response2 = requests.get(facebook_api_url)
     response3 = requests.get(facebook_comment_api_url)
 
     appending_dict = {
-        url_for_parser_page: response1,
+        url: response1,
         facebook_api_url: response2,
         facebook_comment_api_url: response3,
     }
@@ -60,13 +61,30 @@ def parser_page_fake_request():
     print('parser_page_fake_request is done')
 
 
-#------------------------get_category_urls_pickle-------------
-#pickle result for get_category_urls function
+#------------------------parser_page_test_urls---------------------
+#store urls for testing parser_page function
+#----------------------------------------------------------------
+def parser_page_test_urls(url):
+    # urls_list=[]
+    targetfile_read = open(the_path_of_this_file + '/pickle/parser_page/test_urls_pickle', 'r')
+    urls_list = pickle.load(targetfile_read)
+    if url in urls_list:
+        print('url already exist for testing parser_page')
+    else:
+        urls_list.append(url)
+        targetfile = open(the_path_of_this_file + '/pickle/parser_page/test_urls_pickle', 'wb')
+        pickle.dump(urls_list, targetfile)
+        targetfile.close()
+        print('parser_page_test_urls is done')
+
+
+#------------------------get_category_urls_fake_data-------------
+#store result for testing get_category_urls function
 #-------------------------------------------------------------
-def get_category_urls_pickle():
-    detail_urls = technews_parser.get_category_urls(url_for_get_category_urls)
+def get_category_urls_fake_data(url):
+    detail_urls = technews_parser.get_category_urls(url)
     appending_dict = {
-        url_for_get_category_urls: detail_urls
+        url: detail_urls
     }
     targetfile_read = open(the_path_of_this_file + '/pickle/get_category_urls/fake_data_pickle', 'r')
     get_category_urls_target= pickle.load(targetfile_read)
@@ -77,17 +95,16 @@ def get_category_urls_pickle():
     targetfile = open(the_path_of_this_file + '/pickle/get_category_urls/fake_data_pickle', 'wb')
     pickle.dump(appending_dict, targetfile)
     targetfile.close()
-    print('get_category_urls_pickle is done')
+    print('get_category_urls_fake_data is done')
 
 
 #------------------------get_category_urls_html------------------
 #create the html for testing get_category_urls function
 #----------------------------------------------------------------
-def get_category_urls_fake_request():
-    response = requests.get(url_for_get_category_urls)
-
+def get_category_urls_fake_request(url):
+    response = requests.get(url)
     appending_dict = {
-        url_for_get_category_urls: response
+        url: response
     }
     targetfile_read = open(the_path_of_this_file + '/pickle/get_category_urls/fake_request_pickle', 'r')
     responses = pickle.load(targetfile_read)
@@ -100,16 +117,36 @@ def get_category_urls_fake_request():
     targetfile.close()
     print('get_category_urls_fake_request is done')
 
-# parser_page_pickle()
-# parser_page_fake_request()
-# get_category_urls_pickle()
-# get_category_urls_fake_request()
 
-#------------------------each_newsData_pickle---------------------------------------
-#pickle result for each_newsData_of_a_category_from_startPage_to_endPage function
-#-----------------------------------------------------------------------------------
-# def each_newsData_pickle():
-#     pages_data = technews_parser.each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 35, 36)
-#     targetfile = open(the_path_of_this_file + '/pickle/each_newsData_of_a_category_from_startPage_to_endPage/each_newsData_of_a_category_from_startPage_to_endPage_pickle', 'wb')
-#     pickle.dump(pages_data, targetfile)
-#     targetfile.close()
+#------------------------get_category_urls_test_urls-------------
+#store urls for testing get_category_urls function
+#----------------------------------------------------------------
+def get_category_urls_test_urls(url):
+    # urls_list=[]
+    targetfile_read = open(the_path_of_this_file + '/pickle/get_category_urls/test_urls_pickle', 'r')
+    urls_list = pickle.load(targetfile_read)
+    if url in urls_list:
+        print('url already exist for testing get_category_urls')
+    else:
+        urls_list.append(url)
+        targetfile = open(the_path_of_this_file + '/pickle/get_category_urls/test_urls_pickle', 'wb')
+        pickle.dump(urls_list, targetfile)
+        targetfile.close()
+        print('get_category_urls_test_urls is done')
+
+
+#----------------------main functions---------------------------
+#main funcitons to create data, request and urls
+#----------------------------------------------------------------
+def create_parser_page_data_and_request(url_for_parser_page):
+    parser_page_fake_data(url_for_parser_page)
+    parser_page_fake_request(url_for_parser_page)
+    parser_page_test_urls(url_for_parser_page)
+
+def create_get_category_urls_data_and_request(url_for_get_category_urls):
+    get_category_urls_fake_data(url_for_get_category_urls)
+    get_category_urls_fake_request(url_for_get_category_urls)
+    get_category_urls_test_urls(url_for_get_category_urls)
+
+# create_parser_page_data_and_request('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
+# create_get_category_urls_data_and_request('http://technews.tw/category/tablet/page/3/')

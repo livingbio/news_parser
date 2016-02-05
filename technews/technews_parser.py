@@ -253,7 +253,6 @@ def parser_page(url):
 # page_data = parser_page('http://technews.tw/2016/01/04/tiobe-2015-programming-language-index/')
 # page_data = parser_page('http://technews.tw/2016/01/06/iphone-6s-no-good-apple/')
 # page_data = parser_page('http://technews.tw/2015/11/26/apple-iphone-2018-oled-﻿panel/')
-# page_data = parser_page('http://technews.tw/2014/11/27/iphone-6-plus-impacts-where-we-read-watch/')
 # print(page_data)
 
 
@@ -263,17 +262,10 @@ def parser_page(url):
 #return with [news1_url, news2_url, news3_url,....]
 #-------------------------------------------------------------
 def get_category_urls(category_url):
-    #-------------get text from the url page------------------
-    #
-    #---------------------------------------------------------
     source_code = requests.get(category_url)
     plain_text = source_code.text
     soup = BeautifulSoup(plain_text, 'html.parser')
 
-
-    #------------------detail_urls-----------------------------
-    #get each news url and append into a list called detail_urls
-    #---------------------------------------------------------
     detail_urls = []
     for i in soup.findAll('h1', {'class': 'entry-title'}):
         detail_urls.append(i.a.attrs['href'])
