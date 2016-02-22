@@ -43,29 +43,20 @@ def parser_page(url):
     #
     #---------------------------------------------------------
     url = url
-    while True:
-        try:
-            source_press = soup.select("div.indent a")[1]['href']
-        except IndexError:
-            source_press = None
-        finally:
-            break
+    try:
+        source_press = soup.select("div.indent a")[1]['href']
+    except IndexError:
+        source_press = None
 
-    while True:
-        try:
-            title = soup.find('h1', {'class': 'entry-title'}).text
-        except IndexError:
-            title = None
-        finally:
-            break
+    try:
+        title = soup.find('h1', {'class': 'entry-title'}).text
+    except IndexError:
+        title = None
 
-    while True:
-        try:
-            shortlink_url = soup.find('link', {'rel': 'shortlink'})['href']
-        except KeyError:
-            pass
-        finally:
-            break
+    try:
+        shortlink_url = soup.find('link', {'rel': 'shortlink'})['href']
+    except KeyError:
+        pass
 
 
     #--------------------------post_time-------------------------
@@ -75,21 +66,18 @@ def parser_page(url):
     #-------------------------------------------------------------
 
     #-------------------------post_time method 1 below----------------------------
-    while True:
-        try:
-            post_time_text = soup.select("header.entry-header table td span.body")[1].text
-            post_time_text = post_time_text.encode('utf-8')
-            post_time_naive = datetime.datetime.strptime(post_time_text, '%Y 年 %m 月 %d 日 %H:%M ')
-            Taiwan_tz = timezone('Asia/Taipei')
-            post_time_in_TW = Taiwan_tz.localize(post_time_naive)
-            UTC_tz = timezone('UTC')
-            post_time_in_UTC = post_time_in_TW.astimezone(UTC_tz)
+    try:
+        post_time_text = soup.select("header.entry-header table td span.body")[1].text
+        post_time_text = post_time_text.encode('utf-8')
+        post_time_naive = datetime.datetime.strptime(post_time_text, '%Y 年 %m 月 %d 日 %H:%M ')
+        Taiwan_tz = timezone('Asia/Taipei')
+        post_time_in_TW = Taiwan_tz.localize(post_time_naive)
+        UTC_tz = timezone('UTC')
+        post_time_in_UTC = post_time_in_TW.astimezone(UTC_tz)
 
-            post_time = post_time_in_UTC
-        except IndexError:
-            post_time = None
-        finally:
-            break
+        post_time = post_time_in_UTC
+    except IndexError:
+        post_time = None
 
     #-------------------------post_time method 2 below-----------------------------
     # for i in soup.findAll('span', {'class': 'head'}):
@@ -100,13 +88,10 @@ def parser_page(url):
     #------------------journalist------------------------
     #the journalist of each news
     #----------------------------------------------------
-    while True:
-        try:
-            journalist = soup.find('a', {'rel': 'author'}).text
-        except AttributeError:
-            pass
-        finally:
-            break
+    try:
+        journalist = soup.find('a', {'rel': 'author'}).text
+    except AttributeError:
+        pass
 
 
     #-------------------content--------------------------
@@ -143,18 +128,15 @@ def parser_page(url):
     #-----------------------category-----------------------
     #the category of news on the website
     #------------------------------------------------------
-    while True:
-        try:
-            category = []
-            times_for_category = 0
-            for i in soup.select("header.entry-header table td span.body")[2]:
-                if times_for_category %2 == 1:
-                    category.append(i.text)
-                times_for_category +=1
-        except IndexError:
-            pass
-        finally:
-            break
+    try:
+        category = []
+        times_for_category = 0
+        for i in soup.select("header.entry-header table td span.body")[2]:
+            if times_for_category %2 == 1:
+                category.append(i.text)
+            times_for_category +=1
+    except IndexError:
+        pass
 
 
 
@@ -180,49 +162,43 @@ def parser_page(url):
     total_comments = []
 
     def make_fb_comments_dictionary(fb_comments_json):
-        while True:
-            try:
-                for comment in fb_comments_json['data']:
-                    comment_time_in_UTC = datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000')
-                    UTC_tz = timezone('UTC')
-                    comment_time_in_UTC = UTC_tz.localize(comment_time_in_UTC)
+        try:
+            for comment in fb_comments_json['data']:
+                comment_time_in_UTC = datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000')
+                UTC_tz = timezone('UTC')
+                comment_time_in_UTC = UTC_tz.localize(comment_time_in_UTC)
 
-                    Taiwan_tz = timezone('Asia/Taipei')
-                    comment_time_in_TW = comment_time_in_UTC.astimezone(Taiwan_tz)
+                Taiwan_tz = timezone('Asia/Taipei')
+                comment_time_in_TW = comment_time_in_UTC.astimezone(Taiwan_tz)
 
-                    comment_time = comment_time_in_UTC
+                comment_time = comment_time_in_UTC
 
-                    while True:
-                        try:
-                            if comment['parent']['id']:
-                                for each_comment in total_comments:
-                                    if each_comment['id'] == comment['parent']['id']:
-                                        each_sub_comment = {
-                                            'id': comment['id'],
-                                            'actor': comment['from']['name'],
-                                            'like': int(comment['like_count']),
-                                            'content': comment['message'],
-                                            'post_time': comment_time,
-                                            'source_type': 'facebook',
-                                        }
-                                        each_comment['sub_comments'].append(each_sub_comment)
-                        except KeyError:
-                            each_comment = {
-                                'id': comment['id'],
-                                'actor': comment['from']['name'],
-                                'like': int(comment['like_count']),
-                                'content': comment['message'],
-                                'post_time': comment_time,
-                                'source_type': 'facebook',
-                                'sub_comments': [],
-                            }
-                            total_comments.append(each_comment)
-                        finally:
-                            break
-            except KeyError:
-                pass
-            finally:
-                break
+                try:
+                    if comment['parent']['id']:
+                        for each_comment in total_comments:
+                            if each_comment['id'] == comment['parent']['id']:
+                                each_sub_comment = {
+                                    'id': comment['id'],
+                                    'actor': comment['from']['name'],
+                                    'like': int(comment['like_count']),
+                                    'content': comment['message'],
+                                    'post_time': comment_time,
+                                    'source_type': 'facebook',
+                                }
+                                each_comment['sub_comments'].append(each_sub_comment)
+                except KeyError:
+                    each_comment = {
+                        'id': comment['id'],
+                        'actor': comment['from']['name'],
+                        'like': int(comment['like_count']),
+                        'content': comment['message'],
+                        'post_time': comment_time,
+                        'source_type': 'facebook',
+                        'sub_comments': [],
+                    }
+                    total_comments.append(each_comment)
+        except KeyError:
+            pass
     make_fb_comments_dictionary(fb_comments_json)
 
 
@@ -336,8 +312,8 @@ def each_newsData_of_a_category_from_startPage_to_endPage(the_url_of_category_to
 #
 #store the data in to pages_data
 #---------------------------------------------------------------------------------------------
-# pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 35, 36)
-# print(pages_data)
+pages_data = each_newsData_of_a_category_from_startPage_to_endPage('http://technews.tw/category/tablet/', 35, 36)
+print(pages_data)
 
 
 #-----------------------categories_urls_of_technews--------------------
