@@ -21,3 +21,7 @@ BeautifulSoup4
 # library for testing, replace parts of your system under test with mock objects and make assertions about how they have been used
 # https://docs.python.org/3/library/unittest.mock.html
 mock
+
+# library for timezone convert and insert
+# https://pypi.python.org/pypi/pytz/
+pytz
