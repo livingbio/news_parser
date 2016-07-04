@@ -13,7 +13,7 @@
 3. 三立新聞網      http://www.setn.com/News.aspx?NewsID=118251  #AaronLai_intern
 4. 數位時代        http://www.bnext.com.tw/article/view/id/37335  #tsaiJN
 5. 華視新聞     http://news.cts.com.tw/ #sharon
-6. tvbs         http://news.tvbs.com.tw/
+6. tvbs         http://news.tvbs.com.tw/ #chuyun
 
 需要欄位
 ---
