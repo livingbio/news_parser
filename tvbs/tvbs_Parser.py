@@ -230,3 +230,4 @@ def get_category_urls(category_url):
 # parser_page("http://news.tvbs.com.tw/life/662570")
 # get_category_urls("http://news.tvbs.com.tw/health")
 # get_category_urls("http://news.tvbs.com.tw/travel")
+          
