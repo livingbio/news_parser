@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 from bs4 import BeautifulSoup
 import requests
 import datetime
@@ -32,7 +33,9 @@ def parser_page(url):
         }
     
     # ----- get text from url page -----
-    sourse_code = requests.get(url).text
+    sourse_code_request = requests.get(url)
+    sourse_code_request.encoding = "utf-8"
+    sourse_code = sourse_code_request.text
     soup = BeautifulSoup(sourse_code, "html.parser")
 #     print(sourse_code)
     
@@ -45,45 +48,46 @@ def parser_page(url):
     
     # ------------------ get title ------------------
     try:
-        title = soup.select(".reandr_title h2")[0].getText()
+        title = soup.select(".titel26")[0].getText().strip()
     except IndexError:
         title = None
 #     print(title)  
     
     # ---------------- get journalist ----------------
     try:
-        journalist = soup.select(".fontSize + p > a")[0].getText()
+        journalist = soup.select(".under15")[1].getText().split()[1]
     except IndexError :
         journalist = None
 #     print(journalist)
-    
+     
     # ----------------- get post_time -----------------
     try:
-        post_time_naive = soup.select(".fontSize + p")[0].getText().split("導")[-1].strip()[0:16]
+        post_time_naive = soup.select(".under15")[0].getText()
         post_time = datetime.datetime.strptime(post_time_naive, '%Y/%m/%d %H:%M')
     except (IndexError, ValueError) :
         post_time = None
 #     print(post_time)
-    
+     
     # ------------------ get content ------------------
-    content_naive = soup.select(".text_Message > p")
+    content_naive = soup.select(".newsdetail-content > p")
     content = ""
     for c in content_naive:
         content += c.getText()
 #     print(content)    
-        
+         
     # ------------------ get keyword ------------------
-    keywords = soup.select(".tag_box > h3 > a")
-    keyword_list = []
-    for k in keywords:
-        keyword_list.append(k.getText())
-#         print(k.getText())
-
+    keywords = soup.select("[name=news_keywords]")[0]["content"].split(",")
+#     print(keywords)
+    
     # ----------------- get category -----------------
-    category = soup.select(".current")[0].getText()
+    category_dict = {"local":"社會", "world":"國際", "politics":"政經", "life":"民生消費", 
+                     "china":"兩岸", "entertainment":"影劇", "sports":"體育", "warm":"暖聞",
+                     "fun":"奇趣", "health":"健康","travel":"Fun飯","supercars":"玩車",
+                     "tech":"科技","hipster":"文青"}
+    category = category_dict[url.split("/")[3]]
 #     print(category)
-    
-    
+#     
+#     
     # ----- get text from facebook request page (share/like) -----
     fb_sourse_code = requests.get("https://api.facebook.com/method/links.getStats?urls=" + url).text
     fb_soup = BeautifulSoup(fb_sourse_code, "html.parser")
@@ -99,32 +103,33 @@ def parser_page(url):
     except KeyError:
         fb_share = None
 #     print(fb_share) 
-  
+   
     # ----- get text from facebook request page (comment) -----
-    
+     
     # -----------------  get fb comment -----------------
     # this method will return comment dict in one page  
     # ---------------------------------------------------
-    total_comments = []
-    def make_fb_comments_dictionary(fb_page_dict):
-        page_comments = []
+    def make_fb_comments_dictionary(url, total_comments):
+        fb_comment_sourse_code = requests.get(url).text
+        fb_comment_sourse_code_dict = json.loads(fb_comment_sourse_code)
         try:  
-            for comment in fb_page_dict["data"]:
+            for comment in fb_comment_sourse_code_dict["data"]:
                 try:
-                    if comment["parent"]["id"]:
-                         for each_comment in total_comments:
-                                if each_comment['id'] == comment['parent']['id']:
-                                    add_sub_comment = {
-                                        'id': comment['id'],
-                                        'actor': comment['from']['name'],
-                                        'like': int(comment['like_count']),
-                                        'content': comment['message'],
-                                        'post_time': datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000'),
-                                        'source_type': 'facebook',
-                                    }
-                                    each_comment['sub_comments'].append(add_sub_comment)
-                except KeyError:
-                    add_comment = {
+                    if "id" in comment.get("parent",{}).keys():
+                        for each_comment in total_comments:
+                            if each_comment['id'] == comment['parent']['id']:
+                                 add_sub_comment = {
+                                    'id': comment['id'],
+                                    'actor': comment['from']['name'],
+                                    'like': int(comment['like_count']),
+                                    'content': comment['message'],
+                                   'post_time': datetime.datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000'),
+                                    'source_type': 'facebook',
+                                }
+                                 each_comment['sub_comments'].append(add_sub_comment)
+#                                  print(add_sub_comment)
+                    else:
+                        add_comment = {
                                'id': comment['id'],
                                'actor': comment['from']['name'],
                                'like': int(comment['like_count']),
@@ -133,32 +138,23 @@ def parser_page(url):
                                'source_type': 'Facebook',
                                'sub_comments': [],
                                }    
-                    page_comments.append(add_comment)
+                        total_comments.append(add_comment)
+                         
+                        if "next" in fb_comment_sourse_code_dict.get("paging",{}):
+                            make_fb_comments_dictionary("http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=" + url + "&after=" + fb_comment_sourse_code_dict["paging"]["cursors"]["after"],total_comments)
+                 
+                except KeyError:
+                    pass
         except KeyError:
             pass
-#         print(len(page_comments))
-        return page_comments
-    
-    # ----------------------- fb_comment page one ------------------------
-    fb_comment_sourse_code = requests.get("http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=" + url).text
-    fb_comment_sourse_code_dict = json.loads(fb_comment_sourse_code)
-    
-    total_comments.extend(make_fb_comments_dictionary(fb_comment_sourse_code_dict))
-    
-    # ----------------------- fb_comment other page ------------------------
-    try:
-        while fb_comment_sourse_code_dict["paging"]["next"]:
-            fb_comment_sourse_code = requests.get("http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=" + url + "&after=" + fb_comment_sourse_code_dict["paging"]["cursors"]["after"]).text
-            fb_comment_sourse_code_dict = json.loads(fb_comment_sourse_code)
-            
-            total_comments.extend(make_fb_comments_dictionary(fb_comment_sourse_code_dict))
-    except KeyError:
-        pass
-    
+ 
+    # ----------------------- fb_comment ------------------------
+    total_comments = []
+    make_fb_comments_dictionary("http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=" + url, total_comments)
+     
 #     print(len(total_comments))
-    
-    
-    
+#     print(total_comments)     
+     
     # ----------------------- result ------------------------
     # get all the data above in a dictionary called result
     # return with {'key1': 'value1', 'key2': 'value2',...}
@@ -168,12 +164,12 @@ def parser_page(url):
     result['post_time'] = post_time
     result['journalist'] = journalist
     result['content'] = content
-    result['keyword'] = keyword_list
+    result['keyword'] = keywords
     result['fb_like'] = fb_like
     result['fb_share'] = fb_share
     result['category'] = category
     result['comment'] = total_comments
-    
+     
 #     print(result)
     return result
     
@@ -199,35 +195,38 @@ def get_category_urls(category_url):
 
     # --------- get category name ---------
     try:
-        category_name = category_url.split('/')[-2]
+        category_name = category_url.split('/')[-1]
     except IndexError:
         pass
 #     print(category_name)
 
-
-    # -------- get first page list --------
-    fpage_source_code = requests.get("http://news.tvbs.com.tw/opencms/system/modules/com.thesys.project.tvbs/pages/news/ajax-news-time-list.jsp?dataFolder=%2Fnews%2F" + category_name + "%2F").text
-    fpage_soup = BeautifulSoup(fpage_source_code, 'html.parser')
-    urls = fpage_soup.select("li > a")
-    for url in urls:
-        detail_urls.append(url["href"])
-    
-    pageNum = int(fpage_soup.select(".last")[0]["ref"])
-#     print(pageNum)
-
-
-    # -------- get other page list --------
-    for i in range(2, pageNum + 1):
-        opage_source_code = requests.get("http://news.tvbs.com.tw/opencms/system/modules/com.thesys.project.tvbs/pages/news/ajax-news-time-list.jsp?pageCount=" + str(pageNum) + "&dataFolder=%2Fnews%2F" + category_name + "%2F&pageIndex=" + str(i)).text
-        opage_soup = BeautifulSoup(opage_source_code, 'html.parser')
-        urls = opage_soup.select("li > a")
-        for url in urls:
-            detail_urls.append(url["href"])
-
-#     print(len(detail_urls))
+    # ---------- get No.1~3 news ----------
+    no1_news = soup.select(".information-txt1 > a")[0]["href"]
+    detail_urls.append(category_url + "/" + no1_news.split("/")[-1])
+    no2_news = soup.select(".information-txt1 > a")[1]["href"]
+    detail_urls.append(category_url + "/" + no2_news.split("/")[-1])
+    no3_news = soup.select(".information-txt1 > a")[2]["href"]
+    detail_urls.append(category_url + "/" + no3_news.split("/")[-1])
+#     print(no1_news, no2_news, no3_news)
+ 
+    #  ---------- get other news ----------
+    page = 1
+    try:
+        while True:
+            get_news_source_code = requests.get("http://news.tvbs.com.tw/news/get_cate_news_json/" + no1_news.split("/")[-1] + "/" + category_name + "/" + str(page)).text
+            get_news_dict = json.loads(get_news_source_code[3:])
+            if len(get_news_dict) == 0:
+                break
+            for i in get_news_dict:
+                detail_urls.append(category_url + "/" + i["news_id"])
+            page += 1             
+    except IndexError:
+         pass
 #     print(detail_urls)
-    
+#     print(len(detail_urls))
     return detail_urls
 
-# parser_page("http://news.tvbs.com.tw/pets/news-662016/")
-# get_category_urls("http://news.tvbs.com.tw/pets/")
+# parser_page("http://news.tvbs.com.tw/politics/662521")
+# parser_page("http://news.tvbs.com.tw/life/662570")
+# get_category_urls("http://news.tvbs.com.tw/health")
+# get_category_urls("http://news.tvbs.com.tw/travel")
