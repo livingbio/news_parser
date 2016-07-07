@@ -2,11 +2,15 @@ import requests
 import json
 from datetime import datetime
 from bs4 import BeautifulSoup
+import os.path
+
+############################parser_page(url)############################
 
 def parser_page(url):
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'html.parser')
 
+    #for return
     result = {
         "url": None,
         "source_press": None,
@@ -22,8 +26,8 @@ def parser_page(url):
         "comment": None,
     }
 
-
-    url = url
+    str_url = url
+    url = unicode(str_url, "utf-8") #turn into unicode
 
     try:
         source_press = soup.select('.datenews > a')[0]['href']
@@ -37,27 +41,28 @@ def parser_page(url):
         title = None
 
     try:
-        tj_with_blank = soup.find('div', {'class': 'timebar'}).text
-        time_and_journalist = ' '.join(tj_with_blank.split())
-        
-        time = time_and_journalist[:16]
-        post_time = datetime.strptime(time, '%Y/%m/%d %H:%M')
-        slash = time_and_journalist.index("/")
-        journalist = time_and_journalist[17:]
+        time_with_blank = soup.find('div', {'class': 'timebar'}).text
+        time_no_blank = ' '.join(time_with_blank.split())              #delete blanks
+        time = time_no_blank[:16]                                      #get time
+        post_time = datetime.strptime(time, '%Y/%m/%d %H:%M')          #turn into type: datetime.datetime
     except IndexError:
         post_time = None
+
+    #need more processing, contains things other than journalist's name
+    try:
+        journalist_with_blank = soup.find('div', {'class': 'timebar'}).text
+        journalist_no_blank = ' '.join(journalist_with_blank.split())
+        journalist = journalist_no_blank[17:]
+    except IndexError:
         journalist = None
 
-    try:
-        content = ""
-        con = soup.select('div > p')
-        for i in range(1, len(con)):
-            content += con[i].text
-    except IndexError:
-        content = None
+    #content is necessary
+    content = soup.select('.newscontents > p')[0].text
 
-    #"compare": string
-
+    #
+    #pass getting "compare", since there's no "compare"
+    #
+    
     try:
         keyword = []
         key = soup.select('li > .newslistbar')
@@ -66,11 +71,12 @@ def parser_page(url):
     except IndexError:
         keyword = None
 
-    def fb_count_page(fb_count_url):
-        count_page = requests.get('https://api.facebook.com/method/links.getStats?urls=' + url)
-        count_soup = BeautifulSoup(count_page.text, 'html.parser')
-        fb_like = int(count_soup.find('total_count').string)
-        fb_share = int(count_soup.find('share_count').string)
+
+    def fb_count_page(fb_url):
+        count_page = requests.get('https://api.facebook.com/method/links.getStats?urls=' + fb_url)
+        soup = BeautifulSoup(count_page.text, 'html.parser')
+        fb_like = int(soup.find('total_count').string)
+        fb_share = int(soup.find('share_count').string)
         return (fb_like, fb_share)
 
     fb_like, fb_share = fb_count_page(url)
@@ -81,10 +87,8 @@ def parser_page(url):
         category.append(cat[2].text)
     except IndexError:
         pass
-    
-    #comment
-    total_comments = []
 
+    #-------------------------------------------comments----------------------------------------------
     def fb_comment_page(fb_comment_url):
         comment_page = requests.get(fb_comment_url)
         comment_soup = BeautifulSoup(comment_page.text, 'html.parser')
@@ -93,58 +97,72 @@ def parser_page(url):
         comment_json_page = json.loads(comment_string)
         return comment_json_page
 
-    after_url = ''
-    def create_comment_dictionary(fb_comment_json):
+    def get_fb_comments(fb_comment_json):
+        
+        #for return
+        comment_result = {
+            "page_comments": None,
+            "after": None,
+        }
+        page_comments = []
+        after = ''
+
         try:
             for comment in fb_comment_json['data']:
-                try:
-                    if comment['parent']['id']:
-                        for each_comment in total_comments:
-                            if each_comment['id'] == comment['parent']['id']:
-                                each_sub_comment = {
-                                    'actor': comment['from']['name'],
-                                    'like': int(comment['like_count']),
-                                    'dislike': None,
-                                    'message': comment['message'],
-                                    'post_time': datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000'),
-                                    'source_type': 'facebook',
-                                }
-                                each_comment['sub_comments'].append(each_sub_comment)
-
-                except KeyError:
+                if 'parent' in comment.keys():
+                    for each_comment in page_comments:
+                        if each_comment['id'] == comment['parent']['id']:
+                            each_sub_comment = {
+                                'actor': comment['from']['name'],
+                                'like': int(comment['like_count']),
+                                'dislike': None,  #can't find 'dislike'
+                                'message': comment['message'],
+                                'post_time': datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000'),
+                                'source_type': 'facebook',
+                            }
+                            each_comment['sub_comments'].append(each_sub_comment)
+                    
+                else: #a comment without parent is not a sub_comment
                     each_comment = {
                         'id': comment['id'],
                         'actor': comment['from']['name'],
                         'like': int(comment['like_count']),
-                        'dislike': None,
+                        'dislike': None,  #can't find 'dislike'
                         'message': comment['message'],
                         'post_time': datetime.strptime(comment['created_time'], '%Y-%m-%dT%H:%M:%S+0000'),
                         'source_type': 'facebook',
                         'sub_comments': [],
                     }
-                    total_comments.append(each_comment)
-        
-            if "next" in fb_comment_json['paging']:
+                    page_comments.append(each_comment)
+
+            #get 'after' 
+            if "next" in fb_comment_json['paging'].keys():
                 after = fb_comment_json['paging']['cursors']['after']
-                global after_url
-                after_url = 'http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=' + url + "&after=" + after
-            else:    
-                global after_url
+            else:
                 after_url = ''
 
-        except KeyError: #no comment
+        except KeyError: #there's no comments
             pass
-        return total_comments
 
-    #for page 1
-    comment_url = 'http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id=' + url
-    fb_comment_json = fb_comment_page(comment_url)
-    create_comment_dictionary(fb_comment_json)
+        comment_result['page_comments'] = page_comments
+        comment_result['after'] = after
+        return (comment_result)
 
-    #for the rest pages
-    while after_url != '':
-        fb_comment_json_after = fb_comment_page(after_url)
-        create_comment_dictionary(fb_comment_json_after)
+    #start to get comments
+    total_comments = []
+    partial_url = 'http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id='
+    fb_comment_url = partial_url + url                             #url for the first comment page
+    fb_comment_json = fb_comment_page(fb_comment_url)              #get the first comment page
+    comments_and_after = get_fb_comments(fb_comment_json)          #get comments and after
+    
+    while comments_and_after['after'] != '':                                    #page with next
+        total_comments.extend(comments_and_after['page_comments'])              #first update total_comments
+        after_url = partial_url + url + "&after=" + comments_and_after['after']
+        fb_comment_json = fb_comment_page(after_url)
+        comments_and_after = get_fb_comments(fb_comment_json)
+    else:
+        total_comments.extend(comments_and_after['page_comments'])
+    #----------------------------------------------end comment-----------------------------------------
 
     result['url'] = url
     result['source_press'] = source_press
@@ -160,33 +178,38 @@ def parser_page(url):
     result['comment'] = total_comments
     return(result)
 
-  
+#parser_page("http://news.cts.com.tw/cts/society/201607/201607071771440.html#.V34Qk7h942w")
+
+
+######################get_category_urls(category_url)#######################
+
 def get_category_urls(category_url):
     res = requests.get(category_url)
     soup = BeautifulSoup(res.text, 'html.parser')
 
     detail_urls = [] #for return
 
-    #the first page
-    news_type1 = soup.select('.news_right > a')
+    #for the first page
+    news_type1 = soup.select('.news_right > a') #news without media
     for i in news_type1:
         news = i['href']
         detail_urls.append(news)
-    news_type2 = soup.select('.block100 > a')
+    news_type2 = soup.select('.block100 > a')   #news with media
     for i in news_type2:
         news = i['href']
         detail_urls.append(news)
 
     #get how many pages
-    pages = soup.select('.btn')
-    num = pages[len(pages) - 1]['href'][:-5]
-    index = num.index("index") + 5
-    num = int(num[index:])
-
-    #the rest pages
-    for i in range(2, num + 1):
-        new_url = category_url[:-5] + str(i) + ".html"
-        res = requests.get(category_url)
+    
+    last_page = soup.select('.btn')
+    last_page = last_page[len(last_page) - 1]['href'][:-5] #delete ".html"
+    index = last_page.index("index") + 5                   #get the index of the page index
+    pages = int(last_page[index:])
+    
+    #for the rest pages
+    for i in range(2, pages + 1):
+        page_url = category_url[:-5] + str(i) + ".html"    #add page index and ".html"
+        res = requests.get(page_url)
         soup = BeautifulSoup(res.text, 'html.parser')
 
         news_type1 = soup.select('.news_right > a')
