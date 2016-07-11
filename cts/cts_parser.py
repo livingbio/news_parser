@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 def parser_page(url):
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
-    
+
     #for return
     result = {
         "url": None,
@@ -61,7 +61,6 @@ def parser_page(url):
     content_list = soup.select('.newscontents > p')
     for i in range(len(content_list)):
         content += content_list[i].text
-    #print "content: ", content
 
     #
     #pass getting "compare", since there's no "compare"
@@ -72,7 +71,6 @@ def parser_page(url):
         key = soup.select('li > .newslistbar')
         for i in range(len(key)):
             keyword.append(key[i].text)
-            #print key[i].text
     except IndexError:
         keyword = None
 
@@ -80,7 +78,7 @@ def parser_page(url):
     def fb_count_page(fb_url):
         count_page = requests.get('https://api.facebook.com/method/links.getStats?urls=' + fb_url)
         soup = BeautifulSoup(count_page.text, 'html.parser')
-        fb_like = int(soup.find('total_count').string)
+        fb_like = int(soup.find('like_count').string)
         fb_share = int(soup.find('share_count').string)
         return (fb_like, fb_share)
 
@@ -90,7 +88,6 @@ def parser_page(url):
         category = []
         cat = soup.select('.active')
         category.append(cat[2].text)
-        #print cat[2].text
     except IndexError:
         pass
 
@@ -216,9 +213,10 @@ def get_category_urls(category_url):
     
     #for the rest pages
     for i in range(2, pages + 1):
-        page_url = category_url[:-5] + str(i) + ".html" #add page index and ".html"
-        res = requests.get(page_url)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        length = len(".html#cat_list")
+        page_url = category_url[:-length] + str(i) + ".html" #add page index and ".html"
+        resp = requests.get(page_url)
+        soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
 
         news_type1 = soup.select('.news_right > a')
         for i in news_type1:
@@ -232,6 +230,6 @@ def get_category_urls(category_url):
     return detail_urls
 
 """
-detail_urls = get_category_urls("http://news.cts.com.tw/politics/index.html#cat_list")
+get_category_urls("http://news.cts.com.tw/weather/index.html#cat_list")
 print detail_urls
 """
