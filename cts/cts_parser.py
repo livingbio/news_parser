@@ -1,15 +1,15 @@
+# -*- coding: utf-8 -*-
 import requests
 import json
 from datetime import datetime
 from bs4 import BeautifulSoup
-import os.path
 
 ############################parser_page(url)############################
 
 def parser_page(url):
-    res = requests.get(url)
-    soup = BeautifulSoup(res.text, 'html.parser')
-
+    resp = requests.get(url)
+    soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
+    
     #for return
     result = {
         "url": None,
@@ -57,7 +57,11 @@ def parser_page(url):
         journalist = None
 
     #content is necessary
-    content = soup.select('.newscontents > p')[0].text
+    content = ""
+    content_list = soup.select('.newscontents > p')
+    for i in range(len(content_list)):
+        content += content_list[i].text
+    #print "content: ", content
 
     #
     #pass getting "compare", since there's no "compare"
@@ -68,6 +72,7 @@ def parser_page(url):
         key = soup.select('li > .newslistbar')
         for i in range(len(key)):
             keyword.append(key[i].text)
+            #print key[i].text
     except IndexError:
         keyword = None
 
@@ -85,6 +90,7 @@ def parser_page(url):
         category = []
         cat = soup.select('.active')
         category.append(cat[2].text)
+        #print cat[2].text
     except IndexError:
         pass
 
@@ -162,7 +168,7 @@ def parser_page(url):
         comments_and_after = get_fb_comments(fb_comment_json)
     else:
         total_comments.extend(comments_and_after['page_comments'])
-    #----------------------------------------------end comment-----------------------------------------
+    #----------------------------------------------end comments-----------------------------------------
 
     result['url'] = url
     result['source_press'] = source_press
@@ -178,14 +184,17 @@ def parser_page(url):
     result['comment'] = total_comments
     return(result)
 
-#parser_page("http://news.cts.com.tw/cts/society/201607/201607071771440.html#.V34Qk7h942w")
+"""
+parser_result =  parser_page("http://news.cts.com.tw/cts/general/201605/201605281756574.html#.V4EdH7h942w")
+for key in parser_result.keys():
+    print key, ": ", parser_result[key]
+"""
 
-
-######################get_category_urls(category_url)#######################
+#############################get_category_urls(category_url)###########################
 
 def get_category_urls(category_url):
-    res = requests.get(category_url)
-    soup = BeautifulSoup(res.text, 'html.parser')
+    resp = requests.get(category_url)
+    soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
 
     detail_urls = [] #for return
 
@@ -200,15 +209,14 @@ def get_category_urls(category_url):
         detail_urls.append(news)
 
     #get how many pages
-    
-    last_page = soup.select('.btn')
-    last_page = last_page[len(last_page) - 1]['href'][:-5] #delete ".html"
-    index = last_page.index("index") + 5                   #get the index of the page index
+    pages = soup.select('.btn')
+    last_page = pages[len(pages) - 1]['href'][:-5] #delete ".html"
+    index = last_page.index("index") + 5           #get the index of the page index
     pages = int(last_page[index:])
     
     #for the rest pages
     for i in range(2, pages + 1):
-        page_url = category_url[:-5] + str(i) + ".html"    #add page index and ".html"
+        page_url = category_url[:-5] + str(i) + ".html" #add page index and ".html"
         res = requests.get(page_url)
         soup = BeautifulSoup(res.text, 'html.parser')
 
@@ -222,3 +230,8 @@ def get_category_urls(category_url):
             detail_urls.append(news)
         
     return detail_urls
+
+"""
+detail_urls = get_category_urls("http://news.cts.com.tw/politics/index.html#cat_list")
+print detail_urls
+"""
