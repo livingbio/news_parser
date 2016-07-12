@@ -5,7 +5,6 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 ############################parser_page(url)############################
-
 def parser_page(url):
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
@@ -101,7 +100,6 @@ def parser_page(url):
         return comment_json_page
 
     def get_fb_comments(fb_comment_json):
-        
         #for return
         comment_result = {
             "page_comments": None,
@@ -141,6 +139,7 @@ def parser_page(url):
             #get 'after' 
             if "next" in fb_comment_json['paging'].keys():
                 after = fb_comment_json['paging']['cursors']['after']
+                #print "after: ", after
             else:
                 after_url = ''
 
@@ -154,17 +153,21 @@ def parser_page(url):
     #start to get comments
     total_comments = []
     partial_url = 'http://graph.facebook.com/comments?filter=stream&fields=from,like_count,message,created_time,id,parent.fields(id)&id='
-    fb_comment_url = partial_url + url                             #url for the first comment page
+    end_url_index = url.index("#")
+    pure_url = url[:end_url_index]
+    fb_comment_url = partial_url + pure_url                        #url for the first comment page
     fb_comment_json = fb_comment_page(fb_comment_url)              #get the first comment page
+    #print fb_comment_json
     comments_and_after = get_fb_comments(fb_comment_json)          #get comments and after
     
     while comments_and_after['after'] != '':                                    #page with next
         total_comments.extend(comments_and_after['page_comments'])              #first update total_comments
-        after_url = partial_url + url + "&after=" + comments_and_after['after']
+        after_url = partial_url + pure_url + "&after=" + comments_and_after['after']
         fb_comment_json = fb_comment_page(after_url)
         comments_and_after = get_fb_comments(fb_comment_json)
     else:
         total_comments.extend(comments_and_after['page_comments'])
+    #print "length of total comments: ", len(total_comments)
     #----------------------------------------------end comments-----------------------------------------
 
     result['url'] = url
@@ -182,13 +185,14 @@ def parser_page(url):
     return(result)
 
 """
-parser_result =  parser_page("http://news.cts.com.tw/cts/general/201605/201605281756574.html#.V4EdH7h942w")
+parser_page("http://news.cts.com.tw/cts/general/201605/201605281756574.html#.V4EdH7h942w")
 for key in parser_result.keys():
-    print key, ": ", parser_result[key]
+    if key == "comment":
+        print key, ": ", parser_result[key]
 """
 
-#############################get_category_urls(category_url)###########################
 
+#############################get_category_urls(category_url)###########################
 def get_category_urls(category_url):
     resp = requests.get(category_url)
     soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
@@ -230,6 +234,6 @@ def get_category_urls(category_url):
     return detail_urls
 
 """
-get_category_urls("http://news.cts.com.tw/weather/index.html#cat_list")
+detail_urls = get_category_urls("http://news.cts.com.tw/society/index.html#cat_list")
 print detail_urls
 """
