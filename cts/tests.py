@@ -68,15 +68,9 @@ def data_for_parser_page(url):
     return target1
 
 def urls_for_parser_page(number):
-    targetfile = open(path + '/tests/parser_page/test_urls', 'r')
-    content = targetfile.read()
-    targetfile.close()
-
-    start_index = content.index(str(number)) + len(str(number)) + 1
-    target_content = content[start_index:]
-    end_index = target_content.index(',')
-    return_url = target_content[:end_index]
-    print('You are testing url ' + str(number) + ' in test_urls for testing parser_page')
+    test_urls = ["http://news.cts.com.tw/cts/general/201605/201605281756574.html#.V4EdH7h942w", "http://news.cts.com.tw/cts/society/201607/201607061771159.html#.V4HzD7h942w", "http://news.cts.com.tw/nownews/money/201607/201607061770895.html#.V4EdBLh942w"]
+    return_url = test_urls[number]
+    print('You are testing url ' + str(number + 1) + ' in test_urls for testing parser_page')
     return return_url
 
 
@@ -134,18 +128,13 @@ def data_for_category_urls(url):
     return detail_urls
 
 def urls_for_category_urls(number):
-    targetfile = open(path + '/tests/get_category_urls/test_urls', 'r')
-    content = targetfile.read()
-    targetfile.close()
-
-    start_index = content.index(str(number)) + len(str(number)) + 1
-    target_content = content[start_index:]
-    end_index = target_content.index(',')
-    return_url = target_content[:end_index]
-    print('You are testing url ' + str(number) + ' in test_urls for testing get_category_urls')
+    test_urls = ["http://news.cts.com.tw/weather/index.html#cat_list", "http://news.cts.com.tw/society/index.html#cat_list", "http://news.cts.com.tw/politics/index.html#cat_list"]
+    return_url = test_urls[number]
+    print('You are testing url ' + str(number + 1) + ' in test_urls for testing get_category_urls')
     return return_url
 
 
+##########################################compare two dictionaries#######################################
 def compare_dict(dict1, dict2):
     if dict1 == None or dict2 == None:
         return False
@@ -163,10 +152,9 @@ def compare_dict(dict1, dict2):
 
 class TestCtsnews(unittest.TestCase):
     def test_get_parser_page(self):
-        #with patch.object(requests, 'get', side_effect = get_fake_request_parser_page) as requests.get:
         patch_request_get_parser_page()
         for i in range(1):
-            test_url = urls_for_parser_page(i + 1)
+            test_url = urls_for_parser_page(i)
             result = cts_parser.parser_page(test_url)
             target = data_for_parser_page(test_url)
                 
@@ -177,12 +165,12 @@ class TestCtsnews(unittest.TestCase):
         unpatch_request_get_parser_page()
 
     def test_get_category_urls(self):
-        #with patch.object(requests, 'get', side_effect = get_fake_request_get_category_urls) as requests.get:
         patch_request_get_category_urls()
         for i in range(1):
-            test_url = urls_for_category_urls(i + 1)
+            test_url = urls_for_category_urls(i)
             result = cts_parser.get_category_urls(test_url)
             target = data_for_category_urls(test_url)
+            
             equal = True
             for i in range(len(result)):
                 if result[i] != target[i]:
@@ -191,8 +179,8 @@ class TestCtsnews(unittest.TestCase):
                     break
             else:
                 print "Get_category_urls: Succeed"
-            #self.assertEqual(target, result)
         unpatch_request_get_category_urls()
+
 
 if __name__ == '__main__':
     unittest.main()
