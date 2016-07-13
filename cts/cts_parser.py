@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-############################parser_page(url)############################
+####################################### Parser_page(url) ###########################################
 def parser_page(url):
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
@@ -167,7 +167,6 @@ def parser_page(url):
         comments_and_after = get_fb_comments(fb_comment_json)
     else:
         total_comments.extend(comments_and_after['page_comments'])
-    #print "length of total comments: ", len(total_comments)
     #----------------------------------------------end comments-----------------------------------------
 
     result['url'] = url
@@ -192,7 +191,7 @@ for key in parser_result.keys():
 """
 
 
-#############################get_category_urls(category_url)###########################
+###################################### Get_category_urls(category_url) ################################
 def get_category_urls(category_url):
     resp = requests.get(category_url)
     soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
@@ -214,7 +213,7 @@ def get_category_urls(category_url):
     last_page = pages[len(pages) - 1]['href'][:-5] #delete ".html"
     index = last_page.index("index") + 5           #get the index of the page index
     pages = int(last_page[index:])
-    
+
     #for the rest pages
     for i in range(2, pages + 1):
         length = len(".html#cat_list")
