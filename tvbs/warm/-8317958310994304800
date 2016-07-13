@@ -1,0 +1,2464 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>æèâTVBSæ°èç¶²</title>
+
+<!-- æ°èç¶²åé¡æ°è -->
+<meta property="article:author" content="https://www.facebook.com/tvbsfb" />
+<meta property="article:publisher" content="https://www.facebook.com/tvbsfb" />
+
+<!-- for Facebook -->
+<meta property="og:title" content="æèâTVBSæ°èç¶²">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://news.tvbs.com.tw">
+<meta property="og:image" content="http://cc.tvbs.com.tw/news/images/default_news.jpg">
+<meta property="og:site_name" content="TVBS">
+<meta property="og:description" content="TVBS æèæä¾å¬çåç¤¾æéæ·ç­æåäººå¿çæ°èåå½±é³ï¼è£åæ¨çæ­£é¢è½éã">
+<meta property="fb:admins" content="1557798208"> 
+<meta property="fb:app_id" content="808502559243231">
+
+<!-- for Google -->
+<meta name="description" content="TVBS æèæä¾å¬çåç¤¾æéæ·ç­æåäººå¿çæ°èåå½±é³ï¼è£åæ¨çæ­£é¢è½éã">
+<meta name="author" content="TVBS">
+<meta name="copyright" content="TVBS">
+<meta name="application-name" content="TVBS">
+<meta name="URL" content="http://news.tvbs.com.tw">
+<meta name="medium" content="mult" />
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="news_keywords" itemprop="keywords" content="æè,æå,åå¿,å¬ç,tvbs news" />
+
+<link rel="image_src" type="image/jpeg" href="http://cc.tvbs.com.tw/news/images/default_news.jpg"/>
+
+    <meta charset="utf-8">
+
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Favicons-->
+<link rel="shortcut icon" href="http://cc.tvbs.com.tw/news/images/favicon.ico">
+
+<!--Device Web-->
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+
+<!--CSS Link-->
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/index.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/right.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/master_news.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/header_news.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/kv_news.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/footer_news.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/article_share.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/flash_news.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/weather.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/hamburg.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/newscate.css?v=002">
+<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/jqcloud.min.css?v=002">
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script>if (!window.jQuery) { document.write('<script src="http://cc.tvbs.com.tw/news/js/vendor/jquery-2.1.4.min.js?v=002"><\/script>'); }
+</script>
+<script>if (!window.jQuery.ui) { document.write('<script src="http://cc.tvbs.com.tw/news/js/vendor/jquery-ui1-9-2.min.js?v=002"><\/script>'); }
+</script>
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/vendor/jquery.ui.touch-punch.min.js?v=002"></script>
+
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/vendor/jquery.scrollbox.js?v=002"></script>
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/vendor/jquery.scrollbox-index.js?v=002"></script>
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/vendor/jqcloud.min.js?v=002"></script>
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/vendor/jquery.lazyload.min.js?v=002"></script>
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/main.js?v=002"></script>
+
+
+
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/jquery.cookie.min.js?v=002"></script> 
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/jquery.snsShare.js?v=002"></script> 
+
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/ad.js?v=002"></script> 
+
+<!-- DFP å¼å¥JS åä¾è·¯å¾ https://www.googletagservices.com/tag/js/gpt.js  -->
+<!--<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/gpt.js?v=002"></script>-->
+<script type="text/javascript" src="https://www.googletagservices.com/tag/js/gpt.js?v=002"></script>
+
+
+
+
+
+<!-- GA -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38808906-9', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Comscore -->
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "18400300" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=18400300&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+
+<!-- Alexa -->
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"VuMrl1ak0EY1bm", domain:"tvbs.com.tw",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=VuMrl1ak0EY1bm" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->  
+
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TZ3GDM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TZ3GDM');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+
+	
+	<link rel="stylesheet" href="http://cc.tvbs.com.tw/news/css/newscate.css">
+	<script src="http://cc.tvbs.com.tw/news/js/vendor/jquery.scrollbox-index.js"></script>
+	
+	<!-- åé¡å³ææ°è -->
+	<script type='text/javascript'>
+	$(function(){
+		var stop=true;//éåèªåå è¼
+		
+		$(window).scroll(function(){
+			if(detectmob()){
+				if(stop==true){
+					if ($(this).scrollTop() + $(window).height()+500 >= $(document).height() && $(this).scrollTop() ) {
+						stop=false;//ééèªåå è¼.å¾å è¼å®æå¾æéå
+						$('.more').click();
+					}
+				}	
+			}
+		});
+		var news_key=12;//å³ææ°èåæè¼å¥åå§ç·¨è (æ°è9ç­+å»£å2ç­+1=12)
+		var ad_num=0;//è¼å¥å»£åè¨æ¸
+		
+		//åå¾å³ææ°èè³æ
+		function getData(addpage,news_id,get_num){
+			console.log('http://news.tvbs.com.tw/news/get_cate_news_json/'+news_id+'/warm/'+addpage);
+			
+			$.get('http://news.tvbs.com.tw/news/get_cate_news_json/'+news_id+'/warm/'+addpage,function(data){
+			
+				if(data=='null'){
+					alert('é±è®å®ç¢!');
+					return false;
+				}
+				
+				var jdata=JSON.parse(data);//å°JSONè½çºé£åè³æ
+				var html='';
+				
+				//å³ææ°èå»£ååºç¾ä½ç½®
+				//var ad_index=Array(4,10,16,22,28);
+				
+				for(i=0;i<jdata.length;i++){
+					
+					/*
+					//ç¬¦åå»£ååºç¾æ¢ä»¶
+					for(j=0;j<=ad_index.length;j++){
+						if((news_key+ad_num)==ad_index[j]){
+							
+							//html+="<li class='ad-banner-m'><a href='#'><img src='http://cc.tvbs.com.tw/news/images/header-ad-640x200.jpg'></a></li>";
+							//html+="<li class='ad-banner-m'><div id='googleadgoeshere' style='width:100%;height:300px;'></div></li>";
+							
+							ad_num++;
+						}
+					}
+					*/
+					
+					html+="<li>";
+					html+="<a href='../"+jdata[i]['news_category_label']+'/'+jdata[i]['news_id']+"'>";
+					html+="<div class='information-img1'>";
+					
+					//å¤æ·æ°èçæ¬
+					if(jdata[i]['news_version']==3){
+						html+="<img src='"+jdata[i]['news_img']+"'>";
+					}else{
+						html+="<img src='"+jdata[i]['news_img']+"'>";
+					}
+					news_key++;
+					
+					html+="</div>";
+					html+="</a>";
+					html+="<div class='information-txt1'>";
+										html+="<a href='../"+jdata[i]['news_category_label']+'/'+jdata[i]['news_id']+"'>";
+					html+="<p class='titel_content18'>"+jdata[i]['news_title']+"</p>";
+					html+="</a>";
+					html+="</div>";
+					html+="<a href='../"+jdata[i]['news_category_label']+'/'+jdata[i]['news_id']+"'>";
+					html+="<div class='information-txt1-under'>";
+					html+="<p class='under'>"+jdata[i]['news_published_date']+"</p>";
+					html+="<p class='underView'>çè¦½æ¸:"+(jdata[i]['news_pageview']==''||jdata[i]['news_pageview']==null?0:jdata[i]['news_pageview'])+"</p> ";
+					html+="</div>";
+					html+="</a>";
+					html+="</li>";
+					if(i==jdata.length-1){
+						$('.more').attr('news_id', jdata[i]['news_id']);
+					}
+				}
+				//å°htmlè³æè²¼å°liåå¡
+				$('#addpage li:last-child').after(html);
+				stop=true;//éåèªåå è¼
+				 //setTimeout(function(){
+					 
+								
+				$("img.lazyimage").lazyload();
+			});
+		}  
+		
+		//more btn
+		$('.more').click(function(){
+			var addpage=$(this).attr('addpage');
+			var news_id=$(this).attr('news_id');
+			var get_num=6;//æåç­æ¸
+			if(addpage>5){
+				getData(addpage,news_id,get_num);//NEWS MORE
+			}else{
+				$("#addpage li.hiddenblock:lt(6)").removeClass("hiddenblock");
+				if(detectmob()){
+					$("#addpage li.hiddenads:first").removeClass("hiddenads");
+					stop=true;//éåèªåå è¼
+				}
+			}
+			var page=parseInt(addpage)+1;//æéæåè³æçé æ¸+1
+			
+			$(this).attr('addpage',page);
+			// $(this).attr('news_id',news_id);
+		});
+		$("img.lazyimage").lazyload();
+	});
+	</script>
+	
+		
+</head>
+
+	<body>
+
+
+<script>show_da('v4_news_m__index_splash','warm','http://cc.tvbs.com.tw/news/images/')</script>
+<!--GO~Top-->
+<!--GO~Top-->
+<div id="back"> 
+   <div id="back-img1">  
+      <img src="http://cc.tvbs.com.tw/news/images/gototop.svg" width="50px">
+   </div>
+ </div>
+<!--GO~Top end--><!--GO~Top end-->
+<!--ææ©çæ¼¢å ¡æéå--->
+<!--ææ©çæ¼¢å ¡æéå--->
+<div class="hamburg">
+  
+   <div class="hamburg1">
+     <div class="hamburg1-logo"><a href="http://news.tvbs.com.tw/"><img src="http://cc.tvbs.com.tw/news/images/logo3.png" width="140"></a></div>
+     <div class="burgbt"><img src="http://cc.tvbs.com.tw/news/images/xx.svg" width="20"></a></div>
+   </div>
+   
+   <!--æ¼¢å ¡æå°å--->
+   <div class="hamburg2">
+   
+   <div class="hamburg1-search">
+   <div class="search_box2 ">
+             <input type="text" class="search2" id="m_hambug_keyword_asdw" placeholder="ééµå­">
+             <div class="search_box2-img" ><img id="m_hambug_keyword_div1" src="http://cc.tvbs.com.tw/news/images/magnifying.svg"></div>
+   </div>
+   </div>
+    
+    <script>
+		$(function(){
+					$('#m_hambug_keyword_div1').click(function(){
+						//var url = "http://news.tvbs.com.tw/news/searchresult/news?search_text="+$("#m_hambug_keyword_asdw").val();
+
+						document.location.href="/news/searchresult/news?search_text="+$("#m_hambug_keyword_asdw").val();
+					});
+				});
+		
+    </script>
+<!--     <div class="hamburg1-people">
+    
+    <div class="hamburg1-people1"><img src="<?//=images_url("news");?>people.svg"></div>
+    <div class="hamburg1-people1-t">æå¡ä¸­å¿</div>
+    
+    </div>  F-1 -->
+   
+   
+   </div>
+    <!--æ¼¢å ¡æå°å ed--->
+  
+   <div class="hamburg-main-button">
+        <ul>
+             <li><a href="http://news.tvbs.com.tw/"><div class="hamburg-main-button-t">é¦é </div></a></li>
+			 <li> <a href="http://news.tvbs.com.tw/realtime"><div class="hamburg-main-button-t">å³æ</div></a></li>
+		<li><div class="hamburg-main-button-t">é£å°<div class="arraw"><img src="http://cc.tvbs.com.tw/news/images/arraw.svg"></div></div>
+		<div class="hamburg-subsidiary-button">
+			<ul>
+				<li><a href="http://news.tvbs.com.tw/travel">Funé£¯</a></li>
+				<li><a href="http://news.tvbs.com.tw/supercars">ç©è»</a></li>
+				<li><a href="http://news.tvbs.com.tw/tech">ç§æ</a></li>
+				<li><a href="http://news.tvbs.com.tw/hipster">æé</a></li>
+			</ul>
+		</div>
+</li>		<li><div class="hamburg-main-button-t">æ­£è½é<div class="arraw"><img src="http://cc.tvbs.com.tw/news/images/arraw.svg"></div></div>
+		<div class="hamburg-subsidiary-button">
+			<ul>
+				<li><a href="http://news.tvbs.com.tw/warm">æè</a></li>
+				<li><a href="http://news.tvbs.com.tw/fun">å¥è¶£</a></li>
+				<li><a href="http://news.tvbs.com.tw/health">å¥åº·</a></li>
+			</ul>
+		</div>
+</li>		<li><div class="hamburg-main-button-t">éåå¨æ¨<div class="arraw"><img src="http://cc.tvbs.com.tw/news/images/arraw.svg"></div></div>
+		<div class="hamburg-subsidiary-button">
+			<ul>
+				<li><a href="http://news.tvbs.com.tw/entertainment">å½±å</a></li>
+				<li><a href="http://news.tvbs.com.tw/sports">é«è²</a></li>
+			</ul>
+		</div>
+</li>		<li><div class="hamburg-main-button-t">ç¦é»<div class="arraw"><img src="http://cc.tvbs.com.tw/news/images/arraw.svg"></div></div>
+		<div class="hamburg-subsidiary-button">
+			<ul>
+				<li><a href="http://news.tvbs.com.tw/life">æ°çæ¶è²»</a></li>
+				<li><a href="http://news.tvbs.com.tw/politics">æ¿ç¶</a></li>
+				<li><a href="http://news.tvbs.com.tw/local">ç¤¾æ</a></li>
+				<li><a href="http://news.tvbs.com.tw/world">åé</a></li>
+				<li><a href="http://news.tvbs.com.tw/china">å©å²¸</a></li>
+			</ul>
+		</div>
+</li><li> <a href="http://news.tvbs.com.tw/pack"><div class="hamburg-main-button-t">æåæ°è</div></a></li>
+<li> <a href="http://news.tvbs.com.tw/really/rumorbreaker"><div class="hamburg-main-button-t">ççå</div></a></li>
+<li> <a href="http://news.tvbs.com.tw/live/news4live"><div class="hamburg-main-button-t">ç´æ­</div></a></li>
+		<li><div class="hamburg-main-button-t">Tè«è«<div class="arraw"><img src="http://cc.tvbs.com.tw/news/images/arraw.svg"></div></div>
+		<div class="hamburg-subsidiary-button">
+			<ul>
+				<li><a href="http://news.tvbs.com.tw/ttalk/reporter_article">Tè¨è</a></li>
+				<li><a href="http://news.tvbs.com.tw/ttalk/blog_article">Tåå®¢</a></li>
+			</ul>
+		</div>
+</li><li> <a href="http://other.tvbs.com.tw/other/poll-center/"><div class="hamburg-main-button-t">æ°èª¿</div></a></li>
+<li> <a href="http://idid.tvbs.com.tw/"><div class="hamburg-main-button-t">Tè£æ½¢</div></a></li>
+             
+        </ul>
+    </div>       
+
+<div class="hamburg-main-footer">
+         <ul>
+          <li class="hamburg-main-footer-t"><a href="http://www.tvbs.com.tw/" target="_blank">TVBSå®ç¶²</a></li>
+          <li class="hamburg-main-footer-t"><a href="http://videos.tvbs.com.tw/" target="_blank">TVBSå½±é³ç¶²</a></li>
+        </ul>
+  
+  </div>
+</div>
+
+<!--ææ©çæ¼¢å ¡æéåend--->
+<!--ææ©çæ¼¢å ¡æéåend--->
+
+<div class="container">
+
+<!--header-->
+<div class="header">
+	<!-- å¿«è¨ -->
+    	<!-- å¿«è¨end -->
+    <!-- å¿«è¨ -->
+    <div class="flash_news">
+
+<!--å¿«è¨/åºæ¬ç-->
+	<div class="flash_news_basic" id="flash_news_basic">
+		<div class="flash_news_wrapper">
+        <div class="botton-scroll"  >
+        <ul id="botton-scroll">
+		<li class="featureBox2" id="featureBox2"> 
+        </li>
+        </ul>
+        </div>
+		<div class="flash_news_close_basic"><img src="http://cc.tvbs.com.tw/news/images/icon_close.svg"></div>
+		<div class="flash_news_prev_basic"><img src="http://cc.tvbs.com.tw/news/images/icon_arrow_prev.svg"></div>
+		<div class="flash_news_next_basic"><img src="http://cc.tvbs.com.tw/news/images/icon_arrow_next.svg"></div>
+        </div>
+    </div>
+<!--å¿«è¨/åºæ¬ç end-->
+
+<!--å¿«è¨/é²éç-->
+	<div class="flash_news_advanced" id="flash_news_advanced">    
+		<div class="flash_news_wrapper">
+		<div class="botton-scroll" >
+		<ul>
+		<li class="featureBox1" id="featureBox1">
+		</li>
+		</ul>
+		</div>
+		<div class="flash_news_close"><img src="http://cc.tvbs.com.tw/news/images/icon_close.svg"></div>
+		<div class="flash_news_prev"><img src="http://cc.tvbs.com.tw/news/images/icon_arrow_prev.svg"></div>
+		<div class="flash_news_next"><img src="http://cc.tvbs.com.tw/news/images/icon_arrow_next.svg"></div>
+		</div>
+	</div>
+<!--å¿«è¨/é²éç end-->
+    
+</div>
+
+<script>
+
+		var flash_news_id = 0;
+		var flash_news ="";		
+		var flash_news_max =0;
+		var flash_cookie_time = 60000;	// 
+		var flash_show_time = 5000; //å¿«è¨æ´æ°æé
+		var updata_flash_time = 60000; //æ´æ°
+		
+		
+		
+		update_get_flash_news(); //frist run
+	function update_get_flash_news() //update api data
+	{
+		$.getJSON( "http://news.tvbs.com.tw/api/get_flash_news/news", function( data ) 
+		{
+			$(".flash_news_advanced").hide();
+			$(".flash_news_basic").hide();
+			
+			$.cookie('flash_news_close', '', { expires: -1 });
+			$.cookie('flash_news_close_basic', '', { expires: -1 });
+			
+			//alert("æ´æ°å¿«è¨ä¾æºè³æ");
+			var tmp_html;
+			flash_news_max = data.flash_news_max;
+		
+			flash_news = data.flash_news;
+			flash_news_id= 0;
+			
+			if(flash_news_max >= 1)
+			{
+				if(flash_news[0].show_type == 1)
+				{
+					$(".flash_news_advanced").show();
+					
+					featureBox1_html ="<div class='featureBox1_pic'><img src='"+flash_news[0].pic_url+"'></div>"+
+					"<div class='featureBox1_txt'>"+
+					"<div class='flash_news_icon'>"+flash_news[0].show_type_name+"</div>"+
+					"<div class='featureBox1_txt_title'>"+flash_news[0].title+"</div>"+
+					"<div class='featureBox1_txt_date'>"+flash_news[0].show_time+"</div>"+
+					"<div id='featureBox1_hide_alert_news_type' style='display:none'>"+flash_news[0].blank+"</div>"+
+					"<div id='featureBox1_hide_url' style='display:none'>"+flash_news[0].url+"</div>"+
+					"</div>";
+					$("#featureBox1").html(featureBox1_html);
+					
+				}
+				else
+				{
+					$(".flash_news_basic").show();
+					
+					featureBox2_html ="<div class='flash_news_icon basic'>"+flash_news[0].show_type_name+"</div>"+
+					"<div class='featureBox2_txt_title'>"+flash_news[0].title+"</div>"+
+					"<div class='featureBox2_txt_time'>"+flash_news[0].show_time+"</div>"+
+					"<div id='featureBox2_hide_alert_news_type' style='display:none'>"+flash_news[0].blank+"</div>"+
+					"<div id='featureBox2_hide_url' style='display:none'>"+flash_news[0].url+"</div>";
+					$("#featureBox2").html(featureBox2_html);
+				}
+			}
+			else
+				return;
+
+		  
+
+					
+			  
+			  
+		});
+	}
+	
+	$( "#featureBox1" ).click(function() {
+		//alert();
+		if($("#featureBox1_hide_alert_news_type").html() == "1")
+			window.open($("#featureBox1_hide_url").html());
+		else
+			top.location.href = $("#featureBox1_hide_url").html();
+			
+	});
+ $( ".flash_news_prev_basic" ).click(function() {
+	update_flash_news(-1);
+});
+$( ".flash_news_next_basic" ).click(function() {
+	update_flash_news();
+});
+$( ".flash_news_prev" ).click(function() {
+	update_flash_news(-1);
+});
+$( ".flash_news_next" ).click(function() {
+	update_flash_news();
+}); 
+
+ 	  $(".flash_news_close").on('click',function()
+	  {
+		//$flash_news_advanced.css({'display': 'none'});
+		$(".flash_news_advanced").hide();
+		
+			var date = new Date();
+			 date.setTime(date.getTime() + (flash_cookie_time));
+		  	 $.cookie("flash_news_close", "1",{ path: '/' ,domain:'' ,expires: date});
+	  });
+
+	  $(".flash_news_close_basic").on('click',function()
+	  {
+		//$flash_news_basic.css({'display': 'none'});
+		$(".flash_news_basic").hide();
+		var date = new Date();
+			 date.setTime(date.getTime() + (flash_cookie_time));
+		  	 $.cookie("flash_news_close_basic", "1",{ path: '/' ,domain:'' ,expires: date});
+		
+	  }); 
+
+
+$( "#featureBox2" ).click(function() {
+		if($("#featureBox2_hide_alert_news_type").html() == "1")
+			window.open($("#featureBox2_hide_url").html());
+		else
+			top.location.href = $("#featureBox2_hide_url").html();
+	});
+	
+	
+	function update_flash_news(num)
+	{
+		var tmp_i=0;
+		num = num || 1; //å¦ænumæ²æé è¨­å¼ åå¡«å¥ 1
+		if(flash_news_max <= 1)
+			return;
+				
+
+		flash_news_id+=num;
+		if(flash_news_id <=0 )
+		{
+			flash_news_id = flash_news_max-1;
+		}
+				
+		 tmp_i = flash_news_id % flash_news_max;		
+		if(flash_news[tmp_i].show_type == 1)
+		{
+			if(!$.cookie("flash_news_close"))
+				$(".flash_news_advanced").show();
+			else
+				$(".flash_news_advanced").hide();
+			$(".flash_news_basic").hide();
+			featureBox1_html ="<div class='featureBox1_pic'><img src='"+flash_news[tmp_i].pic_url+"'></div>"+
+					"<div class='featureBox1_txt'>"+
+					"<div class='flash_news_icon'>"+flash_news[tmp_i].show_type_name+"</div>"+
+					"<div class='featureBox1_txt_title'>"+flash_news[tmp_i].title+"</div>"+
+					"<div class='featureBox1_txt_date'>"+flash_news[tmp_i].show_time+"</div>"+
+					"<div id='featureBox1_hide_alert_news_type' style='display:none'>"+flash_news[tmp_i].blank+"</div>"+
+					"<div id='featureBox1_hide_url' style='display:none'>"+flash_news[tmp_i].url+"</div>"+
+					"</div>";
+					$("#featureBox1").html(featureBox1_html);
+		  }
+		  else
+		  {
+				$(".flash_news_advanced").hide();
+				
+			if(!$.cookie("flash_news_close_basic"))
+				$(".flash_news_basic").show();
+			else
+				$(".flash_news_basic").hide();
+					featureBox2_html ="<div class='flash_news_icon basic'>"+flash_news[tmp_i].show_type_name+"</div>"+
+					"<div class='featureBox2_txt_title'>"+flash_news[tmp_i].title+"</div>"+
+					"<div class='featureBox2_txt_time'>"+flash_news[tmp_i].show_time+"</div>"+
+					"<div id='featureBox2_hide_alert_news_type' style='display:none'>"+flash_news[tmp_i].blank+"</div>"+
+					"<div id='featureBox2_hide_url' style='display:none'>"+flash_news[tmp_i].url+"</div>";
+		  
+				$("#featureBox2").html(featureBox2_html);
+		  } 
+
+
+					
+			  
+			 
+		
+
+	}
+	setInterval(update_flash_news,flash_show_time); //3ç§ æ´æ°å¿«è¨
+	setInterval(update_get_flash_news,updata_flash_time); //10åé æ´æ°json ä¾æº 
+
+</script>
+	<!-- å¿«è¨end -->
+ <!--Header1-->
+  <div class="header1">
+  
+  <!--Header-PCå§æ¡-->
+   <div class="header-square">
+     <!--Header-é -è·³é -->
+          <div class="header-top-L">
+            <!--ææ©çlogo-->
+            <div class="logo"><a href="http://news.tvbs.com.tw/"><img src="http://cc.tvbs.com.tw/news/images/logo3.png"></a></div>
+            <!--ææ©çlogo end-->
+            <ul>
+              <li><a href="http://www.tvbs.com.tw">TVBSå®ç¶²</a></li>
+              <li><a href="http://videos.tvbs.com.tw/">TVBSå½±é³ç¶²</a></li>
+            </ul>
+          </div> 
+         <!--Header-é -è·³é  end-->
+       
+         <!--Header-é -æå°ãæå¡ãå¤©æ°£-->
+        
+          <div class="header-top-R">
+         
+            <ul>
+              <li><a href="#"><img src="http://cc.tvbs.com.tw/news/images/header_img04.svg" width="32"></a></li>
+              <li>
+                <!--å¤©æ°£æéå-->
+                 <div class="header-top-R-weather"  id="weather_div">
+                    
+                 </div>
+					
+                 <!--å¤©æ°£æéåed-->
+              </li>
+			  
+              <!--<li><a href="#"><img src="http://cc.tvbs.com.tw/news/images/header_img02.png"></a></li>  F-1 -->
+           </ul>
+		   
+          </div> 
+			
+      
+      <div class="search_box_header"> 
+         <div class="search_box2">
+			<form action='http://news.tvbs.com.tw/news/searchresult/news' name='searchsult' id="searchsult" method='GET'>
+				<input type="text" name='search_text' class="search2" placeholder="ééµå­" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }" />
+				<div class="search_box2-img" id="search_box2-img_header1">
+					<img src="http://cc.tvbs.com.tw/news/images/magnifying.svg">
+				</div>
+			</form>
+			<script type='text/javascript'>
+				$(function(){
+					$('#search_box2-img_header1').click(function(){
+						$('#searchsult').submit();
+					});
+				});
+			</script>
+        </div>
+        
+        </div> 
+         <!--Header-é -æå°ãæå¡ãå¤©æ°£end-->
+
+   </div>
+    
+   <!--Header-PCå§æ¡end-->
+
+   </div>
+   <!--Header1ed-->	<!-- é»è¦çé±èå -->
+    <!--é»è¦çé±èå-->
+<div class="nav-hide">  
+
+<!--é»è¦çé±èåä¸æé¸å®-->
+  
+ <div class="button-hide-slidedown">
+ 
+ <div class="button-hide-slidedown1"></div>
+ 
+  <div class="button-hide-slidedown1"></div>
+<div class="button-hide-slidedown1">
+			<ul>
+			<li><a href="http://news.tvbs.com.tw/travel">Funé£¯</a></li>
+			<li><a href="http://news.tvbs.com.tw/supercars">ç©è»</a></li>
+			<li><a href="http://news.tvbs.com.tw/tech">ç§æ</a></li>
+			<li><a href="http://news.tvbs.com.tw/hipster">æé</a></li>
+			</ul>
+</div>
+<div class="button-hide-slidedown1">
+			<ul>
+			<li><a href="http://news.tvbs.com.tw/warm">æè</a></li>
+			<li><a href="http://news.tvbs.com.tw/fun">å¥è¶£</a></li>
+			<li><a href="http://news.tvbs.com.tw/health">å¥åº·</a></li>
+			</ul>
+</div>
+<div class="button-hide-slidedown1">
+			<ul>
+			<li><a href="http://news.tvbs.com.tw/entertainment">å½±å</a></li>
+			<li><a href="http://news.tvbs.com.tw/sports">é«è²</a></li>
+			</ul>
+</div>
+<div class="button-hide-slidedown1">
+			<ul>
+			<li><a href="http://news.tvbs.com.tw/life">æ°çæ¶è²»</a></li>
+			<li><a href="http://news.tvbs.com.tw/politics">æ¿ç¶</a></li>
+			<li><a href="http://news.tvbs.com.tw/local">ç¤¾æ</a></li>
+			<li><a href="http://news.tvbs.com.tw/world">åé</a></li>
+			<li><a href="http://news.tvbs.com.tw/china">å©å²¸</a></li>
+			</ul>
+</div>
+<div class="button-hide-slidedown1"></div>
+<div class="button-hide-slidedown1"></div>
+<div class="button-hide-slidedown1"></div>
+<div class="button-hide-slidedown1">
+			<ul>
+			<li><a href="http://news.tvbs.com.tw/ttalk/reporter_article">Tè¨è</a></li>
+			<li><a href="http://news.tvbs.com.tw/ttalk/blog_article">Tåå®¢</a></li>
+			</ul>
+</div>
+<div class="button-hide-slidedown1"></div>
+<div class="button-hide-slidedown1"></div>
+</div> 
+    
+    <!--é»è¦çé±èåä¸æé¸å®-->      
+ <div class="button-hide">   
+  <div class="button-hide1">   
+        <ul>
+             <li><a href="http://news.tvbs.com.tw/"><img src="http://cc.tvbs.com.tw/news/images/home.svg" width="20px"></a></li>
+			 
+			 <li><a href="http://news.tvbs.com.tw/realtime">å³æ</a></li>
+<li><a href="">é£å°</a></li>
+<li><a href="">æ­£è½é</a></li>
+<li><a href="">éåå¨æ¨</a></li>
+<li><a href="">ç¦é»</a></li>
+<li><a href="http://news.tvbs.com.tw/pack">æåæ°è</a></li>
+<li><a href="http://news.tvbs.com.tw/really/rumorbreaker">ççå</a></li>
+<li><a href="http://news.tvbs.com.tw/live/news4live">ç´æ­</a></li>
+<li><a href="">Tè«è«</a></li>
+<li><a href="http://other.tvbs.com.tw/other/poll-center/">æ°èª¿</a></li>
+<li><a href="http://idid.tvbs.com.tw/">Tè£æ½¢</a></li>
+			 
+         </ul>
+    </div>
+    
+    
+  
+  </div>
+</div>
+<!--é»è¦çé±èåed-->      
+	<!-- é»è¦çé±èåend -->
+	<!-- ææ©çæéå -->
+      <!--ææ©çæéå-->
+	<div class="nav-m">   
+		<div class="button-m" >    
+			<div class="button1-m">
+				 <ul>
+					<li><a href='http://news.tvbs.com.tw/'>é¦é </a></li> 
+					 <li><a href='http://news.tvbs.com.tw/travel'>Funé£¯</a></li>
+<li><a href='http://news.tvbs.com.tw/supercars'>ç©è»</a></li>
+<li><a href='http://news.tvbs.com.tw/tech'>ç§æ</a></li>
+<li><a href='http://news.tvbs.com.tw/hipster'>æé</a></li>
+<li><a href='http://news.tvbs.com.tw/warm'>æè</a></li>
+<li><a href='http://news.tvbs.com.tw/fun'>å¥è¶£</a></li>
+<li><a href='http://news.tvbs.com.tw/health'>å¥åº·</a></li>
+<li><a href='http://news.tvbs.com.tw/entertainment'>å½±å</a></li>
+<li><a href='http://news.tvbs.com.tw/sports'>é«è²</a></li>
+<li><a href='http://news.tvbs.com.tw/life'>æ°çæ¶è²»</a></li>
+<li><a href='http://news.tvbs.com.tw/politics'>æ¿ç¶</a></li>
+<li><a href='http://news.tvbs.com.tw/local'>ç¤¾æ</a></li>
+<li><a href='http://news.tvbs.com.tw/world'>åé</a></li>
+<li><a href='http://news.tvbs.com.tw/china'>å©å²¸</a></li>
+<li><a href='http://news.tvbs.com.tw/ttalk/reporter_article'>Tè¨è</a></li>
+<li><a href='http://news.tvbs.com.tw/ttalk/blog_article'>Tåå®¢</a></li>
+<li><a href='http://idid.tvbs.com.tw/'>Tè£æ½¢</a></li>
+<li><a href='/really/rumorbreaker'>ççå</a></li>
+<li><a href='/live/news4live'>ç´æ­</a></li>
+				 </ul>
+       </div>
+     </div>
+  </div>
+  
+    
+
+<!--ææ©çæéåed-->	<!-- ææ©çæéåend -->
+</div>
+<!--header-end-->
+
+
+<!--æ°£è±¡åå¡ -->
+<div class="weather_div"> 
+
+<div class="weather_box_float">
+    <div class="weather_box">
+    <div class="weather_close" id="weather_close"><img src="http://cc.tvbs.com.tw/news/images/icon_close.svg"></div>
+
+    <div class="weather_region">
+
+	<div class="region_titel">æå¨å°:<span id="region_title">èºåå¸</span></div>
+	
+	<div class="region_titel_setup"  ><img src="http://cc.tvbs.com.tw/news/images/icon_setup.svg">è¨­å®æå¨å° 
+	 <ul id="region_titel_setup_div">
+        <li><a href="#">åé¨</a>
+		<div class="region_titel_setup1">
+            <ul >
+            <li onclick="click_city('åºéå¸');">åºéå¸</li>
+            <li onclick="click_city('èºåå¸');">èºåå¸</li>
+            <li onclick="click_city('æ°åå¸');">æ°åå¸</li>
+            <li onclick="click_city('æ¡åå¸');">æ¡åå¸</li>
+            <li onclick="click_city('æ°ç«¹å¸');">æ°ç«¹å¸</li>
+            <li onclick="click_city('æ°ç«¹ç¸£');">æ°ç«¹ç¸£</li>
+            </ul>
+		</div>
+        </li>
+        
+        <li><a href="#">ä¸­é¨</a>
+		<div class="region_titel_setup1">
+            <ul>
+            <li onclick="click_city('èºä¸­å¸');">èºä¸­å¸</li>
+            <li onclick="click_city('å½°åç¸£');">å½°åç¸£</li>
+            <li onclick="click_city('åæç¸£');">åæç¸£</li>
+            <li onclick="click_city('é²æç¸£');">é²æç¸£</li>
+            <li onclick="click_city('åç¾©å¸');">åç¾©å¸</li>
+            <li onclick="click_city('åç¾©ç¸£');">åç¾©ç¸£</li>
+            </ul>
+		</div>
+        </li>
+        
+        <li><a href="#">åé¨</a>
+		<div class="region_titel_setup1">
+            <ul>
+            <li onclick="click_city('èºåå¸');">èºåå¸</li>
+            <li onclick="click_city('é«éå¸');">é«éå¸</li>
+            <li onclick="click_city('å±æ±ç¸£');">å±æ±ç¸£</li>
+            </ul>
+		</div>
+        </li>
+        
+        <li><a href="#">æ±é¨</a>
+		<div class="region_titel_setup1">
+            <ul>
+            <li onclick="click_city('å®è­ç¸£');">å®è­ç¸£</li>
+            <li onclick="click_city('è±è®ç¸£');">è±è®ç¸£</li>
+            <li onclick="click_city('èºæ±ç¸£');">èºæ±ç¸£</li>
+            </ul>
+		</div>
+        </li>
+        
+        <li><a href="#">å¤å³¶</a>
+		<div class="region_titel_setup1">
+            <ul>
+            <li onclick="click_city('é£æ±ç¸£');">é£æ±ç¸£</li>
+            <li onclick="click_city('ééç¸£');">ééç¸£</li>
+            <li onclick="click_city('æ¾æ¹ç¸£');">æ¾æ¹ç¸£</li>
+            </ul>
+		</div>
+        </li>
+        
+        </ul>
+	</div>
+	</div>
+	<div class="region_box">
+    <span class="region_pm1">PM<span class="region_pm1_s">2.5</span></span>
+    <span class="region_pm2" id="region_pm2">6ä½</span></span>
+    <span class="region_time">2016/07/13 11:00</span>
+    </div>
+
+      
+        <div class="weather_block" id="weather_block">
+					<div class="weather_today">		<div class="weather_week today">07/13<p>ææä¸</p></div>		<div class="weather_icon today"><img src="http://cc.tvbs.com.tw/portal/images/weather_icon/18.gif"></div>		<div class="weather_temperature today">26Â°C-36Â°C</div>		</div>		<div class="weather_day">		<div class="weather_week">07/14<p>ææå</p></div>		<div class="weather_icon"><img src="http://cc.tvbs.com.tw/portal/images/weather_icon/18.gif"></div>		<div class="weather_temperature">27Â°C-36Â°C</div>		</div>		<div class="weather_day">		<div class="weather_week">07/15<p>ææäº</p></div>		<div class="weather_icon"><img src="http://cc.tvbs.com.tw/portal/images/weather_icon/18.gif"></div>		<div class="weather_temperature">28Â°C-36Â°C</div>		</div>		<div class="weather_day">		<div class="weather_week">07/16<p>ææå­</p></div>		<div class="weather_icon"><img src="http://cc.tvbs.com.tw/portal/images/weather_icon/18.gif"></div>		<div class="weather_temperature">28Â°C-36Â°C</div>		</div>		<div class="weather_day">		<div class="weather_week">07/17<p>æææ¥</p></div>		<div class="weather_icon"><img src="http://cc.tvbs.com.tw/portal/images/weather_icon/18.gif"></div>		<div class="weather_temperature">28Â°C-36Â°C</div>		</div>
+        </div>
+        
+<!--æ°£è±¡sponsored
+        <div class="weather_sponsored">Sponsored by:<a href="" target="_blank"><img src="http://cc.tvbs.com.tw/portal/images/sponsored_logo.jpg"></a></div>
+-->   
+	<div class="weather_video">
+						<iframe width="100%" height="100%" src="https://www.youtube.com/embed/rRcdymites0" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<a  target="_blank" href="http://news.tvbs.com.tw/life/663702">
+					<div class="weather_more">è¥¿åé¢¨éç¶ç¥çºæ¸å¼±ï¼ä½æ´åèºç£å°åç°å¢é¢¨å ´ä»å¹è¥¿åé¢¨ï¼ä»(13æ¥)åç¾©ä»¥åå°ååå°åæ¹æ°´æ±½åå¤çå½±é¿ï¼éæ¯å®¹ææå±é¨ç­æ«é£é¨æé·é¨ï¼é¨åå°åä»æåºç¾å¤§é¨çæ©æï¼ä¸éç±æ¼å¤ªå¹³æ´é«å£å¢åéæ¼¸å¢å¼·ï¼æ°´æ±½æ¼¸æ¼¸æ¸å°ï¼å æ­¤éé¨å¼·åº¦åç¯åææ¸ç·©äºï¼å¶ä»å°åä¸åå¤§å¤çºå¤é²å°æ´ï¼ä¸­åéå¾æåå¾é·é£é¨çå¤©æ°£åæï¼å¶ä¸­åå°å±±åãå¤§èºåååæå°åéé¨æ©çè¼é«ï¼ä¹æå±é¨å¤§é¨ç¼ççæ©çï¼æ°£æº«æ¹é¢ï¼è¥¿åé¢¨å¸¶ä¾è¼æçç©ºæ°£ï¼ä¸­é¨ä»¥ååæ±åé¨å°åé«æº«ç´33è³36åº¦ï¼åé¨å°åç´32åº¦å·¦å³ï¼æ²ä¸é¨ææåè¼çºæ¶ç±ï¼è«å¤è£åæ°´åé¿åä¸­æï¼èä¸­ååå¾ç´«å¤ç·ææ¸åé«ï¼å¤åºè«æ³¨æé²æ¬ã
+					</div></a>        
+    </div>
+    </div>
+</div>
+
+<script>
+	
+	
+	$(function()  
+	{
+		if(!$.cookie("cho_weather"))
+		{
+			click_city("èºåå¸");
+		}
+		else
+		{
+			click_city($.cookie("cho_weather"));
+		}
+
+   });
+   
+   
+	function click_city(city_name)
+	{ 
+		var city_data = {"\u81fa\u5317\u5e02":{"city":"\u81fa\u5317\u5e02","pm2_5":"6\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"36","min_t":"26"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"18","max_t":"36","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"18","max_t":"36","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"18","max_t":"36","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"18","max_t":"36","min_t":"28"}},"\u65b0\u5317\u5e02":{"city":"\u65b0\u5317\u5e02","pm2_5":"23\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"36","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"18","max_t":"36","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"18","max_t":"36","min_t":"29"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"18","max_t":"36","min_t":"29"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"18","max_t":"36","min_t":"29"}},"\u6843\u5712\u5e02":{"city":"\u6843\u5712\u5e02","pm2_5":"12\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"35","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"2","max_t":"36","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"36","min_t":"29"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"7","max_t":"36","min_t":"29"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"7","max_t":"36","min_t":"29"}},"\u81fa\u4e2d\u5e02":{"city":"\u81fa\u4e2d\u5e02","pm2_5":"19\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"35","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"35","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"35","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"35","min_t":"27"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"34","min_t":"27"}},"\u81fa\u5357\u5e02":{"city":"\u81fa\u5357\u5e02","pm2_5":"12\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"32","min_t":"28"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"32","min_t":"28"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"33","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"32","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"32","min_t":"28"}},"\u9ad8\u96c4\u5e02":{"city":"\u9ad8\u96c4\u5e02","pm2_5":"\u5f85\u66f4\u65b0","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"32","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"33","min_t":"28"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"33","min_t":"29"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"32","min_t":"29"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"32","min_t":"29"}},"\u57fa\u9686\u5e02":{"city":"\u57fa\u9686\u5e02","pm2_5":"9\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"33","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"2","max_t":"32","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"33","min_t":"29"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"2","max_t":"33","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"7","max_t":"33","min_t":"28"}},"\u65b0\u7af9\u7e23":{"city":"\u65b0\u7af9\u7e23","pm2_5":"13\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"35","min_t":"28"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"2","max_t":"34","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"35","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"2","max_t":"35","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"2","max_t":"35","min_t":"28"}},"\u65b0\u7af9\u5e02":{"city":"\u65b0\u7af9\u5e02","pm2_5":"5\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"34","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"2","max_t":"33","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"34","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"2","max_t":"34","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"2","max_t":"34","min_t":"28"}},"\u82d7\u6817\u7e23":{"city":"\u82d7\u6817\u7e23","pm2_5":"7\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"35","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"2","max_t":"34","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"33","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"2","max_t":"33","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"2","max_t":"32","min_t":"28"}},"\u5f70\u5316\u7e23":{"city":"\u5f70\u5316\u7e23","pm2_5":"11\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"34","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"34","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"34","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"33","min_t":"27"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"33","min_t":"27"}},"\u5357\u6295\u7e23":{"city":"\u5357\u6295\u7e23","pm2_5":"13\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"34","min_t":"25"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"34","min_t":"26"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"34","min_t":"26"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"34","min_t":"26"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"34","min_t":"26"}},"\u96f2\u6797\u7e23":{"city":"\u96f2\u6797\u7e23","pm2_5":"16\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"34","min_t":"26"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"34","min_t":"26"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"34","min_t":"26"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"34","min_t":"27"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"35","min_t":"27"}},"\u5609\u7fa9\u7e23":{"city":"\u5609\u7fa9\u7e23","pm2_5":"5\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"33","min_t":"26"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"33","min_t":"26"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"33","min_t":"27"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"7","max_t":"33","min_t":"27"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"33","min_t":"27"}},"\u5609\u7fa9\u5e02":{"city":"\u5609\u7fa9\u5e02","pm2_5":"\u5f85\u66f4\u65b0","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"34","min_t":"26"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"34","min_t":"26"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"34","min_t":"27"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"33","min_t":"27"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"34","min_t":"27"}},"\u5c4f\u6771\u7e23":{"city":"\u5c4f\u6771\u7e23","pm2_5":"\u5f85\u66f4\u65b0","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"32","min_t":"26"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"33","min_t":"26"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"34","min_t":"27"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"34","min_t":"27"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"34","min_t":"27"}},"\u5b9c\u862d\u7e23":{"city":"\u5b9c\u862d\u7e23","pm2_5":"11\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"33","min_t":"26"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"18","max_t":"33","min_t":"26"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"18","max_t":"33","min_t":"27"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"34","max_t":"33","min_t":"27"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"34","max_t":"32","min_t":"27"}},"\u82b1\u84ee\u7e23":{"city":"\u82b1\u84ee\u7e23","pm2_5":"15\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"33","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"18","max_t":"33","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"33","min_t":"29"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"8","max_t":"33","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"7","max_t":"33","min_t":"28"}},"\u81fa\u6771\u7e23":{"city":"\u81fa\u6771\u7e23","pm2_5":"4\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"18","max_t":"32","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"18","max_t":"33","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"18","max_t":"33","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"18","max_t":"33","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"34","max_t":"33","min_t":"28"}},"\u6f8e\u6e56\u7e23":{"city":"\u6f8e\u6e56\u7e23","pm2_5":"5\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"32","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"32","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"17","max_t":"32","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"17","max_t":"32","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"7","max_t":"32","min_t":"28"}},"\u91d1\u9580\u7e23":{"city":"\u91d1\u9580\u7e23","pm2_5":"< 1\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"32","min_t":"27"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"32","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"32","min_t":"28"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"7","max_t":"32","min_t":"28"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"2","max_t":"32","min_t":"28"}},"\u9023\u6c5f\u7e23":{"city":"\u9023\u6c5f\u7e23","pm2_5":"6\u4f4e","0":{"weekday":"\u661f\u671f\u4e09","time":"07\/13","parameterValue":"17","max_t":"31","min_t":"26"},"1":{"weekday":"\u661f\u671f\u56db","time":"07\/14","parameterValue":"17","max_t":"31","min_t":"27"},"2":{"weekday":"\u661f\u671f\u4e94","time":"07\/15","parameterValue":"2","max_t":"31","min_t":"27"},"3":{"weekday":"\u661f\u671f\u516d","time":"07\/16","parameterValue":"8","max_t":"31","min_t":"27"},"4":{"weekday":"\u661f\u671f\u65e5","time":"07\/17","parameterValue":"17","max_t":"30","min_t":"27"}}};
+		var icon_url ="http://cc.tvbs.com.tw/portal/images/weather_icon/";
+		var click_data =city_data[city_name];
+		
+		var date = new Date();
+		var mem_cookie_day = 7;
+			 date.setTime(date.getTime() + (mem_cookie_day *24 * 60*60 * 1000));
+		  	 $.cookie("cho_weather", city_name,{ path: '/' ,domain:'' ,expires: date});
+
+		var 	weather_html ='<div class="header-top-R-weather-img" id="weather"><img src="'+icon_url+click_data[0].parameterValue+'.gif"></div>'+
+                    '<div class="header-top-R-weather-temperature">'+click_data[0].min_t+'Â°C</div>'+
+                    '<div class="header-top-R-weather-city">'+click_data.city+'</div> ';
+			
+		$("#weather_div").html(weather_html);
+		$("#region_pm2").html(click_data.pm2_5);
+		$("#region_title").html(city_name);
+		
+		var week_weather_html = "";
+		
+		for(var i=0;i<5;i++)
+		{
+			if(i==0)
+			{
+				week_weather_html= '<div class="weather_today">'+
+						 '<div class="weather_week today">'+click_data[i].time+'<p>'+click_data[i].weekday+'</p></div>'+
+						 '<div class="weather_icon today"><img src="'+icon_url+click_data[i].parameterValue+'.gif"></div>'+
+						 '<div class="weather_temperature today">'+click_data[i].min_t+'Â°C-'+click_data[i].max_t+'Â°C</div>'+
+						 '</div>';
+			}
+			else
+			{
+				week_weather_html += '<div class="weather_day">'+
+						 '<div class="weather_week">'+click_data[i].time+'<p>'+click_data[i].weekday+'</p></div>'+
+						 '<div class="weather_icon"><img src="'+icon_url+click_data[i].parameterValue+'.gif"></div>'+
+						 '<div class="weather_temperature">'+click_data[i].min_t+'Â°C-'+click_data[i].max_t+'Â°C</div>'+
+						 '</div>';
+			}
+		}
+		
+		$("#weather_block").html(week_weather_html);
+		
+		$('#region_titel_setup_div').hide();
+	
+	}
+	
+/* 	function show_div()
+	{
+			$("#region_titel_setup").show();
+	}
+	 */
+
+	
+</script>
+
+
+<!--æ°£è±¡åå¡ end-->
+
+ <!--æéånav-Pcç-->
+<div class="nav">
+   <!--TVBS-LOGO-->
+   <div class="logo"><a href="http://news.tvbs.com.tw/"><img src="http://cc.tvbs.com.tw/news/images/logo.svg" width="160" height="70"></a></div>
+   <!--TVBS-LOGO end-->
+   
+     
+      
+   <!--æéå-->
+   <div class="button">
+   
+      <!--ä¸å-->
+      <div class="button1">
+       <ul>
+				<li><a href="http://news.tvbs.com.tw/realtime">å³æ</a></li>
+<li>é£å°</li>
+<li>æ­£è½é</li>
+<li>éåå¨æ¨</li>
+<li>ç¦é»</li>
+<li><a href="http://news.tvbs.com.tw/pack">æåæ°è</a></li>
+<li><a href="http://news.tvbs.com.tw/really/rumorbreaker">ççå</a></li>
+<li><a href="http://news.tvbs.com.tw/live/news4live">ç´æ­</a></li>
+<li>Tè«è«</li>
+<li><a target="_blank" href="http://other.tvbs.com.tw/other/poll-center/">æ°èª¿</a></li>
+<li><a href="http://idid.tvbs.com.tw/">Tè£æ½¢</a></li>
+        </ul>
+      </div>
+    
+      <!--ä¸åend-->
+     
+      <!--ä¸å-->
+      <div class="button2">
+          <!--1-->
+          <ul>
+			<li><a href='http://news.tvbs.com.tw/pack/packdetail/10'>åæµ·ä»²è£ç­è­°</a></li><li><a href='http://news.tvbs.com.tw/pack/packdetail/9'>å°ç£ç¸åª½æè²è¾é¸</a></li><li><a href='http://news.tvbs.com.tw/pack/packdetail/8'>æ±åä¹é½å¨ç´å¯¦</a></li><li><a href='http://news.tvbs.com.tw/pack/packdetail/7'>å°æ±ç¾å¹´æµ©å«</a></li><li><a href='http://news.tvbs.com.tw/pack/packdetail/2'>åå¹´å»¿å¹´é¦æ¸¯</a></li>           
+           
+          </ul>
+          <!--1 end-->      
+     </div>
+      <!--ä¸åend-->
+   </div>
+   <!--æéåend-->
+   
+    <!--ä¸æç-->
+    <div class="button-board">
+		<div class="button-board1"></div>
+<div class="button-board1">
+	<div class="button-board1-L">
+		<ul>
+			<li><a href="http://news.tvbs.com.tw/travel">Funé£¯</a></li>
+			<li><a href="http://news.tvbs.com.tw/supercars">ç©è»</a></li>
+			<li><a href="http://news.tvbs.com.tw/tech">ç§æ</a></li>
+			<li><a href="http://news.tvbs.com.tw/hipster">æé</a></li>
+		</ul>
+	</div>
+<div class="button-board1-R">
+										 <ul><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/travel/663722"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713111930-dae5a8b5.jpg"></a></div>
+																	<p class="news-t7">è¦åè«æ©ï¼æ¯å­èç³ä¹å¹å½©è¹é¢¨ãæ¯æ¥éé12é¡</p> 
+																</li><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/travel/663710"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713101037-a6889af6.jpg"></a></div>
+																	<p class="news-t7">è åæé¤¨åº§è½æ¸å´éãé«ç©ºç¾æ¯ä¸è¦½ç¡éº</p> 
+																</li><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/tech/663709"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713093109-e46a48fb.jpg"></a></div>
+																	<p class="news-t7">åéç¡äººæ©æ­VRèæ¬é£è¡ãéè½ç¨APPç©ç´æ­</p> 
+																</li></ul>
+									 </div></div>
+<div class="button-board1">
+	<div class="button-board1-L">
+		<ul>
+			<li><a href="http://news.tvbs.com.tw/warm">æè</a></li>
+			<li><a href="http://news.tvbs.com.tw/fun">å¥è¶£</a></li>
+			<li><a href="http://news.tvbs.com.tw/health">å¥åº·</a></li>
+		</ul>
+	</div>
+<div class="button-board1-R">
+										 <ul><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/fun/663719"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713111312-b376174e.jpg"></a></div>
+																	<p class="news-t7">è±å¥³é¦ç¸ä¸ä»»ãå¤©ä¸ç¬¬ä¸è²çºä»»æé¼ å®</p> 
+																</li><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/fun/663701"><img src="http://cc.tvbs.com.tw/img/_data/i/upload/2016/07/13/20160713005005-bba32514-me.jpg"></a></div>
+																	<p class="news-t7">èª°å·ç¨ç­é»ï¼é»è¦èªåæä¸çç¯äººç§ç«ç¶æ¯...</p> 
+																</li><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/fun/663700"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713001939-54333f86.jpg"></a></div>
+																	<p class="news-t7">åè»å°æ¿ååªè²ï¼æå°æ¥äººå¯¦é©å ±ä½ ç¥</p> 
+																</li></ul>
+									 </div></div>
+<div class="button-board1">
+	<div class="button-board1-L">
+		<ul>
+			<li><a href="http://news.tvbs.com.tw/entertainment">å½±å</a></li>
+			<li><a href="http://news.tvbs.com.tw/sports">é«è²</a></li>
+		</ul>
+	</div>
+<div class="button-board1-R">
+										 <ul><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/entertainment/663717"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713112731-920b63f6.jpg"></a></div>
+																	<p class="news-t7">æ­é½å¨å¨å¤ªç½ç®ï¼ãè¢«çä»£è¨2åæ§è³ªåç</p> 
+																</li><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/sports/663697"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/12/20160712234544-e4ed1a8b.jpg"></a></div>
+																	<p class="news-t7">åéå°éæéå¹ï¼ããèé·¹ç¿±ç¿ãè¡¨æ¼å¸ç</p> 
+																</li><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/sports/663687"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/12/20160712223346-9d52c2f2.jpg"></a></div>
+																	<p class="news-t7">ä¸è¨´ä»²è£æ¨é²ãèææ³¢å¨ç¡ç·£éç´å¥§é</p> 
+																</li></ul>
+									 </div></div>
+<div class="button-board1">
+	<div class="button-board1-L">
+		<ul>
+			<li><a href="http://news.tvbs.com.tw/life">æ°çæ¶è²»</a></li>
+			<li><a href="http://news.tvbs.com.tw/politics">æ¿ç¶</a></li>
+			<li><a href="http://news.tvbs.com.tw/local">ç¤¾æ</a></li>
+			<li><a href="http://news.tvbs.com.tw/world">åé</a></li>
+		</ul>
+		<ul>
+			<li><a href="http://news.tvbs.com.tw/china">å©å²¸</a></li>
+		</ul>
+	</div>
+<div class="button-board1-R">
+										 <ul><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/china/663723"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713112730-acb0ba4c.jpg"></a></div>
+																	<p class="news-t7">åæµ·ä»²è£é·æç¾åãé¸ç¶²åèå¬ç ¸iPhoneæµå¶</p> 
+																</li><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/world/663721"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713112056-c51ab168.jpg"></a></div>
+																	<p class="news-t7">ç¾©å¤§å©ç«è»é«éå°æãè»é ­å¨çè³å°20æ­»</p> 
+																</li><li>
+																	<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/world/663719"><img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713111312-b376174e.jpg"></a></div>
+																	<p class="news-t7">è±å¥³é¦ç¸ä¸ä»»ãå¤©ä¸ç¬¬ä¸è²çºä»»æé¼ å®</p> 
+																</li></ul>
+									 </div></div>
+<div class="button-board1"></div>
+<div class="button-board1"></div>
+<div class="button-board1"></div>
+<div class="button-board1">
+	<div class="button-board1-L">
+		<ul>
+			<li><a href="http://news.tvbs.com.tw/ttalk/reporter_article">Tè¨è</a></li>
+			<li><a href="http://news.tvbs.com.tw/ttalk/blog_article">Tåå®¢</a></li>
+		</ul>
+	</div>
+<div class="button-board1-R">
+											 <ul><li>
+														<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/ttalk/reporter_author_detail/4262"><img src="http://cc.tvbs.com.tw/img/_data/i/upload/2016/07/13/20160713110546-90dd01e2-me.jpg"></a></div>
+														<p class="news-t7">å·¨è¹é¿ï¼ä½ è¦çæ¯æäººéæ¯ç¸åª½ï¼</p> 
+													</li><li>
+														<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/ttalk/reporter_author_detail/4261"><img src="http://cc.tvbs.com.tw/img/_data/i/upload/2016/07/13/20160713101913-17fccc1f-sm.jpg"></a></div>
+														<p class="news-t7">æ´æå¤©æ§ä¾µæ¡ï¼æçéº¼åé¡ï¼</p> 
+													</li><li>
+														<div class="button-board1-R-img"><a href="http://news.tvbs.com.tw/ttalk/reporter_author_detail/4260"><img src="http://cc.tvbs.com.tw/img/_data/i/upload/2016/07/13/20160713091923-db99a37f-me.jpg"></a></div>
+														<p class="news-t7">12æåº§ç·åæ­¡å¦³ï¼ä»çè¡¨ç¾ææ¯â¦ï¼</p> 
+													</li></ul>
+										 </div></div>
+<div class="button-board1"></div>
+<div class="button-board1"></div>
+       
+      
+   </div>
+   <!--ä¸æçEND-->
+       
+    
+
+</div>
+
+<!--æéånav-Pcç end-->
+<!--æéånav-Pcç end-->
+
+<!--å»£åAD-Pcç-->
+<div class="ad-banner">
+	<script>show_da('v4_news__index_inpage','warm')</script>
+	<script>show_da('v4_news_O_index_970x90','warm')</script>
+</div>
+<!--å»£åAD-Pcç end-->
+
+<!--content-->
+
+
+<div class="main">
+	<script>show_da('v4_news__index_incover','warm')</script>
+	<script>show_da('v4_news_m__index_incover','warm')</script>
+	<script>show_da('v4_news__index_pushdown','warm')</script>
+
+	
+
+<!--æ°èå·¦å´åå¡-->
+    <div class="content_left">
+    <!--newscateå§æå-->
+        <div class="newscate">
+        
+					<!--æ¨é¡-->
+             <div class="height_10px"></div>
+             <div class="titel">
+               <h2>æèé ­æ¢</h2>
+               <div class="titel-img"></div>
+             </div>
+             <div class="height_10px"></div>
+           <!--æ¨é¡end-->
+		
+          <!--ä¸»è¦è¦ºæ¨é ­-->
+          <div class="newscate-kv">
+          
+            <!--ä¸»è¦è¦ºå·¦-->
+            <div class="newscate-kv-L">
+            <div class="kv_arrawL prev" ontouchend="this.onclick=fix"></div>
+            <div class="kv_arrawR next" ontouchend="this.onclick=fix"></div>
+               <ul>
+											<li>
+							<div class="kv-L-img2">
+								<a href="/warm/663699">
+									<img src="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713001150-717ddb8b.jpg" />
+								</a>
+							</div>
+							<div class="newscate-kv-L-t">
+																<p class="titel25">
+									<a href="/warm/663699">æå¯¶å¯¶å­é¬§å¹²æ¾ãå¤«å¦»åè³å¡éå¨æ©ä¹å®¢</a>
+								</p>
+							</div>
+							<div class="newscate-kv-L-t-under1">
+								<p class="under">2016-07-13 00:15:07</p>
+							</div>
+						</li>
+											<li>
+							<div class="kv-L-img2">
+								<a href="/warm/663393">
+									<img src="http://cc.tvbs.com.tw/img/upload/2016/07/11/20160711132653-f49e01ae.jpg" />
+								</a>
+							</div>
+							<div class="newscate-kv-L-t">
+																<p class="titel25">
+									<a href="/warm/663393">å£½å¸çµ¦å¦³ï¼é¿å¬¤é¤èæµæ·ãå¥³ç¶²åPOææ±åå©</a>
+								</p>
+							</div>
+							<div class="newscate-kv-L-t-under1">
+								<p class="under">2016-07-11 13:21:24</p>
+							</div>
+						</li>
+											<li>
+							<div class="kv-L-img2">
+								<a href="/warm/663363">
+									<img src="http://cc.tvbs.com.tw/img/upload/2016/07/11/20160711115231-397be29d.jpg" />
+								</a>
+							</div>
+							<div class="newscate-kv-L-t">
+																<p class="titel25">
+									<a href="/warm/663363">ä¸å¿é¿å©æ·é¨ï¼æç·å¸æ©éé²å··å­ãéå°å®¶ã</a>
+								</p>
+							</div>
+							<div class="newscate-kv-L-t-under1">
+								<p class="under">2016-07-11 11:42:00</p>
+							</div>
+						</li>
+											<li>
+							<div class="kv-L-img2">
+								<a href="/warm/663143">
+									<img src="http://cc.tvbs.com.tw/img/_data/i/upload/2016/07/09/20160709120341-2d4e8dbf-sm.jpg" />
+								</a>
+							</div>
+							<div class="newscate-kv-L-t">
+																<p class="titel25">
+									<a href="/warm/663143">å°æ±å æ²¹ï¼åºå®¶åè²»ä¾æ¹¯ãç±æ°´æ¾¡çµ¦å±æ°</a>
+								</p>
+							</div>
+							<div class="newscate-kv-L-t-under1">
+								<p class="under">2016-07-09 12:08:54</p>
+							</div>
+						</li>
+											<li>
+							<div class="kv-L-img2">
+								<a href="/warm/663083">
+									<img src="http://cc.tvbs.com.tw/img/upload/2016/07/08/20160708200335-97dec832.jpg" />
+								</a>
+							</div>
+							<div class="newscate-kv-L-t">
+																<p class="titel25">
+									<a href="/warm/663083">éºæ£è¸è¸é­å£è¨æ·¹æ²ãç¾å®¹å¸«è±6å°æææ´</a>
+								</p>
+							</div>
+							<div class="newscate-kv-L-t-under1">
+								<p class="under">2016-07-08 20:07:44</p>
+							</div>
+						</li>
+											<li>
+							<div class="kv-L-img2">
+								<a href="/warm/662824">
+									<img src="http://cc.tvbs.com.tw/img/upload/2016/07/07/20160707174317-1f42406d.jpg" />
+								</a>
+							</div>
+							<div class="newscate-kv-L-t">
+																<p class="titel25">
+									<a href="/warm/662824">ãæä¸æ¯å£äººã è¿·è·¯ç«¥æåè­¦è»ãæè­¦éªèµ°åå®¶</a>
+								</p>
+							</div>
+							<div class="newscate-kv-L-t-under1">
+								<p class="under">2016-07-07 17:48:31</p>
+							</div>
+						</li>
+					               </ul>
+            </div>
+            <!--ä¸»è¦è¦ºå·¦ed-->
+            
+            <!--ä¸»è¦è¦ºå³-->
+            <div class="newscate-kv-R">
+               <ul>
+			   
+									<li>
+						<a href="/warm/663699">
+							<div class="newscate-kv-R2">
+								<p class="newscate-kv-R-R16">æå¯¶å¯¶å­é¬§å¹²æ¾ãå¤«å¦»åè³å¡éå¨æ©ä¹å®¢</p>
+							</div>
+						</a>
+					</li>
+									<li>
+						<a href="/warm/663393">
+							<div class="newscate-kv-R2">
+								<p class="newscate-kv-R-R16">å£½å¸çµ¦å¦³ï¼é¿å¬¤é¤èæµæ·ãå¥³ç¶²åPOææ±åå©</p>
+							</div>
+						</a>
+					</li>
+									<li>
+						<a href="/warm/663363">
+							<div class="newscate-kv-R2">
+								<p class="newscate-kv-R-R16">ä¸å¿é¿å©æ·é¨ï¼æç·å¸æ©éé²å··å­ãéå°å®¶ã</p>
+							</div>
+						</a>
+					</li>
+									<li>
+						<a href="/warm/663143">
+							<div class="newscate-kv-R2">
+								<p class="newscate-kv-R-R16">å°æ±å æ²¹ï¼åºå®¶åè²»ä¾æ¹¯ãç±æ°´æ¾¡çµ¦å±æ°</p>
+							</div>
+						</a>
+					</li>
+									<li>
+						<a href="/warm/663083">
+							<div class="newscate-kv-R2">
+								<p class="newscate-kv-R-R16">éºæ£è¸è¸é­å£è¨æ·¹æ²ãç¾å®¹å¸«è±6å°æææ´</p>
+							</div>
+						</a>
+					</li>
+									<li>
+						<a href="/warm/662824">
+							<div class="newscate-kv-R2">
+								<p class="newscate-kv-R-R16">ãæä¸æ¯å£äººã è¿·è·¯ç«¥æåè­¦è»ãæè­¦éªèµ°åå®¶</p>
+							</div>
+						</a>
+					</li>
+				     
+              </ul>
+            </div>
+            <!--ä¸»è¦è¦ºå³ed-->
+            
+          </div>
+          <!--ä¸»è¦è¦ºæ¨é ­ed-->
+		         
+		 		  
+	<!--å³ææ°è-->      
+	<!--å³ææ°èæ¨é¡-->
+    <div class="tt">
+      <div class="titel">
+						<h2>æè å³ææ°è</h2>
+			<div class="titel-img"></div>
+			<p class="totalView"></p>
+			      </div>
+     </div> 
+    <!--å³ææ°èæ¨é¡end-->  
+          
+          
+	<!--å§å®¹-->
+    <div class="information">
+        <ul id='addpage'>
+		
+										
+								
+				<li >
+					<a href='/warm/663699'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/img/upload/2016/07/13/20160713001150-717ddb8b.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/663699'>
+							<p class="titel_content18">æå¯¶å¯¶å­é¬§å¹²æ¾ãå¤«å¦»åè³å¡éå¨æ©ä¹å®¢</p>
+						</a>
+					</div>
+					<a href='/warm/663699'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-13 00:15:07</p>
+							<p class="underView">çè¦½æ¸:65</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li >
+					<a href='/warm/663514'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/img/upload/2016/07/12/20160712093757-047ec65f.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/663514'>
+							<p class="titel_content18">å°æ±å æ²¹ï¼å°å101é£3å¤©é»çãçºç½åææ°£</p>
+						</a>
+					</div>
+					<a href='/warm/663514'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-12 09:34:00</p>
+							<p class="underView">çè¦½æ¸:185</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li >
+					<a href='/warm/663394'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/img/upload/2016/07/11/20160711134300-29c7e39a.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/663394'>
+							<p class="titel_content18">ä¸è½æ²æç¸ç¸ï¼åæèå¼æèãæèç¸ä¸å½</p>
+						</a>
+					</div>
+					<a href='/warm/663394'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-11 13:26:17</p>
+							<p class="underView">çè¦½æ¸:442</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class="ad-banner-m ">
+					<script>show_da('v4_news_m__index_superrec_1','warm')</script>
+				</li>
+					
+								
+				<li >
+					<a href='/warm/663393'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/img/upload/2016/07/11/20160711132653-f49e01ae.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/663393'>
+							<p class="titel_content18">å£½å¸çµ¦å¦³ï¼é¿å¬¤é¤èæµæ·ãå¥³ç¶²åPOææ±åå©</p>
+						</a>
+					</div>
+					<a href='/warm/663393'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-11 13:21:24</p>
+							<p class="underView">çè¦½æ¸:10529</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li >
+					<a href='/warm/663363'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/img/upload/2016/07/11/20160711115231-397be29d.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/663363'>
+							<p class="titel_content18">ä¸å¿é¿å©æ·é¨ï¼æç·å¸æ©éé²å··å­ãéå°å®¶ã</p>
+						</a>
+					</div>
+					<a href='/warm/663363'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-11 11:42:00</p>
+							<p class="underView">çè¦½æ¸:527</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li >
+					<a href='/warm/663143'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/img/_data/i/upload/2016/07/09/20160709120341-2d4e8dbf-sm.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/663143'>
+							<p class="titel_content18">å°æ±å æ²¹ï¼åºå®¶åè²»ä¾æ¹¯ãç±æ°´æ¾¡çµ¦å±æ°</p>
+						</a>
+					</div>
+					<a href='/warm/663143'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-09 12:08:54</p>
+							<p class="underView">çè¦½æ¸:796</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/663083'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/img/upload/2016/07/08/20160708200335-97dec832.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/663083'>
+							<p class="titel_content18">éºæ£è¸è¸é­å£è¨æ·¹æ²ãç¾å®¹å¸«è±6å°æææ´</p>
+						</a>
+					</div>
+					<a href='/warm/663083'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-08 20:07:44</p>
+							<p class="underView">çè¦½æ¸:16146</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/662824'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/img/upload/2016/07/07/20160707174317-1f42406d.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/662824'>
+							<p class="titel_content18">ãæä¸æ¯å£äººã è¿·è·¯ç«¥æåè­¦è»ãæè­¦éªèµ°åå®¶</p>
+						</a>
+					</div>
+					<a href='/warm/662824'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-07 17:48:31</p>
+							<p class="underView">çè¦½æ¸:3791</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class="ad-banner-m hiddenads">
+					<script>show_da('v4_news_m__index_superrec_2','warm')</script>
+				</li>
+					
+								
+				<li class='hiddenblock'>
+					<a href='/warm/661881'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/newsimages/default-image.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/661881'>
+							<p class="titel_content18">ç±è¡é¿åµå¥å¹«èç¿æ¨è»ãå¥½å¿æ°ç¾è¼ä»ååç</p>
+						</a>
+					</div>
+					<a href='/warm/661881'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-01 23:32:05</p>
+							<p class="underView">çè¦½æ¸:233</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/661808'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/newsimages/default-image.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/661808'>
+							<p class="titel_content18">æ§é¿æ²å¨æããå¥³ä¿ ãç¨é¤ä¸­é£å¥æå·æ£</p>
+						</a>
+					</div>
+					<a href='/warm/661808'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-01 18:17:03</p>
+							<p class="underView">çè¦½æ¸:148</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/661748'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/newsimages/default-image.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/661748'>
+							<p class="titel_content18">è¨æ­£å¾èå·æéªç³ãæç·èéï¼æç¸¾ä¸ææ±ºå®ä¸ç</p>
+						</a>
+					</div>
+					<a href='/warm/661748'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-01 12:56:30</p>
+							<p class="underView">çè¦½æ¸:38</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/661738'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/newsimages/default-image.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/661738'>
+							<p class="titel_content18">ç¶æ¯å¤±è°â¦ä¸æ³é¯éå©ç¦®ãæ°å¨è¦ç·´æèªå©ç¦®æ­</p>
+						</a>
+					</div>
+					<a href='/warm/661738'>
+						<div class="information-txt1-under">
+							<p class="under">2016-07-01 12:24:33</p>
+							<p class="underView">çè¦½æ¸:169</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/661663'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/newsimages/default-image.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/661663'>
+							<p class="titel_content18">ä¸æ³è®è² æï¼çç«¥å°ç¶æ¯é£é3æ¬¡è¬ãèªå·±æç®¡é¢ä¸</p>
+						</a>
+					</div>
+					<a href='/warm/661663'>
+						<div class="information-txt1-under">
+							<p class="under">2016-06-30 20:43:29</p>
+							<p class="underView">çè¦½æ¸:205</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class="ad-banner-m hiddenads">
+					<script>show_da('v4_news_m__index_superrec_3','warm')</script>
+				</li>
+					
+								
+				<li class='hiddenblock'>
+					<a href='/warm/661650'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/newsimages/default-image.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/661650'>
+							<p class="titel_content18">å½±ï¼èå©¦æ¬ºè² è³£ç³å°å¥³å­©ãæ­£ç¾©ç·é¸æ°£å¨è²·</p>
+						</a>
+					</div>
+					<a href='/warm/661650'>
+						<div class="information-txt1-under">
+							<p class="under">2016-06-30 19:41:07</p>
+							<p class="underView">çè¦½æ¸:86</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/661530'>
+						<div class="information-img1">
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/newsimages/default-image.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/661530'>
+							<p class="titel_content18">è¬è¬ååï¼åå°ç«¥è¦ªæåå¡ç ãè¬è­¦å®è­·å®å¨</p>
+						</a>
+					</div>
+					<a href='/warm/661530'>
+						<div class="information-txt1-under">
+							<p class="under">2016-06-30 10:12:26</p>
+							<p class="underView">çè¦½æ¸:15</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/659041'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/news/life/images/2016/06/15/.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/659041'>
+							<p class="titel_content18">å°è§è½æ­£è½é/å¥ç´æ¥ææ¬¾ äººçª®å¿ä¸è½çª® </p>
+						</a>
+					</div>
+					<a href='/warm/659041'>
+						<div class="information-txt1-under">
+							<p class="under">2016-06-15 14:48:58</p>
+							<p class="underView">çè¦½æ¸:14</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/657939'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/news/life/images/2015/06/08/827027.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/657939'>
+							<p class="titel_content18">é¡æçµ¦æåææ±å? æä¸å¯æ ææ»å¯¶å¯¶æ¸´ææ</p>
+						</a>
+					</div>
+					<a href='/warm/657939'>
+						<div class="information-txt1-under">
+							<p class="under">2016-06-08 16:29:06</p>
+							<p class="underView">çè¦½æ¸:8</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/653793'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/news/life/images/2016/05/13/80342351.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/653793'>
+							<p class="titel_content18">å°è§è½æ­£è½é/è¢«ç«ç´èº«å¾...å¦»åéå¨ ææ²è³æ ¼åä¸å»</p>
+						</a>
+					</div>
+					<a href='/warm/653793'>
+						<div class="information-txt1-under">
+							<p class="under">2016-05-13 18:19:47</p>
+							<p class="underView">çè¦½æ¸:17</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class="ad-banner-m hiddenads">
+					<script>show_da('v4_news_m__index_superrec_4','warm')</script>
+				</li>
+					
+								
+				<li class='hiddenblock'>
+					<a href='/warm/652718'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news3.0/tvbs/news/news-images/-2.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/652718'>
+							<p class="titel_content18">å°è§è½æ­£è½éï¼æ¥æ¶å¥ç¾åä»æ¨è§ âç¡è²éº»ç³¬âï¼ä¸å®¶äººæè¶ä¾è¶å¥½</p>
+						</a>
+					</div>
+					<a href='/warm/652718'>
+						<div class="information-txt1-under">
+							<p class="under">2016-05-06 18:06:02</p>
+							<p class="underView">çè¦½æ¸:16</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/577651'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150428164421311.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/577651'>
+							<p class="titel_content18">âãä¸æ­¥ä¸è³å°ãææ´è­·æ°´æçæ</p>
+						</a>
+					</div>
+					<a href='/warm/577651'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-28 16:46:35</p>
+							<p class="underView">çè¦½æ¸:306</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/577649'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150428164142995.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/577649'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãçé¥é ­çæç±è¨ç«</p>
+						</a>
+					</div>
+					<a href='/warm/577649'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-28 16:42:43</p>
+							<p class="underView">çè¦½æ¸:779</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/577647'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150428163918646.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/577647'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãçå¾çè±æ¼¿åµæ¥­</p>
+						</a>
+					</div>
+					<a href='/warm/577647'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-28 16:40:33</p>
+							<p class="underView">çè¦½æ¸:3630</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/577646'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150428163619317.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/577646'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãä¾å¾ªæç¯ä¾çè¶</p>
+						</a>
+					</div>
+					<a href='/warm/577646'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-28 16:37:50</p>
+							<p class="underView">çè¦½æ¸:450</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class="ad-banner-m hiddenads">
+					<script>show_da('v4_news_m__index_superrec_5','warm')</script>
+				</li>
+					
+								
+				<li class='hiddenblock'>
+					<a href='/warm/576319'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/show0709@tvbs.com.tw/201504/2015041923032611.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/576319'>
+							<p class="titel_content18">âãä¸æ­¥ä¸è³å°ãè¡é ­å¡é´ææçäº</p>
+						</a>
+					</div>
+					<a href='/warm/576319'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-19 22:51:56</p>
+							<p class="underView">çè¦½æ¸:473</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/576317'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/show0709@tvbs.com.tw/201504/20150419225737886.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/576317'>
+							<p class="titel_content18">âãä¸æ­¥ä¸è³å°ãéèé¦è¸è£¡äººçæ°å³</p>
+						</a>
+					</div>
+					<a href='/warm/576317'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-19 22:50:49</p>
+							<p class="underView">çè¦½æ¸:2281</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/576316'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/show0709@tvbs.com.tw/201504/20150419230045865.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/576316'>
+							<p class="titel_content18">âãä¸æ­¥ä¸è³å°ãä»çå°æ¥­æ¯è¬åä¿®å¾©</p>
+						</a>
+					</div>
+					<a href='/warm/576316'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-19 22:40:58</p>
+							<p class="underView">çè¦½æ¸:722</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/575290'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150413091626558.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/575290'>
+							<p class="titel_content18">âãä¸æ­¥ä¸è³å°ãç¬¬äºä»£çè¶åµæ°</p>
+						</a>
+					</div>
+					<a href='/warm/575290'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-13 09:18:01</p>
+							<p class="underView">çè¦½æ¸:1861</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/575289'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150413091227133.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/575289'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãéä¼è»äººç¨®å±±è</p>
+						</a>
+					</div>
+					<a href='/warm/575289'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-13 09:15:38</p>
+							<p class="underView">çè¦½æ¸:515</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/575282'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150413083913231.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/575282'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãå½©è²æ¨æ¢¯å¿«æ¨å¿</p>
+						</a>
+					</div>
+					<a href='/warm/575282'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-13 08:40:43</p>
+							<p class="underView">çè¦½æ¸:686</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/575281'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150413083657126.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/575281'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãâå°åºåèµ·é£²é£é©å½</p>
+						</a>
+					</div>
+					<a href='/warm/575281'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-13 08:38:26</p>
+							<p class="underView">çè¦½æ¸:560</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/574286'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150406103908407.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/574286'>
+							<p class="titel_content18">âãä¸æ­¥ä¸è³å°ãé¤å30å¹´ãäººçåèª²ã</p>
+						</a>
+					</div>
+					<a href='/warm/574286'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-06 10:37:13</p>
+							<p class="underView">çè¦½æ¸:978</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/574285'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150406103257334.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/574285'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãå·éå°çãç±æè·¯ã</p>
+						</a>
+					</div>
+					<a href='/warm/574285'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-06 10:33:16</p>
+							<p class="underView">çè¦½æ¸:1571</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/574284'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/mishayeh@tvbs.com.tw/201504/20150406103051657.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/574284'>
+							<p class="titel_content18">âãä¸æ­¥ä¸è³å°ããå¤§åç©é«å¸«ãçç±è¡</p>
+						</a>
+					</div>
+					<a href='/warm/574284'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-06 10:31:45</p>
+							<p class="underView">çè¦½æ¸:377</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/573770'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/shihwei8@tvbs.com.tw/201504/20150401231727603.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/573770'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãèå¿å°æ¨¹è¶è±å¤¢</p>
+						</a>
+					</div>
+					<a href='/warm/573770'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-01 23:18:16</p>
+							<p class="underView">çè¦½æ¸:738</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/573769'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/shihwei8@tvbs.com.tw/201504/20150401231401741.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/573769'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãå«åå¹´åç°æ½¤é¤</p>
+						</a>
+					</div>
+					<a href='/warm/573769'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-01 23:14:42</p>
+							<p class="underView">çè¦½æ¸:957</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/573768'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/shihwei8@tvbs.com.tw/201504/20150401230826422.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/573768'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãå¤ä¸é»çè±èäººç</p>
+						</a>
+					</div>
+					<a href='/warm/573768'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-01 23:09:18</p>
+							<p class="underView">çè¦½æ¸:2458</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/573767'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/shihwei8@tvbs.com.tw/201504/20150401230151773.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/573767'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãé¿å¬æåæ°çæ©</p>
+						</a>
+					</div>
+					<a href='/warm/573767'>
+						<div class="information-txt1-under">
+							<p class="under">2015-04-01 23:03:45</p>
+							<p class="underView">çè¦½æ¸:715</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/572347'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/poka4501@tvbs.com.tw/201503/20150323172610983.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/572347'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãè½ä¸è¦èèçé²æ</p>
+						</a>
+					</div>
+					<a href='/warm/572347'>
+						<div class="information-txt1-under">
+							<p class="under">2015-03-23 17:29:52</p>
+							<p class="underView">çè¦½æ¸:2559</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/572346'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/poka4501@tvbs.com.tw/201503/20150323172114148.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/572346'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãå°ç³å±±ä¸çæ­£è½é</p>
+						</a>
+					</div>
+					<a href='/warm/572346'>
+						<div class="information-txt1-under">
+							<p class="under">2015-03-23 17:25:22</p>
+							<p class="underView">çè¦½æ¸:418</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/572344'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/poka4501@tvbs.com.tw/201503/20150323171558681.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/572344'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãç¨å¿ç¿»ç´è¡è¿èçå</p>
+						</a>
+					</div>
+					<a href='/warm/572344'>
+						<div class="information-txt1-under">
+							<p class="under">2015-03-23 17:19:39</p>
+							<p class="underView">çè¦½æ¸:602</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/571288'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/show0709@tvbs.com.tw/201503/20150316145445725.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/571288'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãè¾²è¥å°ææ©è½åéæ</p>
+						</a>
+					</div>
+					<a href='/warm/571288'>
+						<div class="information-txt1-under">
+							<p class="under">2015-03-16 14:55:04</p>
+							<p class="underView">çè¦½æ¸:456</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/571287'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/show0709@tvbs.com.tw/201503/20150316145300816.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/571287'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãæèµ·è¾²å¤«çæ·±å¤è¾²å ´</p>
+						</a>
+					</div>
+					<a href='/warm/571287'>
+						<div class="information-txt1-under">
+							<p class="under">2015-03-16 14:53:33</p>
+							<p class="underView">çè¦½æ¸:1319</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/571285'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/show0709@tvbs.com.tw/201503/20150316145034562.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/571285'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãèµ°é²è¾²å®¶çæé¬å¥³å­©</p>
+						</a>
+					</div>
+					<a href='/warm/571285'>
+						<div class="information-txt1-under">
+							<p class="under">2015-03-16 14:51:27</p>
+							<p class="underView">çè¦½æ¸:2210</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/571284'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/show0709@tvbs.com.tw/201503/20150316144828797.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/571284'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãå°è¾²çå¯å¯å¤§å¤¢</p>
+						</a>
+					</div>
+					<a href='/warm/571284'>
+						<div class="information-txt1-under">
+							<p class="under">2015-03-16 14:49:27</p>
+							<p class="underView">çè¦½æ¸:833</p> 
+						</div>
+					</a>
+				</li>
+							
+								
+				<li class='hiddenblock'>
+					<a href='/warm/570134'>
+						<div class="information-img1">
+															<div class="play-small" style='width:30px;'><img src="http://cc.tvbs.com.tw/news/images/play.svg"></div>
+														<img class="lazyimage" data-original="http://cc.tvbs.com.tw/news2.0/img/FILE_DB/newsphoto/poka4501@tvbs.com.tw/201503/20150309083059274.jpg" src="http://cc.tvbs.com.tw/news/images/default_news.jpg" />
+						</div>
+					</a>
+					<div class="information-txt1">
+												<a href='/warm/570134'>
+							<p class="titel_content18">ãä¸æ­¥ä¸è³å°ãå­©å­åçäººçæç·´</p>
+						</a>
+					</div>
+					<a href='/warm/570134'>
+						<div class="information-txt1-under">
+							<p class="under">2015-03-09 08:32:03</p>
+							<p class="underView">çè¦½æ¸:485</p> 
+						</div>
+					</a>
+				</li>
+			        </ul>
+     </div>
+     <!--å³ææ°èed-->  
+	 <div class="more" addpage="2" news_id='663699'>MORE</div>
+    <!--å§å®¹end-->
+    
+
+    	</div>
+   <!--newscateå§æåed-->
+    </div>
+<!--æ°èå·¦å´åå¡end--> 
+   <!--æ°èå³å´åå¡--> 
+		<div class="content_right">
+			
+			<!-- ç·¨è¼¯æ¨è¦ ,AD ,ç±éæ¨è¦ ,AD , ç±éæè¡æ¦ -->
+			<div class='right_block'><div class='titel'><h2>äººæ°£é»é±æ¦</h2><div class='titel-img'></div></div><div class='right_block_content'><div class='right_list'><ul><li><a href='/health/663529' class='right_list_box'><span>1</span>ãå¥åº·2.0ãå®ç§æéº¼å®ææ­£ç¢ºï¼å¥åº·2.0å ±ä½ ç¥ï¼</a></li><li><a href='/world/663491' class='right_list_box'><span>2</span>ãå¤æäººå°è¨ªãè³ çæ´è·97.5%ãèå®¶ä¹ææå¤§äºç¼ç</a></li><li><a href='/fun/663576' class='right_list_box'><span>3</span>è¶ç±è¡æä¾¶ï¼ç©¿çµå©ç¦®æãå¾è¥¿ç­çãèµ°ãåå°ç£</a></li><li><a href='/travel/662797' class='right_list_box'><span>4</span>æç©ºçé»å¤¯ï¼åæ¥µåå¤¢å¹»é£²ãæçå·§ååç±è³£</a></li><li><a href='/travel/663418' class='right_list_box'><span>5</span>ååä¹è¦åççï¼å°ä¸­å¿å5å¤§å°å</a></li><li><a href='/fun/663417' class='right_list_box'><span>6</span>å¨çææ·±40ç±³æ³³æ± ãæ± åºæ´ç©´ä¾éå®¢æ¢éª</a></li><li><a href='/fun/663671' class='right_list_box'><span>7</span>æ³ä½å°ç£ï¼ä½ å¾åè·ã8ä»¶äºãèªªåè¦</a></li><li><a href='/politics/663647' class='right_list_box'><span>8</span>ä¸æä»²è£ãå°è±æ´¾åº·å®ç´è¦å·¡å¼åæµ·</a></li></ul></div></div></div>			<div class='right-ad-banner300'><script>show_da('v4_news__index_superrec_top','warm')</script></div>
+			<div class='right_block'><div class='titel'><h2>ç·¨è¼¯æ¨è¦</h2><div class='titel-img'></div></div><div class='right_block_content'><div class='right_list'><ul><li><a href='/fun/663701' class='right_list_box'><span>1</span>èª°å·ç¨ç­é»ï¼é»è¦èªåæä¸çç¯äººç§ç«ç¶æ¯...</a></li><li><a href='/fun/663700' class='right_list_box'><span>2</span>åè»å°æ¿ååªè²ï¼æå°æ¥äººå¯¦é©å ±ä½ ç¥</a></li><li><a href='/world/663688' class='right_list_box'><span>3</span>æ¯æ°£ä¸­è³£å½ï¼ãå°å°¼ç¤¦å·¥æ¡ç¡«ç£ºå¹³åå£½å½30æ­²</a></li><li><a href='/fun/663681' class='right_list_box'><span>4</span>å¨åªï¼ææ©æ®¼å®ç¾æ­å°æ¯¯ï¼æ¾å°ç¼çé½é¸äº</a></li><li><a href='/fun/663671' class='right_list_box'><span>5</span>æ³ä½å°ç£ï¼ä½ å¾åè·ã8ä»¶äºãèªªåè¦</a></li><li><a href='/fun/663693' class='right_list_box'><span>6</span>ç¨APPè·åºéæèï¼ç·å­è®æ´»å±å¥½åäºº</a></li></ul></div></div></div><!-- ç·¨è¼¯æ¨è¦ end-->			<div class='right-ad-banner300'><script>show_da('v4_news__index_superrec_mid','warm')</script></div>
+			<div class='right_block'><div class='titel'><h2>è©±é¡ç±æ­æ¦</h2><div class='titel-img'></div></div><div class='right_block_content'><div class='right_list'><ul><li><a href='/sports/663636' class='right_list_box'><span>1</span>ãæ³ä»¥æä½³çæçºåç­åãè¬æ·èæ·çè¨èæ </a></li><li><a href='/politics/663439' class='right_list_box'><span>2</span> ãæ¿ç¸¾ãå¨åªï¼ãæ¿é¢ä»¤é¨æä¸å ±ãçå¾è¦çç¸¾æã</a></li><li><a href='/politics/663461' class='right_list_box'><span>3</span>1ç§ç®é¢ï¼ãååºæ³è¨ç®æ©ãç¬éææå ç­è²»</a></li><li><a href='/life/663454' class='right_list_box'><span>4</span> ãä¸å·ä¸æ¶æé¯åããè³å·¥å¤§ä¸ççæç¶²æ</a></li><li><a href='/entertainment/663457' class='right_list_box'><span>5</span>æ´æå¤©ç¡ç½ªåå â¦â¦æåå¥³å­é½æå°é¢</a></li><li><a href='/local/663459' class='right_list_box'><span>6</span>çåæ«æ¿ç¶è»æãä»é©å²ãæ¥èª1è¬ãå¥½è³º</a></li></ul></div></div></div><!-- è©±é¡ç±æ­æ¦ end-->			
+			<!--ç·ä¸æç¥¨-->
+							<!--ç·ä¸æç¥¨ end-->
+
+			<!--Media icon ç¤¾ç¾¤ææ¥é-->
+			<div class="right_block">
+	<div class="titel">
+		<h2>ç¤¾ç¾¤ææ¥é</h2>
+		<div class="titel-img"></div>
+	</div>
+	<div class="right_block_content">
+		<div class="right_social_media">
+			<div class="association_icon">
+				<ul>
+					 <li><a href="https://www.facebook.com/profile.php?id=220050085932" target="_blank">å å¥</a></li>
+					 <li><a href="https://www.youtube.com/channel/UC5nwNW4KdC0SzrhF9BXEYOQ" target="_blank">è¨é±</a></li>
+					 <li><a href="https://line.me/ti/p/%40gfy4408x" target="_blank">å å¥</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+			<!--å³æç±æ-->
+			<div class="right_block">
+	<div class="titel">
+	<h2>å³æç±æ</h2>
+	<div class="titel-img"></div>
+	</div>
+	<div class="right_block_content">
+		<div class="right_word_cloud">
+		</div>
+	</div>
+</div>
+
+<script>
+	function redirectAndRecord(id, url){
+		var http = new XMLHttpRequest();
+		var posturl = "/api/recordKeywordAdsViewsCount";
+		var params = "id="+id;
+		http.open("POST", posturl, true);
+
+		//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() {//Call a function when the state changes.
+			if(http.readyState == 4 && http.status == 200) {
+				//alert(http.responseText);
+			}
+		}
+		http.send(params);
+		location.href=url;
+	}
+	$(function(){
+				var words = [{"text":"é£æ©æ¯","weight":19,"link":"\/news\/searchresult\/news?search_text=é£æ©æ¯","color":"#800026"},{"text":"ç¥å¥å¯¶è²go","weight":19,"link":"\/news\/searchresult\/news?search_text=ç¥å¥å¯¶è²go","color":"#feb24c"},{"text":"å®ç§","weight":18,"link":"\/news\/searchresult\/news?search_text=å®ç§","color":"#fd8d3c"},{"text":"å¤å¤©","weight":18,"link":"\/news\/searchresult\/news?search_text=å¤å¤©","color":"#fd8d3c"},{"text":"ä¸­æ","weight":18,"link":"\/news\/searchresult\/news?search_text=ä¸­æ","color":"#bd0026"},{"text":"å¥åº·2.0","weight":18,"link":"\/news\/searchresult\/news?search_text=å¥åº·2.0","color":"#800026"},{"text":"å¹½æµ®","weight":18,"link":"\/news\/searchresult\/news?search_text=å¹½æµ®","color":"#bd0026"},{"text":"å¤æäºº","weight":18,"link":"\/news\/searchresult\/news?search_text=å¤æäºº","color":"#feb24c"},{"text":"ç¾å","weight":18,"link":"\/news\/searchresult\/news?search_text=ç¾å","color":"#bd0026"},{"text":"æ­å·´é¦¬","weight":18,"link":"\/news\/searchresult\/news?search_text=æ­å·´é¦¬","color":"#ffeda0"},{"text":"å¸æè","weight":18,"link":"\/news\/searchresult\/news?search_text=å¸æè","color":"#feb24c"},{"text":"è³ ç","weight":19,"link":"\/news\/searchresult\/news?search_text=è³ ç","color":"#feb24c"},{"text":"è³­ç¤","weight":19,"link":"\/news\/searchresult\/news?search_text=è³­ç¤","color":"#bd0026"},{"text":"è¥¿ç­ç","weight":18,"link":"\/news\/searchresult\/news?search_text=è¥¿ç­ç","color":"#fd8d3c"},{"text":"å¾æ­¥","weight":18,"link":"\/news\/searchresult\/news?search_text=å¾æ­¥","color":"#feb24c"},{"text":"å°ç£","weight":18,"link":"\/news\/searchresult\/news?search_text=å°ç£","color":"#bd0026"},{"text":"æä¾¶","weight":19,"link":"\/news\/searchresult\/news?search_text=æä¾¶","color":"#feb24c"},{"text":"ç±è¡","weight":19,"link":"\/news\/searchresult\/news?search_text=ç±è¡","color":"#ffffcc"},{"text":"æè¡","weight":18,"link":"\/news\/searchresult\/news?search_text=æè¡","color":"#ffffcc"},{"text":"èåå®¢","weight":18,"link":"\/news\/searchresult\/news?search_text=èåå®¢","color":"#fd8d3c"},{"text":"å°æ±","weight":"18","color":"#800026","link":"\/news\/searchresult\/news?search_text=å°æ±"},{"text":"ç¾é£","weight":"16","color":"#800026","link":"\/news\/searchresult\/news?search_text=ç¾é£"},{"text":"æµ·ç¶¿å¯¶å¯¶å¤æ°´ç¦®","weight":"20","color":"#800026","link":"https:\/\/www.facebook.com\/tw.hkoceanpark\/photos\/a.613723538756018.1073741828.605853599543012\/903495189778850\/?type=3|7","handlers":{click:function(event){var urlId = $(this).find('a').attr('href');console.log(urlId);event.preventDefault();var url=urlId.substring(0, urlId.lastIndexOf('%7C'));var id = urlId.substring(urlId.lastIndexOf('%7C')+3, urlId.length);redirectAndRecord(id, url);}}},{"text":"æ±ç¿ ","weight":"16","color":"#800026","link":"http:\/\/www.jsl.com.tw\/Case_MRTRiverCBD\/events\/160621\/index.html|9","handlers":{click:function(event){var urlId = $(this).find('a').attr('href');console.log(urlId);event.preventDefault();var url=urlId.substring(0, urlId.lastIndexOf('%7C'));var id = urlId.substring(urlId.lastIndexOf('%7C')+3, urlId.length);redirectAndRecord(id, url);}}}];
+
+		$(".right_word_cloud").jQCloud(words, {width: 300, height: 300});
+		$(".right_word_cloud").css('font-family', 'å¾®è»æ­£é»é«');
+		
+		setTimeout(function () {
+			var obj = $(".right_word_cloud").data("jqcloud");
+			var data = obj.word_array;
+			for (var i in data) {
+				$("#" + data[i]["attr"]["id"]).css("color", data[i]["color"]);
+			}
+		}, 100);
+		
+	});
+</script> 
+		</div>
+    <!--æ°èå³å´åå¡end-->
+  </div>
+  </div>
+
+  <!--content end-->
+
+	<!--Footer-->
+	 <!--Footer-->
+  <div class="footer">
+    
+    <!--åºé¸å§æ¡PCç-->
+    <div class="square">
+       <!--TVBS logoç°-->
+       <div class="logo">
+         <a href="#"><img src="http://cc.tvbs.com.tw/news/images/logo2.svg" width="155" height="40"></a>
+       </div>
+       <!--TVBS logoç°end-->
+       
+       <!--å®ç¶²é£çµ-->
+       <ul>
+          <li><a href="http://www.tvbs.com.tw/">TVBSå®ç¶²</a></li>
+          <li><a href="http://videos.tvbs.com.tw/">TVBSå½±é³ç¶²</a></li>
+          <li><a href="http://vip.tvbs.com.tw/project/ours/company/" target="_blank">å¬å¸ä»ç´¹</a></li>
+          <li><a href="http://other.tvbs.com.tw/other/careers/apply-process/" target="_blank">äººææå</a></li>
+       </ul>
+       
+       <ul>
+          <li><a href="http://other.tvbs.com.tw/program/" target="_blank">ç¯ç®è¡¨</a></li>
+          <li><a href="http://other.tvbs.com.tw/other/anchor/" target="_blank">ä¸»æ­å°å</a></li>
+          <li><a href="http://news.tvbs.com.tw/news/newscate/inter-news" target="_blank">ä¼æ¥­åæ</a></li>
+          <li><a href="http://news.tvbs.com.tw/news/newscate/clarifications" target="_blank">æ´æ­£èæ¾æ¸</a></li>
+       </ul>
+       
+       <ul>
+          <li><a href="http://other.tvbs.com.tw/other/news-rule/" target="_blank">æ°èèªå¾è¦ç¯</a></li>
+          <li><a href="http://other.tvbs.com.tw/other/policies/privacy/" target="_blank">åäººè³æä¿è­·</a></li>
+          <li><a href="http://other.tvbs.com.tw/other/policies/terms/" target="_blank">ç¶²ç«ä½¿ç¨åå®</a></li>
+          <li><a href="http://other.tvbs.com.tw/other/policies/copyright/" target="_blank">çæ¬å®£å</a></li>
+       </ul>
+       <ul>
+         <li><a href="http://vip.tvbs.com.tw/project/ours/advertise/" target="_blank">æ¥­åæå</a></li>
+          <li><a href="http://other.tvbs.com.tw/other/policies/copyright/" target="_blank">ç¯ç®çæ¬é·å®</a></li>
+          <li><a href="http://other.tvbs.com.tw/other/tender/" target="_blank">å¬éææ¨</a></li>
+          
+       </ul>
+       <!--å®ç¶²é£çµend-->
+       
+       <!--å®¢æ-->
+       <div class="service">
+           <p>æ¨çæè¦æ¯æååé²çåå.æ­¡è¿ä¾ä¿¡æä¾é»åæ </p> 
+           <ul>
+              <li>Tçä¿¡ç®±ï¼<a href="mailto:t-bow@tvbs.com.tw">t-bow@tvbs.com.tw</a></li>
+              <li>æè¦åæ ï¼  <a href="mailto:service@tvbs.com.tw">service@tvbs.com.tw</a></li>
+              <li>è§ç¾æåå°ç·ï¼<span class="service-hover">02-2656-1599</span></li>
+           </ul>
+       </div>
+       
+      <!--å®¢æend-->
+   </div>
+    <!--åºé¸å§æ¡PCçend-->
+    
+    <!--åºé¸å§æ¡ææ©ç-->
+    <div class="square-m">
+        <ul>
+          <li class="service13"><a href="mailto:t-bow@tvbs.com.tw">Tçä¿¡ç®±</a></li>
+          <li class="service13"><a href="mailto:service@tvbs.com.tw">æè¦åæ </a></li>
+          <li class="service13">è§ç¾æåå°ç·:02-2656-1599</li>
+        </ul>
+        <div class="square-m-under1">è¯æè£½ä½è¡ä»½æéå¬å¸ Â©2016 TVBS Incâ§ All Rights Reserved.</div>
+        <!--320px-->
+        <div class="square-m-under2">è§ç¾æåå°ç·:02-2656-1599<br>è¯æè£½ä½è¡ä»½æéå¬å¸<br>Â©2016 TVBS Incâ§ All Rights Reserved.</div>
+        
+    </div>
+    <!--åºé¸å§æ¡ææ©çend-->
+     
+    
+   <!--å°åèçæ¬å®£å-->
+       <small>å°åå¸å§æ¹åçåè·¯451è | è¯æè£½ä½è¡ä»½æéå¬å¸ Â©2016 TVBS Incâ§ All Rights Reserved.</small>
+  <!--å°åèçæ¬å®£åend-->
+</div>
+<!--Footer end-->
+<script type="text/javascript" src="http://cc.tvbs.com.tw/news/js/fbstamp.js"></script>
+	<!--Footer end-->
+
+	<div class="under-banner-m">
+		<script>show_da('v4_news_m__index_bottom','warm')</script>
+	</div>
+
+
+</div>
+<script>show_da("v4_news__inad_code",'warm'); </script> <!--è¦å¨ ææone ad å»£å æä¸é¢ -->	
+</body>
+</html>
