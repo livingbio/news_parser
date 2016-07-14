@@ -32,15 +32,6 @@ def get_fake_request(url):
     else:
         print "The url is not supported."
 
-def patch_request_get():
-    global ori_requests_get
-    ori_requests_get = requests.get
-    requests.get = get_fake_request
-
-def unpatch_request_get():
-    global ori_requests_get
-    requests.get = ori_requests_get
-
 
 ########################################## Get the target dict ##########################################
 targetfile = open(path + '/target', 'r')
@@ -68,16 +59,6 @@ def data_for_parser_page(url):  #need revision
     else:
         print "Cannot find the target."
 
-def urls_for_parser_page(number):
-    test_urls_dic = {}
-    with open(path + '/test_urls/parser_page') as f:
-        for line in f:
-           (key, value) = line.split()
-           test_urls_dic[key] = value
-    return_url = test_urls_dic[str(number)]
-    print('You are testing url ' + str(number) + ' in test_urls for testing parser page')
-    return return_url
-
 
 ######################################## Testing get_category_urls #######################################
 def data_for_category_urls(url):
@@ -86,19 +67,8 @@ def data_for_category_urls(url):
     if str(hashkey) in target_dict.keys():
         target = target_dict[str(hashkey)]
         return target
-        print "type target: ", type(target)
     else:
         print "Cannot find the target."
-
-def urls_for_category_urls(number):
-    test_urls_dic = {}
-    with open(path + '/test_urls/get_category_urls') as f:
-        for line in f:
-           (key, value) = line.split()
-           test_urls_dic[key] = value
-    return_url = test_urls_dic[str(number)]
-    print('You are testing url ' + str(number) + ' in test_urls for testing get_category_urls')
-    return return_url
 
 
 ########################################## Compare two dictionaries #########################################
@@ -120,36 +90,49 @@ def compare_dict(dict1, dict2):
 
 ################################################### Tests ####################################################
 class TestCtsnews(unittest.TestCase):
-    
     def test_get_parser_page(self):
-        patch_request_get()
-        for i in range(3):
-            test_url = urls_for_parser_page(i + 1)
-            result = cts_parser.parser_page(test_url)
-            target = data_for_parser_page(test_url)
+        with patch.object(requests, 'get', side_effect = get_fake_request) as requests.get:
+            #get the test_urls for testing parser_page
+            test_urls_dic = {}
+            with open(path + '/test_urls/parser_page') as f:
+                for line in f:
+                   (key, value) = line.split()
+                   test_urls_dic[key] = value
+            #test each url
+            for i in range(1, len(test_urls_dic)):
+                test_url = test_urls_dic[str(i)]
+                print('You are testing url ' + str(i) + ' in test_urls for testing parser_page')
+                result = cts_parser.parser_page(test_url)
+                target = data_for_parser_page(test_url)
 
-            if compare_dict(result, target) == True:
-                print "Test Result: Succeed"
-            else:
-                print "Test Result: Fail"
-        unpatch_request_get()
-    
-    def test_get_category_urls(self):
-        patch_request_get()
-        for i in range(3):
-            test_url = urls_for_category_urls(i + 1)
-            result = cts_parser.get_category_urls(test_url)
-            target = data_for_category_urls(test_url)
-            
-            equal = True
-            for i in range(len(result)):
-                if result[i] != target[i]:
-                    equal = False
+                if compare_dict(result, target) == True:
+                    print "Test Result: Succeed"
+                else:
                     print "Test Result: Fail"
-                    break
-            else:
-                print "Test Result: Succeed"
-        unpatch_request_get()
+            
+    def test_get_category_urls(self):
+        with patch.object(requests, 'get', side_effect = get_fake_request) as requests.get:
+            #get the test_urls for testing get_category_urls
+            test_urls_dic = {}
+            with open(path + '/test_urls/get_category_urls') as f:
+                for line in f:
+                   (key, value) = line.split()
+                   test_urls_dic[key] = value
+            #test each url
+            for i in range(1, len(test_urls_dic)):
+                test_url = test_urls_dic[str(i)]
+                print('You are testing url ' + str(i) + ' in test_urls for testing get_category_urls')
+                result = cts_parser.get_category_urls(test_url)
+                target = data_for_category_urls(test_url)
+
+                equal = True
+                for i in range(len(result)):
+                    if result[i] != target[i]:
+                        equal = False
+                        print "Test Result: Fail"
+                        break
+                else:
+                    print "Test Result: Succeed"
 
 
 if __name__ == '__main__':
