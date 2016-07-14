@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from requests import Response
 import tvbs_Parser
-import requests
+import os
 import unittest
 import datetime
 import json
 import sqlite3
 import mock
+
+file_path = os.path.dirname(os.path.abspath(__file__))
 
 # =========================== Function ===========================
 #  fake_request_get(url): return fake response
@@ -52,7 +54,7 @@ class TvbsParserTest(unittest.TestCase):
     
     def setUp(self):
         global conn
-        conn = sqlite3.connect('testcase.db')
+        conn = sqlite3.connect(file_path + '/testcase.db')
         
         page_cursor = conn.execute("SELECT  *  from PageList")
         self.page_url_list = []
