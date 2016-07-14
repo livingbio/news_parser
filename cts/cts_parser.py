@@ -5,7 +5,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 ####################################### Parser_page(url) ###########################################
-def parser_page(url):
+def parser_page(url):    
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
 
@@ -190,12 +190,11 @@ for key in parser_result.keys():
         print key, ": ", parser_result[key]
 """
 
-
 ###################################### Get_category_urls(category_url) ################################
 def get_category_urls(category_url):
     resp = requests.get(category_url)
     soup = BeautifulSoup(resp.text.encode('iso8859-1').decode('utf-8'), 'html.parser')
-
+    
     detail_urls = [] #for return
 
     #for the first page

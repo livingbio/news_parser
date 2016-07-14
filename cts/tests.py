@@ -6,27 +6,23 @@ from requests import Response
 from mock import patch
 from datetime import datetime
 import cts_parser
-import test_data_for_parser_page
+import json
 
 path = os.path.dirname(os.path.abspath(__file__))
 
 ############################################# Fake Request #################################################
-global fake_page_dic
-fake_page_dic = {}
-with open(path + '/fake_page_dic') as f:
-    for line in f:
-       (key, value) = line.split()
-       fake_page_dic[key] = value
+targetfile = open(path + '/fake_pages', 'r')
+content = targetfile.read()
+targetfile.close()
+global fake_pages_dict
+fake_pages_dict = json.loads(content)
 
 def get_fake_request(url):
-    global fake_page_dic
-    file_index = fake_page_dic[url]
-    if file_index != None:
-        targetfile = open(path + '/tests/fake_page_' + str(file_index), 'r')
-        fake_page_content = targetfile.read()
-        targetfile.close()
-
+    global fake_pages_dict
+    hashkey = hash(url)
+    if str(hashkey) in fake_pages_dict.keys():
         fake_page = Response()
+        fake_page_content = fake_pages_dict[str(hashkey)].encode('utf-8')
         fake_page._content = fake_page_content
         if "facebook" in url:
             fake_page.encoding = 'utf-8'
@@ -46,14 +42,35 @@ def unpatch_request_get():
     requests.get = ori_requests_get
 
 
+########################################## Get the target dict ##########################################
+targetfile = open(path + '/target', 'r')
+content = targetfile.read()
+targetfile.close()
+global target_dict
+target_dict = json.loads(content)
+
+
 ########################################## Testing parser_page ##########################################
 def data_for_parser_page(url):  #need revision   
-    target = test_data_for_parser_page.target[url]
-    return target
+    global target_dict
+    hashkey = hash(url)
+    if str(hashkey) in target_dict.keys():
+        target = target_dict[str(hashkey)]
+        #process post-time
+        target["post_time"] = datetime.strptime(target["post_time"], '%Y-%m-%dT%H:%M:%S')
+        length = len(target["comment"])
+        for i in range(length):
+            target["comment"][i]["post_time"] = datetime.strptime(target["comment"][i]["post_time"], '%Y-%m-%dT%H:%M:%S')
+            length2 = len(target["comment"][i]["sub_comments"])
+            for j in range(length2):
+                target["comment"][i]["sub_comments"][j]["post_time"] = datetime.strptime(target["comment"][i]["sub_comments"][j]["post_time"], '%Y-%m-%dT%H:%M:%S')
+        return target
+    else:
+        print "Cannot find the target."
 
 def urls_for_parser_page(number):
     test_urls_dic = {}
-    with open(path + '/tests/parser_page/test_urls') as f:
+    with open(path + '/test_urls/parser_page') as f:
         for line in f:
            (key, value) = line.split()
            test_urls_dic[key] = value
@@ -64,26 +81,18 @@ def urls_for_parser_page(number):
 
 ######################################## Testing get_category_urls #######################################
 def data_for_category_urls(url):
-    targetfile = open(path + '/tests/get_category_urls/test_data', 'r')
-    content = targetfile.read()
-    targetfile.close()
-    
-    start_index = content.index(url) + len(url) + 1  #after the category url
-    target_content = content[start_index:]
-    end_index = target_content.index(';')            #before next category url
-    target_content = target_content[:end_index]      #target content that we want
-    number = target_content.count(',') + 1
-
-    detail_urls = []
-    for i in range(number):
-        index = target_content.index('.html') + len('.html')
-        detail_urls.append(target_content[0:index])
-        target_content = target_content[index+1:]
-    return detail_urls
+    global target_dict
+    hashkey = hash(url)
+    if str(hashkey) in target_dict.keys():
+        target = target_dict[str(hashkey)]
+        return target
+        print "type target: ", type(target)
+    else:
+        print "Cannot find the target."
 
 def urls_for_category_urls(number):
     test_urls_dic = {}
-    with open(path + '/tests/get_category_urls/test_urls') as f:
+    with open(path + '/test_urls/get_category_urls') as f:
         for line in f:
            (key, value) = line.split()
            test_urls_dic[key] = value
@@ -117,7 +126,6 @@ class TestCtsnews(unittest.TestCase):
         for i in range(3):
             test_url = urls_for_parser_page(i + 1)
             result = cts_parser.parser_page(test_url)
-            #print result['comment']
             target = data_for_parser_page(test_url)
 
             if compare_dict(result, target) == True:
@@ -142,7 +150,7 @@ class TestCtsnews(unittest.TestCase):
             else:
                 print "Test Result: Succeed"
         unpatch_request_get()
-    
+
 
 if __name__ == '__main__':
     unittest.main()
