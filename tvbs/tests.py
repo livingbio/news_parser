@@ -6,14 +6,14 @@ import unittest
 import datetime
 import json
 import sqlite3
+import mock
 
 # =========================== Function ===========================
 #  fake_request_get(url): return fake response
-#  patch_request_get(): hooked fake requests.get
-#  unpatch_request_get(): recover requests.get
 #  get_answer_dic(url): according url to find file and get answer
 #                       dictionary for parser page test
 # ================================================================
+
 def fake_request_get(url):
     hash_url = str(hash(url))
     cursor = conn.execute("SELECT  *  from ResponseList WHERE NAME = ?", (hash_url,))
@@ -23,15 +23,6 @@ def fake_request_get(url):
     resp.encoding = "utf-8"
     
     return resp
-
-def patch_request_get():
-    global origin_get 
-    origin_get = requests.get
-    requests.get = fake_request_get
-    
-def unpatch_request_get():
-    global origin_get 
-    requests.get = origin_get
 
 def get_answer_dic(url):
     hash_url = str(hash(url))
@@ -73,9 +64,8 @@ class TvbsParserTest(unittest.TestCase):
         for row in category_cursor:
             self.category_url_list.append(row[0])
             
-    
-    def test_parser_page(self):
-        patch_request_get()
+    @mock.patch('requests.get', side_effect=fake_request_get)
+    def test_parser_page(self, mock_get):
         for page_url in self.page_url_list:
             page_dic = tvbs_Parser.parser_page(page_url)
             answer_dic = get_answer_dic(page_url)
@@ -83,21 +73,19 @@ class TvbsParserTest(unittest.TestCase):
                 self.assertEqual(page_dic, answer_dic)
             except AssertionError:
                 print(page_url + " test fail")
-        unpatch_request_get()
-         
-    def test_get_category_urls(self):
-        patch_request_get()
+
+    @mock.patch('requests.get', side_effect=fake_request_get)
+    def test_get_category_urls(self, mock_get):
         for category_url in self.category_url_list:
             category_news_url_list = tvbs_Parser.get_category_urls(category_url)
-              
+            
             cursor = conn.execute("SELECT  *  from ResponseList WHERE NAME = ?", (str(hash(category_url)) + "_category_answer",))
             answer_urls = cursor.fetchone()[1].encode("utf-8").split(" ")
             try:
                 self.assertEqual(category_news_url_list, answer_urls)
             except AssertionError:
-                print(category_url + " test fail")
-        unpatch_request_get()    
+                    print(category_url + " test fail")
 
-   
+         
 if __name__ == '__main__':
     unittest.main() 
